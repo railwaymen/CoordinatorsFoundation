@@ -9,10 +9,9 @@
 /* Begin PBXBuildFile section */
 		8A12E221231FA21E00037A34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12E220231FA21E00037A34 /* AppDelegate.swift */; };
 		8A12E223231FA21E00037A34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12E222231FA21E00037A34 /* ViewController.swift */; };
-		8A12E226231FA21E00037A34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A12E224231FA21E00037A34 /* Main.storyboard */; };
-		8A12E228231FA22000037A34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A12E227231FA22000037A34 /* Assets.xcassets */; };
 		8A12E22B231FA22000037A34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A12E229231FA22000037A34 /* LaunchScreen.storyboard */; };
 		8A12E236231FA22000037A34 /* CoordinatorsFoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12E235231FA22000037A34 /* CoordinatorsFoundationTests.swift */; };
+		8A12E243231FA68A00037A34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A12E242231FA68A00037A34 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +28,12 @@
 		8A12E21D231FA21E00037A34 /* CoordinatorsFoundation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorsFoundation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A12E220231FA21E00037A34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A12E222231FA21E00037A34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8A12E225231FA21E00037A34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8A12E227231FA22000037A34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A12E22A231FA22000037A34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A12E22C231FA22000037A34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A12E231231FA22000037A34 /* CoordinatorsFoundationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoordinatorsFoundationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A12E235231FA22000037A34 /* CoordinatorsFoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorsFoundationTests.swift; sourceTree = "<group>"; };
 		8A12E237231FA22000037A34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A12E242231FA68A00037A34 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +57,9 @@
 		8A12E214231FA21E00037A34 = {
 			isa = PBXGroup;
 			children = (
-				8A12E21F231FA21E00037A34 /* CoordinatorsFoundation */,
-				8A12E234231FA22000037A34 /* CoordinatorsFoundationTests */,
+				8A12E21F231FA21E00037A34 /* ExampleApp */,
+				8A12E241231FA5DE00037A34 /* Source */,
+				8A12E234231FA22000037A34 /* Tests */,
 				8A12E21E231FA21E00037A34 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,26 +73,32 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8A12E21F231FA21E00037A34 /* CoordinatorsFoundation */ = {
+		8A12E21F231FA21E00037A34 /* ExampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				8A12E22C231FA22000037A34 /* Info.plist */,
+				8A12E242231FA68A00037A34 /* Main.storyboard */,
 				8A12E220231FA21E00037A34 /* AppDelegate.swift */,
 				8A12E222231FA21E00037A34 /* ViewController.swift */,
-				8A12E224231FA21E00037A34 /* Main.storyboard */,
-				8A12E227231FA22000037A34 /* Assets.xcassets */,
 				8A12E229231FA22000037A34 /* LaunchScreen.storyboard */,
-				8A12E22C231FA22000037A34 /* Info.plist */,
 			);
-			path = CoordinatorsFoundation;
+			path = ExampleApp;
 			sourceTree = "<group>";
 		};
-		8A12E234231FA22000037A34 /* CoordinatorsFoundationTests */ = {
+		8A12E234231FA22000037A34 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				8A12E235231FA22000037A34 /* CoordinatorsFoundationTests.swift */,
 				8A12E237231FA22000037A34 /* Info.plist */,
 			);
-			path = CoordinatorsFoundationTests;
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		8A12E241231FA5DE00037A34 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,8 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A12E22B231FA22000037A34 /* LaunchScreen.storyboard in Resources */,
-				8A12E228231FA22000037A34 /* Assets.xcassets in Resources */,
-				8A12E226231FA21E00037A34 /* Main.storyboard in Resources */,
+				8A12E243231FA68A00037A34 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,14 +225,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8A12E224231FA21E00037A34 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8A12E225231FA21E00037A34 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8A12E229231FA22000037A34 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -362,7 +358,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78CQWFZKPC;
-				INFOPLIST_FILE = CoordinatorsFoundation/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ExampleApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,7 +376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78CQWFZKPC;
-				INFOPLIST_FILE = CoordinatorsFoundation/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ExampleApp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
