@@ -7,19 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01C5E7B1D2854F45AE7630D0 /* Pods_CoordinatorsFoundationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11E18FAC99961B7B93014F8 /* Pods_CoordinatorsFoundationTests.framework */; };
 		8A12E221231FA21E00037A34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12E220231FA21E00037A34 /* AppDelegate.swift */; };
 		8A12E223231FA21E00037A34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12E222231FA21E00037A34 /* ViewController.swift */; };
-		8A12E22B231FA22000037A34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A12E229231FA22000037A34 /* LaunchScreen.storyboard */; };
-		8A12E236231FA22000037A34 /* CoordinatorsFoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A12E235231FA22000037A34 /* CoordinatorsFoundationTests.swift */; };
 		8A12E243231FA68A00037A34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A12E242231FA68A00037A34 /* Main.storyboard */; };
+		8A7F16C8231FF3BF0034E949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A12E229231FA22000037A34 /* LaunchScreen.storyboard */; };
+		8A7F16FA231FF6680034E949 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F16F9231FF6460034E949 /* CoordinatorTests.swift */; };
+		8A7F16FB231FF66B0034E949 /* DeepLinkOptionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F16F7231FF62D0034E949 /* DeepLinkOptionMock.swift */; };
+		8A7F16FC231FF66D0034E949 /* CoordinatorTypeMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F16F6231FF62D0034E949 /* CoordinatorTypeMock.swift */; };
+		8A7F16FE231FF77F0034E949 /* DispatchGroup+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F16FD231FF77F0034E949 /* DispatchGroup+Extension.swift */; };
+		8A7F1700231FF7AE0034E949 /* DispatchGroupMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F16FF231FF7AE0034E949 /* DispatchGroupMock.swift */; };
+		8A7F1703231FF84E0034E949 /* DispatchGroupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F1702231FF84E0034E949 /* DispatchGroupFactory.swift */; };
+		8A7F1707231FF8A70034E949 /* DispatchGroupFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F1706231FF8A70034E949 /* DispatchGroupFactoryMock.swift */; };
+		8A7F170F232002470034E949 /* CoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F170E232002110034E949 /* CoordinatorMock.swift */; };
 		8A84F565231FCE9A00DBC7B0 /* Coordinatorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A84F564231FCE9A00DBC7B0 /* Coordinatorable.swift */; };
 		8A84F56B231FCFDC00DBC7B0 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A84F56A231FCFDC00DBC7B0 /* UIWindow+Extension.swift */; };
+		8A84F56D231FEC4B00DBC7B0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A84F56C231FEC4B00DBC7B0 /* Coordinator.swift */; };
 		D7C5C8D076FF5110EDB719EB /* Pods_CoordinatorsFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A729DFE1F289D6CE67092C /* Pods_CoordinatorsFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8A12E232231FA22000037A34 /* PBXContainerItemProxy */ = {
+		8A7F16E2231FF5290034E949 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8A12E215231FA21E00037A34 /* Project object */;
 			proxyType = 1;
@@ -36,12 +43,20 @@
 		8A12E222231FA21E00037A34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8A12E22A231FA22000037A34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A12E22C231FA22000037A34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A12E231231FA22000037A34 /* CoordinatorsFoundationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoordinatorsFoundationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A12E235231FA22000037A34 /* CoordinatorsFoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorsFoundationTests.swift; sourceTree = "<group>"; };
-		8A12E237231FA22000037A34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A12E242231FA68A00037A34 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8A7F16DD231FF5290034E949 /* CoordinatorsFoundationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoordinatorsFoundationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A7F16E1231FF5290034E949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A7F16F6231FF62D0034E949 /* CoordinatorTypeMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTypeMock.swift; sourceTree = "<group>"; };
+		8A7F16F7231FF62D0034E949 /* DeepLinkOptionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkOptionMock.swift; sourceTree = "<group>"; };
+		8A7F16F9231FF6460034E949 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
+		8A7F16FD231FF77F0034E949 /* DispatchGroup+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchGroup+Extension.swift"; sourceTree = "<group>"; };
+		8A7F16FF231FF7AE0034E949 /* DispatchGroupMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchGroupMock.swift; sourceTree = "<group>"; };
+		8A7F1702231FF84E0034E949 /* DispatchGroupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchGroupFactory.swift; sourceTree = "<group>"; };
+		8A7F1706231FF8A70034E949 /* DispatchGroupFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchGroupFactoryMock.swift; sourceTree = "<group>"; };
+		8A7F170E232002110034E949 /* CoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorMock.swift; sourceTree = "<group>"; };
 		8A84F564231FCE9A00DBC7B0 /* Coordinatorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatorable.swift; sourceTree = "<group>"; };
 		8A84F56A231FCFDC00DBC7B0 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
+		8A84F56C231FEC4B00DBC7B0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		9ACDCEE74820D7ED0799B0E5 /* Pods-CoordinatorsFoundationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoordinatorsFoundationTests.debug.xcconfig"; path = "Target Support Files/Pods-CoordinatorsFoundationTests/Pods-CoordinatorsFoundationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C11E18FAC99961B7B93014F8 /* Pods_CoordinatorsFoundationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoordinatorsFoundationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C234EEBFEF8A74FC8804DF33 /* Pods-CoordinatorsFoundation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoordinatorsFoundation.debug.xcconfig"; path = "Target Support Files/Pods-CoordinatorsFoundation/Pods-CoordinatorsFoundation.debug.xcconfig"; sourceTree = "<group>"; };
@@ -57,11 +72,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8A12E22E231FA22000037A34 /* Frameworks */ = {
+		8A7F16DA231FF5290034E949 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01C5E7B1D2854F45AE7630D0 /* Pods_CoordinatorsFoundationTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,9 +85,8 @@
 		8A12E214231FA21E00037A34 = {
 			isa = PBXGroup;
 			children = (
-				8A12E21F231FA21E00037A34 /* ExampleApp */,
-				8A12E241231FA5DE00037A34 /* Source */,
-				8A12E234231FA22000037A34 /* Tests */,
+				8A84F576231FEF4D00DBC7B0 /* CoordinatorsFoundation */,
+				8A7F16DE231FF5290034E949 /* CoordinatorsFoundationTests */,
 				8A12E21E231FA21E00037A34 /* Products */,
 				A3441256F9C253F6926C724D /* Pods */,
 				DE29225769428AAE305C3525 /* Frameworks */,
@@ -84,7 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				8A12E21D231FA21E00037A34 /* CoordinatorsFoundation.app */,
-				8A12E231231FA22000037A34 /* CoordinatorsFoundationTests.xctest */,
+				8A7F16DD231FF5290034E949 /* CoordinatorsFoundationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,22 +114,103 @@
 			path = ExampleApp;
 			sourceTree = "<group>";
 		};
-		8A12E234231FA22000037A34 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				8A12E235231FA22000037A34 /* CoordinatorsFoundationTests.swift */,
-				8A12E237231FA22000037A34 /* Info.plist */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
 		8A12E241231FA5DE00037A34 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				8A84F564231FCE9A00DBC7B0 /* Coordinatorable.swift */,
-				8A84F56A231FCFDC00DBC7B0 /* UIWindow+Extension.swift */,
+				8A84F56E231FEDF900DBC7B0 /* Coordinators */,
+				8A84F56F231FEE0800DBC7B0 /* Extensions */,
+				8A7F1701231FF83A0034E949 /* Models */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		8A7F16DE231FF5290034E949 /* CoordinatorsFoundationTests */ = {
+			isa = PBXGroup;
+			children = (
+				8A7F16F5231FF6260034E949 /* Mocks */,
+				8A7F16F8231FF6410034E949 /* Source */,
+				8A7F16E1231FF5290034E949 /* Info.plist */,
+			);
+			path = CoordinatorsFoundationTests;
+			sourceTree = "<group>";
+		};
+		8A7F16F5231FF6260034E949 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				8A7F170D2320020D0034E949 /* Source */,
+				8A7F1704231FF86B0034E949 /* Extensions */,
+				8A7F1705231FF8720034E949 /* Models */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		8A7F16F8231FF6410034E949 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				8A7F16F9231FF6460034E949 /* CoordinatorTests.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		8A7F1701231FF83A0034E949 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8A7F1702231FF84E0034E949 /* DispatchGroupFactory.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8A7F1704231FF86B0034E949 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8A7F16FF231FF7AE0034E949 /* DispatchGroupMock.swift */,
+				8A7F1706231FF8A70034E949 /* DispatchGroupFactoryMock.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8A7F1705231FF8720034E949 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8A7F16F6231FF62D0034E949 /* CoordinatorTypeMock.swift */,
+				8A7F16F7231FF62D0034E949 /* DeepLinkOptionMock.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8A7F170D2320020D0034E949 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				8A7F170E232002110034E949 /* CoordinatorMock.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		8A84F56E231FEDF900DBC7B0 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				8A84F56C231FEC4B00DBC7B0 /* Coordinator.swift */,
+				8A84F564231FCE9A00DBC7B0 /* Coordinatorable.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		8A84F56F231FEE0800DBC7B0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8A84F56A231FCFDC00DBC7B0 /* UIWindow+Extension.swift */,
+				8A7F16FD231FF77F0034E949 /* DispatchGroup+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8A84F576231FEF4D00DBC7B0 /* CoordinatorsFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				8A12E21F231FA21E00037A34 /* ExampleApp */,
+				8A12E241231FA5DE00037A34 /* Source */,
+			);
+			path = CoordinatorsFoundation;
 			sourceTree = "<group>";
 		};
 		A3441256F9C253F6926C724D /* Pods */ = {
@@ -161,23 +255,22 @@
 			productReference = 8A12E21D231FA21E00037A34 /* CoordinatorsFoundation.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8A12E230231FA22000037A34 /* CoordinatorsFoundationTests */ = {
+		8A7F16DC231FF5290034E949 /* CoordinatorsFoundationTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A12E23D231FA22000037A34 /* Build configuration list for PBXNativeTarget "CoordinatorsFoundationTests" */;
+			buildConfigurationList = 8A7F16E4231FF5290034E949 /* Build configuration list for PBXNativeTarget "CoordinatorsFoundationTests" */;
 			buildPhases = (
-				0555E4EFF773B47D932409CD /* [CP] Check Pods Manifest.lock */,
-				8A12E22D231FA22000037A34 /* Sources */,
-				8A12E22E231FA22000037A34 /* Frameworks */,
-				8A12E22F231FA22000037A34 /* Resources */,
+				8A7F16D9231FF5290034E949 /* Sources */,
+				8A7F16DA231FF5290034E949 /* Frameworks */,
+				8A7F16DB231FF5290034E949 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8A12E233231FA22000037A34 /* PBXTargetDependency */,
+				8A7F16E3231FF5290034E949 /* PBXTargetDependency */,
 			);
 			name = CoordinatorsFoundationTests;
 			productName = CoordinatorsFoundationTests;
-			productReference = 8A12E231231FA22000037A34 /* CoordinatorsFoundationTests.xctest */;
+			productReference = 8A7F16DD231FF5290034E949 /* CoordinatorsFoundationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -193,7 +286,7 @@
 					8A12E21C231FA21E00037A34 = {
 						CreatedOnToolsVersion = 10.3;
 					};
-					8A12E230231FA22000037A34 = {
+					8A7F16DC231FF5290034E949 = {
 						CreatedOnToolsVersion = 10.3;
 						TestTargetID = 8A12E21C231FA21E00037A34;
 					};
@@ -213,7 +306,7 @@
 			projectRoot = "";
 			targets = (
 				8A12E21C231FA21E00037A34 /* CoordinatorsFoundation */,
-				8A12E230231FA22000037A34 /* CoordinatorsFoundationTests */,
+				8A7F16DC231FF5290034E949 /* CoordinatorsFoundationTests */,
 			);
 		};
 /* End PBXProject section */
@@ -223,12 +316,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A12E22B231FA22000037A34 /* LaunchScreen.storyboard in Resources */,
+				8A7F16C8231FF3BF0034E949 /* LaunchScreen.storyboard in Resources */,
 				8A12E243231FA68A00037A34 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8A12E22F231FA22000037A34 /* Resources */ = {
+		8A7F16DB231FF5290034E949 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -238,28 +331,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0555E4EFF773B47D932409CD /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CoordinatorsFoundationTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2E9C31B64C98C7D7707E0C2A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,27 +379,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A12E223231FA21E00037A34 /* ViewController.swift in Sources */,
+				8A7F1703231FF84E0034E949 /* DispatchGroupFactory.swift in Sources */,
+				8A7F16FE231FF77F0034E949 /* DispatchGroup+Extension.swift in Sources */,
 				8A12E221231FA21E00037A34 /* AppDelegate.swift in Sources */,
+				8A84F56D231FEC4B00DBC7B0 /* Coordinator.swift in Sources */,
 				8A84F565231FCE9A00DBC7B0 /* Coordinatorable.swift in Sources */,
 				8A84F56B231FCFDC00DBC7B0 /* UIWindow+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8A12E22D231FA22000037A34 /* Sources */ = {
+		8A7F16D9231FF5290034E949 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A12E236231FA22000037A34 /* CoordinatorsFoundationTests.swift in Sources */,
+				8A7F16FB231FF66B0034E949 /* DeepLinkOptionMock.swift in Sources */,
+				8A7F1700231FF7AE0034E949 /* DispatchGroupMock.swift in Sources */,
+				8A7F170F232002470034E949 /* CoordinatorMock.swift in Sources */,
+				8A7F16FA231FF6680034E949 /* CoordinatorTests.swift in Sources */,
+				8A7F1707231FF8A70034E949 /* DispatchGroupFactoryMock.swift in Sources */,
+				8A7F16FC231FF66D0034E949 /* CoordinatorTypeMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8A12E233231FA22000037A34 /* PBXTargetDependency */ = {
+		8A7F16E3231FF5290034E949 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8A12E21C231FA21E00037A34 /* CoordinatorsFoundation */;
-			targetProxy = 8A12E232231FA22000037A34 /* PBXContainerItemProxy */;
+			targetProxy = 8A7F16E2231FF5290034E949 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -467,7 +546,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 78CQWFZKPC;
-				INFOPLIST_FILE = ExampleApp/Info.plist;
+				INFOPLIST_FILE = CoordinatorsFoundation/ExampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,29 +565,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = ExampleApp/Info.plist;
+				DEVELOPMENT_TEAM = 78CQWFZKPC;
+				INFOPLIST_FILE = CoordinatorsFoundation/ExampleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.railwaymen.CoordinatorsFoundation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = UniversalAppDevelopment;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		8A12E23E231FA22000037A34 /* Debug */ = {
+		8A7F16E5231FF5290034E949 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9ACDCEE74820D7ED0799B0E5 /* Pods-CoordinatorsFoundationTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 78CQWFZKPC;
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = CoordinatorsFoundationTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,21 +594,21 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.railwaymen.CoordinatorsFoundationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoordinatorsFoundation.app/CoordinatorsFoundation";
 			};
 			name = Debug;
 		};
-		8A12E23F231FA22000037A34 /* Release */ = {
+		8A7F16E6231FF5290034E949 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80AC5B5DEFBBE4DC12C48D88 /* Pods-CoordinatorsFoundationTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 78CQWFZKPC;
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = CoordinatorsFoundationTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -538,6 +616,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.railwaymen.CoordinatorsFoundationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoordinatorsFoundation.app/CoordinatorsFoundation";
@@ -565,11 +644,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8A12E23D231FA22000037A34 /* Build configuration list for PBXNativeTarget "CoordinatorsFoundationTests" */ = {
+		8A7F16E4231FF5290034E949 /* Build configuration list for PBXNativeTarget "CoordinatorsFoundationTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8A12E23E231FA22000037A34 /* Debug */,
-				8A12E23F231FA22000037A34 /* Release */,
+				8A7F16E5231FF5290034E949 /* Debug */,
+				8A7F16E6231FF5290034E949 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

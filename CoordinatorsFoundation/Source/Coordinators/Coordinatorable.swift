@@ -25,7 +25,7 @@ protocol Coordinatorable: class {
     
     init(window: UIWindowType?)
     
-    func start(finishCompletion: FinishHandlerType?)
+    func start(finishHandler: FinishHandlerType?)
     func finish()
     func addChildCoordinator(child: Coordinator)
     func removeChildCoordinator(child: Coordinator?)
@@ -43,6 +43,6 @@ extension Coordinatorable {
     }
     
     func start() {
-        self.start(finishCompletion: nil)
+        self.start(finishHandler: nil)
     }
 }

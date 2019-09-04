@@ -1,17 +1,18 @@
 //
-//  CoordinatorsFoundationTests.swift
+//  DeepLinkOptionMock.swift
 //  CoordinatorsFoundationTests
 //
 //  Created by Bartłomiej Świerad on 04/09/2019.
 //  Copyright © 2019 Bartłomiej Świerad. All rights reserved.
 //
 
-import XCTest
+import Foundation
 @testable import CoordinatorsFoundation
 
-class CoordinatorsFoundationTests: XCTestCase {
+enum DeepLinkOptionMock: DeepLinkOptionable {
+    case one, two
+}
 
-    func testExample() {
-    }
-
+enum CoordinatorType: String, CoordinatorTypable {
+    case one, two
 }
