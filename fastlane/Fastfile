@@ -20,7 +20,7 @@ platform :ios do
   #PUBLIC LANES
   desc "Run unit tests"
   lane :test do
-    # check_style
+    check_style
     scan
     project_path = `cd .. && pwd`.strip
     derived_data_path = "#{project_path}/DerivedData"
