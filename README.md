@@ -1,5 +1,6 @@
 # CoordinatorsFoundation
-
+[![build status](https://git.railwaymen.org/ios/coordinatorsfoundation/badges/develop/build.svg)](https://git.railwaymen.org/ios/coordinatorsfoundation/pipelines)
+[![Coverage report](https://git.railwaymen.org/ios/coordinatorsfoundation/badges/develop/coverage.svg)](https://git.railwaymen.org/ios/coordinatorsfoundation/commits/develop)
 
 ## Dependencies
 
@@ -11,6 +12,7 @@
 * [xcov](https://github.com/nakiostudio/xcov) 1.5.1
 
 ### CocoaPods
+* [SwiftLint](https://cocoapods.org/pods/SwiftLint) 0.34.0 ([Rules](.swiftlint.yml))
 
 ## Contribution
 

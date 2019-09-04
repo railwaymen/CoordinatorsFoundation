@@ -1,5 +1,7 @@
 default_platform(:ios)
 
+project = "CoordinatorsFoundation.xcodeproj"
+workspace = "CoordinatorsFoundation.xcworkspace"
 scheme = "CoordinatorsFoundation"
 
 platform :ios do
@@ -26,16 +28,16 @@ platform :ios do
     derived_data_path = "#{project_path}/DerivedData"
     xcov(
       scheme: scheme,
-      workspace: "CoordinatorsFoundation.xcworkspace",
+      workspace: workspace,
       json_report: true,
       markdown_report: true,
-      output_directory: "output/coverage/xcov",
+      output_directory: "output/tests/coverage/xcov",
       skip_slack: true
     )
     slather(
       scheme: scheme,
-      workspace: "CoordinatorsFoundation.xcworkspace",
-      proj: "CoordinatorsFoundation.xcodeproj",
+      workspace: workspace,
+      proj: project,
       html: true,
       output_directory: "output/tests/coverage/slather",
       binary_basename: "CoordinatorsFoundation"
