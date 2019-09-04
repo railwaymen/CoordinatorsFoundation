@@ -121,7 +121,6 @@
 				9ACDCEE74820D7ED0799B0E5 /* Pods-CoordinatorsFoundationTests.debug.xcconfig */,
 				80AC5B5DEFBBE4DC12C48D88 /* Pods-CoordinatorsFoundationTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -480,7 +479,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78CQWFZKPC;
-				INFOPLIST_FILE = CoordinatorsFoundationTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,7 +501,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78CQWFZKPC;
-				INFOPLIST_FILE = CoordinatorsFoundationTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
