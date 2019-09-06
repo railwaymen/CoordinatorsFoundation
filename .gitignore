@@ -22,28 +22,27 @@ DerivedData
 vendor
 
 # CocoaPods
-Pods/
+Example/Pods/
 
 #fastlane
-output/
-fastlane/screenshots/
+Example/output/
+Example/fastlane/screenshots/
 
 # Fastlane temporary profiling data
-/fastlane/report.xml
+Example/fastlane/report.xml
 # Deliver temporary error output
-/fastlane/Error*.png
+Example/fastlane/Error*.png
 # Deliver temporary preview output
-/fastlane/Preview.html
+Example/fastlane/Preview.html
 # Snapshot generated screenshots
-/fastlane/screenshots/*/*-portrait.png
-/fastlane/screenshots/*/*-landscape.png
-/fastlane/screenshots/screenshots.html
+Example/fastlane/screenshots/*/*-portrait.png
+Example/fastlane/screenshots/*/*-landscape.png
+Example/fastlane/screenshots/screenshots.html
 # Frameit generated screenshots
-/fastlane/screenshots/*/*-portrait_framed.png
-/fastlane/screenshots/*/*-landscape_framed.png
+Example/fastlane/screenshots/*/*-portrait_framed.png
+Example/fastlane/screenshots/*/*-landscape_framed.png
 
 *.orig
 
 # Configuration temp directory
 /Configuration/*.xcconfig
-
