@@ -1,4 +1,0 @@
-skip_slack true
-scheme "CoordinatorsFoundation"
-workspace "CoordinatorsFoundation.xcworkspace"
-output_directory "output/tests"
