@@ -104,7 +104,7 @@ class TabBarCoordinatorTests: XCTestCase {
     }
 }
 
-private class TabBarChildCoordinatorMock: Coordinator<DeepLinkOptionMock, CoordinatorTypeMock>, TabBarChildCoordinatorType {
+private class TabBarChildCoordinatorMock: CoordinatorMock, TabBarChildCoordinatorType {
     var root: UIViewController
     var tabBarItem: UITabBarItem
     init(root: UIViewController = UIViewController(), tabBarItem: UITabBarItem = UITabBarItem()) {

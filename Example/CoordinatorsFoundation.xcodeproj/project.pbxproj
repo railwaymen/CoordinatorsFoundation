@@ -14,6 +14,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		8A00CD0E232652770032C0FD /* NavigationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD0C232651DF0032C0FD /* NavigationCoordinatorTests.swift */; };
 		8A00CD12232654460032C0FD /* TabBarCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD11232654460032C0FD /* TabBarCoordinatorTests.swift */; };
+		8A00CD16232659600032C0FD /* SplitViewCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD15232659600032C0FD /* SplitViewCoordinatorTests.swift */; };
 		8A76BB8623263C680008006A /* ControllerCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A76BB8423263BA40008006A /* ControllerCoordinatorTests.swift */; };
 		8AF14485232258E000003D0C /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1447B232258E000003D0C /* CoordinatorTests.swift */; };
 		8AF14486232258E000003D0C /* CoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1447E232258E000003D0C /* CoordinatorMock.swift */; };
@@ -55,6 +56,7 @@
 		87B297C64B1E08F2803B142C /* Pods-CoordinatorsFoundation_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoordinatorsFoundation_Example.release.xcconfig"; path = "Target Support Files/Pods-CoordinatorsFoundation_Example/Pods-CoordinatorsFoundation_Example.release.xcconfig"; sourceTree = "<group>"; };
 		8A00CD0C232651DF0032C0FD /* NavigationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTests.swift; sourceTree = "<group>"; };
 		8A00CD11232654460032C0FD /* TabBarCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorTests.swift; sourceTree = "<group>"; };
+		8A00CD15232659600032C0FD /* SplitViewCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewCoordinatorTests.swift; sourceTree = "<group>"; };
 		8A76BB8423263BA40008006A /* ControllerCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerCoordinatorTests.swift; sourceTree = "<group>"; };
 		8AF1447B232258E000003D0C /* CoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		8AF1447E232258E000003D0C /* CoordinatorMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorMock.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				8A76BB8423263BA40008006A /* ControllerCoordinatorTests.swift */,
 				8AF1447B232258E000003D0C /* CoordinatorTests.swift */,
 				8A00CD0C232651DF0032C0FD /* NavigationCoordinatorTests.swift */,
+				8A00CD15232659600032C0FD /* SplitViewCoordinatorTests.swift */,
 				8A00CD11232654460032C0FD /* TabBarCoordinatorTests.swift */,
 			);
 			path = Source;
@@ -447,6 +450,7 @@
 			files = (
 				8A00CD12232654460032C0FD /* TabBarCoordinatorTests.swift in Sources */,
 				8AF14485232258E000003D0C /* CoordinatorTests.swift in Sources */,
+				8A00CD16232659600032C0FD /* SplitViewCoordinatorTests.swift in Sources */,
 				8A76BB8623263C680008006A /* ControllerCoordinatorTests.swift in Sources */,
 				8AF14488232258E000003D0C /* CoordinatorTypeMock.swift in Sources */,
 				8AF1448A232258E000003D0C /* DispatchGroupFactoryMock.swift in Sources */,
