@@ -8,24 +8,12 @@
 
 import CoordinatorsFoundation
 
-typealias FirstCoordinatorable = NavigationCoordinator<DeepLinkOption, CoordinatorType>
-    & TabBarChildCoordinatorType
-
 protocol FirstCoordinatorType: class {
     func viewDidRequestForSecondView()
 }
 
-class FirstCoordinator: FirstCoordinatorable {
+class FirstCoordinator: NavigationCoordinator {
     private let storyboardsManager: StoryboardsManagerType
-    
-    // MARK: - TabBarChildCoordinatorType
-    var root: UIViewController {
-        return self.navigationController
-    }
-    
-    var tabBarItem: UITabBarItem {
-        return UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
-    }
     
     // MARK: - Initialization
     init(
@@ -61,6 +49,17 @@ class FirstCoordinator: FirstCoordinatorable {
         coordinator.start { [weak self, weak coordinator] in
             self?.removeChildCoordinator(child: coordinator)
         }
+    }
+}
+
+// MARK: - TabBarChildCoordinatorType
+extension FirstCoordinator: TabBarChildCoordinatorType {
+    var root: UIViewController {
+        return self.navigationController
+    }
+    
+    var tabBarItem: UITabBarItem {
+        return UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
     }
 }
 

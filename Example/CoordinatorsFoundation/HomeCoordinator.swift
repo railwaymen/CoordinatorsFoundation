@@ -8,7 +8,7 @@
 
 import CoordinatorsFoundation
 
-class HomeCoordinator: TabBarCoordinator<DeepLinkOption, CoordinatorType> {
+class HomeCoordinator: TabBarCoordinator {
     var type: CoordinatorType? {
         return .home
     }
@@ -20,9 +20,13 @@ class HomeCoordinator: TabBarCoordinator<DeepLinkOption, CoordinatorType> {
         let firstChild = FirstCoordinator(
             window: nil,
             storyboardsManager: storyboardsManager)
+        let secondChild = ThirdCoordinator(
+            window: nil,
+            storyboardsManager: storyboardsManager)
         
         super.init(window: window)
-        [firstChild].forEach { self.addChildCoordinator(child: $0) }
-        firstChild.start()
+        let children = [firstChild, secondChild]
+        children.forEach { self.addChildCoordinator(child: $0) }
+        children.forEach { $0.start() }
     }
 }

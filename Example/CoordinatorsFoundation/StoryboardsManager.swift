@@ -29,6 +29,7 @@ class StoryboardsManager: StoryboardsManagerType {
     enum StoryboardName: String {
         case first = "First"
         case second = "Second"
+        case third = "Third"
     }
     
     enum ControllerIdentifier: String {

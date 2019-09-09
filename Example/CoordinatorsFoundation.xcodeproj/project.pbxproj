@@ -24,6 +24,13 @@
 		8A00CD38232679CB0032C0FD /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A00CD32232677760032C0FD /* Second.storyboard */; };
 		8A00CD3A232679D70032C0FD /* SecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD39232679D70032C0FD /* SecondViewModel.swift */; };
 		8A00CD3C232685940032C0FD /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD3B232685940032C0FD /* HomeCoordinator.swift */; };
+		8A00CD3E23268B2C0032C0FD /* ThirdCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD3D23268B2C0032C0FD /* ThirdCoordinator.swift */; };
+		8A00CD4023268CDB0032C0FD /* CoordinatorFoundationTypealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD3F23268CDB0032C0FD /* CoordinatorFoundationTypealiases.swift */; };
+		8A00CD4223268D780032C0FD /* DeepLinkOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD4123268D780032C0FD /* DeepLinkOption.swift */; };
+		8A00CD4423268D930032C0FD /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD4323268D930032C0FD /* CoordinatorType.swift */; };
+		8A00CD4723268EE70032C0FD /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD4623268EE70032C0FD /* ThirdViewController.swift */; };
+		8A00CD4923268EF40032C0FD /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A00CD4823268EF40032C0FD /* Third.storyboard */; };
+		8A00CD4B232690380032C0FD /* ThirdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD4A232690380032C0FD /* ThirdViewModel.swift */; };
 		8A76BB8623263C680008006A /* ControllerCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A76BB8423263BA40008006A /* ControllerCoordinatorTests.swift */; };
 		8AF14485232258E000003D0C /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1447B232258E000003D0C /* CoordinatorTests.swift */; };
 		8AF14486232258E000003D0C /* CoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1447E232258E000003D0C /* CoordinatorMock.swift */; };
@@ -75,6 +82,13 @@
 		8A00CD352326787B0032C0FD /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		8A00CD39232679D70032C0FD /* SecondViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewModel.swift; sourceTree = "<group>"; };
 		8A00CD3B232685940032C0FD /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		8A00CD3D23268B2C0032C0FD /* ThirdCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdCoordinator.swift; sourceTree = "<group>"; };
+		8A00CD3F23268CDB0032C0FD /* CoordinatorFoundationTypealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFoundationTypealiases.swift; sourceTree = "<group>"; };
+		8A00CD4123268D780032C0FD /* DeepLinkOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkOption.swift; sourceTree = "<group>"; };
+		8A00CD4323268D930032C0FD /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
+		8A00CD4623268EE70032C0FD /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		8A00CD4823268EF40032C0FD /* Third.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Third.storyboard; sourceTree = "<group>"; };
+		8A00CD4A232690380032C0FD /* ThirdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewModel.swift; sourceTree = "<group>"; };
 		8A76BB8423263BA40008006A /* ControllerCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerCoordinatorTests.swift; sourceTree = "<group>"; };
 		8AF1447B232258E000003D0C /* CoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		8AF1447E232258E000003D0C /* CoordinatorMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorMock.swift; sourceTree = "<group>"; };
@@ -181,9 +195,11 @@
 			isa = PBXGroup;
 			children = (
 				8A00CD1823265D560032C0FD /* AppCoordinator.swift */,
+				8A00CD3F23268CDB0032C0FD /* CoordinatorFoundationTypealiases.swift */,
 				8A00CD1B232662BF0032C0FD /* FirstCoordinator.swift */,
-				8A00CD2F232676140032C0FD /* SecondCoordinator.swift */,
 				8A00CD3B232685940032C0FD /* HomeCoordinator.swift */,
+				8A00CD2F232676140032C0FD /* SecondCoordinator.swift */,
+				8A00CD3D23268B2C0032C0FD /* ThirdCoordinator.swift */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -194,6 +210,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				8A00CD20232663990032C0FD /* First */,
 				8A00CD34232678590032C0FD /* Second */,
+				8A00CD4523268EC10032C0FD /* Third */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -210,6 +227,8 @@
 		8A00CD23232663E40032C0FD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8A00CD4323268D930032C0FD /* CoordinatorType.swift */,
+				8A00CD4123268D780032C0FD /* DeepLinkOption.swift */,
 				8A00CD27232664490032C0FD /* StoryboardsManager.swift */,
 			);
 			name = Models;
@@ -220,6 +239,7 @@
 			children = (
 				8A00CD25232664230032C0FD /* First.storyboard */,
 				8A00CD32232677760032C0FD /* Second.storyboard */,
+				8A00CD4823268EF40032C0FD /* Third.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -231,6 +251,15 @@
 				8A00CD39232679D70032C0FD /* SecondViewModel.swift */,
 			);
 			name = Second;
+			sourceTree = "<group>";
+		};
+		8A00CD4523268EC10032C0FD /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				8A00CD4623268EE70032C0FD /* ThirdViewController.swift */,
+				8A00CD4A232690380032C0FD /* ThirdViewModel.swift */,
+			);
+			name = Third;
 			sourceTree = "<group>";
 		};
 		8AF1447A232258E000003D0C /* Source */ = {
@@ -397,6 +426,7 @@
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 				8A00CD2E23266A590032C0FD /* First.storyboard in Resources */,
+				8A00CD4923268EF40032C0FD /* Third.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,13 +545,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A00CD4423268D930032C0FD /* CoordinatorType.swift in Sources */,
 				8A00CD37232679120032C0FD /* SecondViewController.swift in Sources */,
 				8A00CD3A232679D70032C0FD /* SecondViewModel.swift in Sources */,
+				8A00CD3E23268B2C0032C0FD /* ThirdCoordinator.swift in Sources */,
 				8A00CD2C2326679A0032C0FD /* FirstViewController.swift in Sources */,
+				8A00CD4223268D780032C0FD /* DeepLinkOption.swift in Sources */,
+				8A00CD4B232690380032C0FD /* ThirdViewModel.swift in Sources */,
 				8A00CD2D2326679C0032C0FD /* FirstViewModel.swift in Sources */,
+				8A00CD4723268EE70032C0FD /* ThirdViewController.swift in Sources */,
 				8A00CD1A23265D880032C0FD /* AppCoordinator.swift in Sources */,
 				8A00CD1E232662F50032C0FD /* FirstCoordinator.swift in Sources */,
 				8A00CD312326766B0032C0FD /* SecondCoordinator.swift in Sources */,
+				8A00CD4023268CDB0032C0FD /* CoordinatorFoundationTypealiases.swift in Sources */,
 				8A00CD3C232685940032C0FD /* HomeCoordinator.swift in Sources */,
 				8A00CD2B232667470032C0FD /* StoryboardsManager.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,

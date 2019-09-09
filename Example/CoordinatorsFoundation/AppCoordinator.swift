@@ -9,15 +9,7 @@
 import Foundation
 import CoordinatorsFoundation
 
-enum DeepLinkOption: DeepLinkOptionable {
-    case mainScreen
-}
-
-enum CoordinatorType: String, CoordinatorTypable {
-    case home
-}
-
-class AppCoordinator: Coordinator<DeepLinkOption, CoordinatorType> {
+class AppCoordinator: Coordinator {
     private let storyboardsManager: StoryboardsManagerType
     
     // MARK: - Initialization

@@ -1,5 +1,5 @@
 //
-//  SecondCoordinator.swift
+//  ThirdCoordinator.swift
 //  CoordinatorsFoundation_Example
 //
 //  Created by Bartłomiej Świerad on 09/09/2019.
@@ -8,22 +8,18 @@
 
 import CoordinatorsFoundation
 
-protocol SecondCoordinatorType: class {
-    func viewDidRequestForDetailsView()
-    func viewDidFinish()
-}
+typealias ThirdCoordinatorChild = NavigationCoordinator & TabBarChildCoordinatorType
 
-class SecondCoordinator: ControllerCoordinator {
-    private let parentController: UINavigationController
+protocol ThirdCoordinatorType: class {}
+
+class ThirdCoordinator: NavigationCoordinator {
     private let storyboardsManager: StoryboardsManagerType
     
     // MARK: - Initialization
     init(
         window: UIWindowType?,
-        parentController: UINavigationController,
         storyboardsManager: StoryboardsManagerType
     ) {
-        self.parentController = parentController
         self.storyboardsManager = storyboardsManager
         super.init(window: window)
     }
@@ -36,26 +32,26 @@ class SecondCoordinator: ControllerCoordinator {
     
     // MARK: - Private
     private func runMainFlow() {
-        let vc: SecondViewControllerable? = self.storyboardsManager.controller(storyboard: .second)
+        let vc: ThirdViewControllerable? = self.storyboardsManager.controller(storyboard: .third)
         guard let controller = vc else { return }
-        let viewModel = SecondViewModel(coordinator: self)
+        let viewModel = ThirdViewModel()
         controller.configure(viewModel: viewModel)
-        self.controller = controller
-        self.parentController.show(controller, sender: nil)
-    }
-    
-    private func runDetailsFlow() {
-        
+        self.navigationController = UINavigationController(rootViewController: controller)
     }
 }
 
-// MARK: - SecondCoordinatorType
-extension SecondCoordinator: SecondCoordinatorType {
-    func viewDidRequestForDetailsView() {
-        
+// MARK: - TabBarChildCoordinatorType
+extension ThirdCoordinator: TabBarChildCoordinatorType {
+    var root: UIViewController {
+        return self.navigationController
     }
     
-    func viewDidFinish() {
-        self.finish()
+    var tabBarItem: UITabBarItem {
+        return UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
     }
+}
+
+// MARK: - ThirdCoordinatorType
+extension ThirdCoordinator: ThirdCoordinatorType {
+   
 }
