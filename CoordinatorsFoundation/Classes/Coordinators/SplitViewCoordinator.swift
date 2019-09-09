@@ -3,6 +3,7 @@
 //  CoordinatorsFoundation
 //
 //  Created by Bartłomiej Świerad on 09/09/2019.
+//  Copyright © 2019 Railwaymen. All rights reserved.
 //
 
 import UIKit
@@ -15,7 +16,7 @@ open class SplitViewCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: C
     open var splitViewController: UISplitViewController
     
     // MARK: - Initialization
-    required public init(window: UIWindowType?) {
+    public override init(window: UIWindowType? = nil) {
         self.splitViewController = UISplitViewController()
         self.splitViewController.viewControllers = [UIViewController(), UIViewController()]
         super.init(window: window)

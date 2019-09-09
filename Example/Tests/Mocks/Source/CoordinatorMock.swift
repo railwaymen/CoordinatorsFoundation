@@ -26,10 +26,6 @@ class CoordinatorMock: Coordinator<DeepLinkOptionMock, CoordinatorTypeMock> {
         return self.window_expectedValue
     }
     
-    required init(window: UIWindowType?) {
-        super.init(window: nil)
-    }
-    
     private(set) var start_calledCount: Int = 0
     private(set) var start_finishHandler: FinishHandlerType?
     override func start(finishHandler: FinishHandlerType?) {

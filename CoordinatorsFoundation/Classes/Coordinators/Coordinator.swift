@@ -17,7 +17,7 @@ open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, 
     private var finishHandler: FinishHandlerType?
     private var dispatchGroupFactory: DispatchGroupFactoryType
     
-    required public init(window: UIWindowType?) {
+    public init(window: UIWindowType? = nil) {
         self.children = []
         self.window = window
         self.dispatchGroupFactory = DispatchGroupFactory()
