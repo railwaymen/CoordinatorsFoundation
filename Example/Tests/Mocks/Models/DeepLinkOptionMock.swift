@@ -12,7 +12,3 @@ import Foundation
 enum DeepLinkOptionMock: DeepLinkOptionable {
     case one, two
 }
-
-enum CoordinatorType: String, CoordinatorTypable {
-    case one, two
-}

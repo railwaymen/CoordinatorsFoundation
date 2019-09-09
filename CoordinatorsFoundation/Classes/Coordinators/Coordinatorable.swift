@@ -8,11 +8,11 @@
 
 import UIKit
 
-typealias DeepLinkOptionable = Equatable
+public typealias DeepLinkOptionable = Equatable
 
-protocol CoordinatorTypable: RawRepresentable where RawValue == String {}
+public protocol CoordinatorTypable: RawRepresentable where RawValue == String {}
 
-protocol Coordinatorable: class {
+public protocol Coordinatorable: class {
     typealias FinishHandlerType = () -> Void
 
     associatedtype Coordinator: Coordinatorable
@@ -33,7 +33,7 @@ protocol Coordinatorable: class {
     func openDeepLink(option: DeepLinkOption)
 }
 
-extension Coordinatorable {
+public extension Coordinatorable {
     var type: CoordinatorType? {
         return nil
     }
