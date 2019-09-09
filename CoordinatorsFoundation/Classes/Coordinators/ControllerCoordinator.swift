@@ -12,7 +12,7 @@ public protocol ControllerCoordinatorType: class {
 }
 
 open class ControllerCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: Coordinator<T, U>, ControllerCoordinatorType {
-    public var controller: UIViewController
+    open var controller: UIViewController
     
     // MARK: - Initialization
     required public init(window: UIWindowType?) {

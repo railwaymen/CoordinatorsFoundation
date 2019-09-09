@@ -12,7 +12,7 @@ public protocol NavigationCoordinatorType: class {
 }
 
 open class NavigationCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: Coordinator<T, U>, NavigationCoordinatorType {
-    public var navigationController: UINavigationController
+    open var navigationController: UINavigationController
     
     // MARK: - Initialization
     required public init(window: UIWindowType?) {

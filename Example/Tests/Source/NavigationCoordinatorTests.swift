@@ -16,17 +16,11 @@ class NavigationCoordinatorTests: XCTestCase {
         let coordinator = self.buildCoordinator()
         //Assert
         XCTAssertNotNil(coordinator.navigationController)
-    }
-    
-    func testInitWithoutNavigationController_windowRootNil() {
-        //Act
-        let coordinator = self.buildCoordinator()
-        //Assert
         XCTAssertNil(coordinator.window?.rootViewController)
         XCTAssertNil(coordinator.window?.rootViewController as? UINavigationController)
     }
     
-    func testInitWithoutNavigationController_windowRoot() {
+    func testInitWithoutNavigationController_withWindowRoot() {
         //Act
         let window = UIWindow()
         let coordinator = self.buildCoordinator(window: window)
@@ -43,18 +37,10 @@ class NavigationCoordinatorTests: XCTestCase {
         let coordinator = self.buildCoordinator(controller: navigationController)
         //Assert
         XCTAssertEqual(coordinator.navigationController, navigationController)
-    }
-    
-    func testInitWithNavigationController_windowRootNil() {
-        //Arrange
-        let navigationController = UINavigationController()
-        //Act
-        let coordinator = self.buildCoordinator(controller: navigationController)
-        //Assert
         XCTAssertNil(coordinator.window?.rootViewController)
     }
-    
-    func testInitWithNavigationController_windowRoot() {
+
+    func testInitWithNavigationController_withWindowRoot() {
         //Arrange
         let window = UIWindow()
         let navigationController = UINavigationController()
