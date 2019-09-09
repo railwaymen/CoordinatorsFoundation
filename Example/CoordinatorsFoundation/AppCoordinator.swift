@@ -14,7 +14,7 @@ enum DeepLinkOption: DeepLinkOptionable {
 }
 
 enum CoordinatorType: String, CoordinatorTypable {
-    case login
+    case home
 }
 
 class AppCoordinator: Coordinator<DeepLinkOption, CoordinatorType> {
@@ -32,12 +32,12 @@ class AppCoordinator: Coordinator<DeepLinkOption, CoordinatorType> {
     // MARK: - Overridden
     override func start(finishHandler: Coordinator.FinishHandlerType?) {
         super.start(finishHandler: finishHandler)
-        self.runFirstFlow()
+        self.runMainFlow()
     }
     
     // MAKR: - Private
-    private func runFirstFlow() {
-        let coordinator = FirstCoordinator(
+    private func runMainFlow() {
+        let coordinator = HomeCoordinator(
             window: self.window,
             storyboardsManager: self.storyboardsManager)
         self.addChildCoordinator(child: coordinator)
