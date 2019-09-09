@@ -3,6 +3,7 @@
 //  CoordinatorsFoundation
 //
 //  Created by Bartłomiej Świerad on 09/09/2019.
+//  Copyright © 2019 Railwaymen. All rights reserved.
 //
 
 import UIKit
@@ -20,7 +21,7 @@ open class TabBarCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: Coor
     open var tabBarController: UITabBarController
     
     // MARK: - Initialization
-    required public init(window: UIWindowType?) {
+    public override init(window: UIWindowType? = nil) {
         self.tabBarController = UITabBarController()
         super.init(window: window)
         window?.rootViewController = tabBarController

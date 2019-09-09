@@ -3,7 +3,7 @@
 //  CoordinatorsFoundation_Tests
 //
 //  Created by Bartłomiej Świerad on 09/09/2019.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Copyright © 2019 Railwaymen. All rights reserved.
 //
 
 import XCTest
@@ -110,10 +110,6 @@ private class TabBarChildCoordinatorMock: CoordinatorMock, TabBarChildCoordinato
     init(root: UIViewController = UIViewController(), tabBarItem: UITabBarItem = UITabBarItem()) {
         self.root = root
         self.tabBarItem = tabBarItem
-        super.init(window: nil)
-    }
-    
-    required init(window: UIWindowType?) {
-        fatalError("init(window:) has not been implemented")
+        super.init()
     }
 }

@@ -22,9 +22,7 @@ public protocol Coordinatorable: class {
     var type: CoordinatorType? { get }
     var children: [Coordinator] { get }
     var window: UIWindowType? { get }
-    
-    init(window: UIWindowType?)
-    
+        
     func start(finishHandler: FinishHandlerType?)
     func finish()
     func addChildCoordinator(child: Coordinator)
@@ -36,10 +34,6 @@ public protocol Coordinatorable: class {
 public extension Coordinatorable {
     var type: CoordinatorType? {
         return nil
-    }
-    
-    init() {
-        self.init(window: nil)
     }
     
     func start() {
