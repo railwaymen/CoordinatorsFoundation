@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  CoordinatorsFoundation
+//  CoordinatorsFoundation_Example
 //
 //  Created by Bartłomiej Świerad on 09/05/2019.
 //  Copyright (c) 2019 Railwaymen. All rights reserved.
@@ -12,6 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    private var appCoordinator: AppCoordinator?
 
     func application(
         _ application: UIApplication,
@@ -19,10 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         
         let window = UIWindow()
-        let appCoordinator = AppCoordinator(
+        self.appCoordinator = AppCoordinator(
             window: window,
             storyboardsManager: StoryboardsManager())
-        appCoordinator.start()
+        self.appCoordinator?.start()
         self.window = window
         window.makeKeyAndVisible()
         return true

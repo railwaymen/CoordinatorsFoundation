@@ -1,12 +1,11 @@
 //
 //  FirstCoordinator.swift
-//  CoordinatorsFoundation
+//  CoordinatorsFoundation_Example
 //
 //  Created by Bartłomiej Świerad on 09/09/2019.
 //  Copyright © 2019 Railwaymen. All rights reserved.
 //
 
-import Foundation
 import CoordinatorsFoundation
 
 protocol FirstCoordinatorType: class {
@@ -42,7 +41,14 @@ class FirstCoordinator: NavigationCoordinator<DeepLinkOption, CoordinatorType> {
     }
     
     private func runSecondFlow() {
-        
+        let coordinator = SecondCoordinator(
+            window: nil,
+            parentController: self.navigationController,
+            storyboardsManager: self.storyboardsManager)
+        self.addChildCoordinator(child: coordinator)
+        coordinator.start { [weak self, weak coordinator] in
+            self?.removeChildCoordinator(child: coordinator)
+        }
     }
 }
 

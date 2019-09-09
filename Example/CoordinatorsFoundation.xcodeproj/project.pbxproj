@@ -19,6 +19,10 @@
 		8A00CD2C2326679A0032C0FD /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD21232663AA0032C0FD /* FirstViewController.swift */; };
 		8A00CD2D2326679C0032C0FD /* FirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD29232666BA0032C0FD /* FirstViewModel.swift */; };
 		8A00CD2E23266A590032C0FD /* First.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A00CD25232664230032C0FD /* First.storyboard */; };
+		8A00CD312326766B0032C0FD /* SecondCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD2F232676140032C0FD /* SecondCoordinator.swift */; };
+		8A00CD37232679120032C0FD /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD352326787B0032C0FD /* SecondViewController.swift */; };
+		8A00CD38232679CB0032C0FD /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A00CD32232677760032C0FD /* Second.storyboard */; };
+		8A00CD3A232679D70032C0FD /* SecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD39232679D70032C0FD /* SecondViewModel.swift */; };
 		8A76BB8623263C680008006A /* ControllerCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A76BB8423263BA40008006A /* ControllerCoordinatorTests.swift */; };
 		8AF14485232258E000003D0C /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1447B232258E000003D0C /* CoordinatorTests.swift */; };
 		8AF14486232258E000003D0C /* CoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1447E232258E000003D0C /* CoordinatorMock.swift */; };
@@ -65,6 +69,10 @@
 		8A00CD25232664230032C0FD /* First.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = First.storyboard; sourceTree = "<group>"; };
 		8A00CD27232664490032C0FD /* StoryboardsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardsManager.swift; sourceTree = "<group>"; };
 		8A00CD29232666BA0032C0FD /* FirstViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewModel.swift; sourceTree = "<group>"; };
+		8A00CD2F232676140032C0FD /* SecondCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCoordinator.swift; sourceTree = "<group>"; };
+		8A00CD32232677760032C0FD /* Second.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
+		8A00CD352326787B0032C0FD /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		8A00CD39232679D70032C0FD /* SecondViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewModel.swift; sourceTree = "<group>"; };
 		8A76BB8423263BA40008006A /* ControllerCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerCoordinatorTests.swift; sourceTree = "<group>"; };
 		8AF1447B232258E000003D0C /* CoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		8AF1447E232258E000003D0C /* CoordinatorMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorMock.swift; sourceTree = "<group>"; };
@@ -172,6 +180,7 @@
 			children = (
 				8A00CD1823265D560032C0FD /* AppCoordinator.swift */,
 				8A00CD1B232662BF0032C0FD /* FirstCoordinator.swift */,
+				8A00CD2F232676140032C0FD /* SecondCoordinator.swift */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -181,6 +190,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				8A00CD20232663990032C0FD /* First */,
+				8A00CD34232678590032C0FD /* Second */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -206,8 +216,18 @@
 			isa = PBXGroup;
 			children = (
 				8A00CD25232664230032C0FD /* First.storyboard */,
+				8A00CD32232677760032C0FD /* Second.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		8A00CD34232678590032C0FD /* Second */ = {
+			isa = PBXGroup;
+			children = (
+				8A00CD352326787B0032C0FD /* SecondViewController.swift */,
+				8A00CD39232679D70032C0FD /* SecondViewModel.swift */,
+			);
+			name = Second;
 			sourceTree = "<group>";
 		};
 		8AF1447A232258E000003D0C /* Source */ = {
@@ -370,6 +390,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A00CD38232679CB0032C0FD /* Second.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 				8A00CD2E23266A590032C0FD /* First.storyboard in Resources */,
@@ -491,10 +512,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A00CD37232679120032C0FD /* SecondViewController.swift in Sources */,
+				8A00CD3A232679D70032C0FD /* SecondViewModel.swift in Sources */,
 				8A00CD2C2326679A0032C0FD /* FirstViewController.swift in Sources */,
 				8A00CD2D2326679C0032C0FD /* FirstViewModel.swift in Sources */,
 				8A00CD1A23265D880032C0FD /* AppCoordinator.swift in Sources */,
 				8A00CD1E232662F50032C0FD /* FirstCoordinator.swift in Sources */,
+				8A00CD312326766B0032C0FD /* SecondCoordinator.swift in Sources */,
 				8A00CD2B232667470032C0FD /* StoryboardsManager.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
