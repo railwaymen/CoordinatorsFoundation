@@ -23,10 +23,6 @@ class SecondViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @IBAction private func nextButtonTapped(_: Any) {
-        self.viewModel.nextButtonTapped()
-    }
-    
     @IBAction private func detailsButtonTapped(_: Any) {
         self.viewModel.detailsButtonTapped()
     }

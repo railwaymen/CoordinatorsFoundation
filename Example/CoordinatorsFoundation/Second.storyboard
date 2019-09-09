@@ -19,20 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="aMp-f2-G5e">
-                                <rect key="frame" x="146" y="403" width="122" height="90"/>
+                                <rect key="frame" x="146" y="426" width="122" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhA-qH-gSY">
-                                        <rect key="frame" x="0.0" y="0.0" width="122" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="cIQ-Zm-Wcw"/>
-                                        </constraints>
-                                        <state key="normal" title="Go next"/>
-                                        <connections>
-                                            <action selector="nextButtonTapped:" destination="0u5-RV-DZJ" eventType="touchUpInside" id="TNl-0z-X5f"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q51-3Y-KRh">
-                                        <rect key="frame" x="0.0" y="46" width="122" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="122" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="01o-Ip-QW1"/>
                                         </constraints>

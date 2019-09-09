@@ -10,7 +10,6 @@ import Foundation
 
 protocol SecondViewModelType: class {
     func viewDidDisappear()
-    func nextButtonTapped()
     func detailsButtonTapped()
 }
 
@@ -28,10 +27,6 @@ class SecondViewModel {
 extension SecondViewModel: SecondViewModelType {
     func viewDidDisappear() {
         self.coordinator?.viewDidFinish()
-    }
-    
-    func nextButtonTapped() {
-        
     }
     
     func detailsButtonTapped() {
