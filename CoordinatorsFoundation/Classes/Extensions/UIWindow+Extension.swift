@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol UIWindowType: class {
+public protocol UIWindowType: class {
     var rootViewController: UIViewController? { get set }
 }
 

@@ -8,16 +8,16 @@
 
 import Foundation
 
-class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, Coordinatorable {
-    typealias CoordinatorType = U
-    typealias DeepLinkOption = T
+open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, Coordinatorable {
+    public typealias CoordinatorType = U
+    public typealias DeepLinkOption = T
     
-    private(set) var children: [Coordinator]
-    private(set) var window: UIWindowType?
+    private(set) public var children: [Coordinator]
+    private(set) public var window: UIWindowType?
     private var finishHandler: FinishHandlerType?
     private var dispatchGroupFactory: DispatchGroupFactoryType
     
-    required init(window: UIWindowType?) {
+    required public init(window: UIWindowType?) {
         self.children = []
         self.window = window
         self.dispatchGroupFactory = DispatchGroupFactory()
@@ -32,11 +32,11 @@ class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, Coord
         self.dispatchGroupFactory = dispatchGroupFactory
     }
     
-    func start(finishHandler: FinishHandlerType?) {
+    open func start(finishHandler: FinishHandlerType?) {
         self.finishHandler = finishHandler
     }
     
-    func finish() {
+    open func finish() {
         self.children.forEach {
             $0.finish()
             self.removeChildCoordinator(child: $0)
@@ -44,16 +44,16 @@ class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, Coord
         self.finishHandler?()
     }
     
-    func addChildCoordinator(child: Coordinator) {
+    open func addChildCoordinator(child: Coordinator) {
         self.children.append(child)
     }
     
-    func removeChildCoordinator(child: Coordinator?) {
+    open func removeChildCoordinator(child: Coordinator?) {
         guard let index = self.children.firstIndex(where: { $0 === child }) else { return }
         self.children.remove(at: index)
     }
     
-    func deepLinkWillBeExecuted(completion: @escaping () -> Void) {
+    open func deepLinkWillBeExecuted(completion: @escaping () -> Void) {
         let group = self.dispatchGroupFactory.createDispatchGroup()
         self.children.reversed().forEach {
             group.enter()
@@ -62,5 +62,5 @@ class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, Coord
         group.notify(queue: .main) { completion() }
     }
     
-    func openDeepLink(option: DeepLinkOption) {}
+    open func openDeepLink(option: DeepLinkOption) {}
 }
