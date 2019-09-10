@@ -17,20 +17,10 @@ protocol SecondViewControllerType: class {
 class SecondViewController: UIViewController {
     private var viewModel: SecondViewModelType!
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.viewModel.viewDidAppear()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        self.viewModel.viewDidDisappear()
-    }
-    
-    override func willMove(toParent parent: UIViewController?) {
-        super.willMove(toParent: parent)
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
         guard parent == nil else { return }
-        self.viewModel.viewWillMoveToParent()
+        self.viewModel.viewDidFinish()
     }
     
     // MARK: - Actions
