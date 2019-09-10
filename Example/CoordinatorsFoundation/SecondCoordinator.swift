@@ -9,7 +9,7 @@
 import CoordinatorsFoundation
 
 protocol SecondCoordinatorType: class {
-    func viewDidRequestForDetailsView()
+    func viewDidRequestToPopToRoot()
     func viewDidFinish()
 }
 
@@ -43,16 +43,13 @@ class SecondCoordinator: ControllerCoordinator {
         self.controller = controller
         self.parentController.show(controller, sender: nil)
     }
-    
-    private func runDetailsFlow() {
-        
-    }
 }
 
 // MARK: - SecondCoordinatorType
 extension SecondCoordinator: SecondCoordinatorType {
-    func viewDidRequestForDetailsView() {
-        
+    func viewDidRequestToPopToRoot() {
+        self.parentController.popToRootViewController(animated: true)
+        self.finish()
     }
     
     func viewDidFinish() {

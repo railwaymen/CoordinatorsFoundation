@@ -10,25 +10,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Second View Controller-->
+        <!--Second-->
         <scene sceneID="hmJ-VC-lRl">
             <objects>
-                <viewController id="0u5-RV-DZJ" customClass="SecondViewController" customModule="CoordinatorsFoundation_Example" sceneMemberID="viewController">
+                <viewController title="Second" id="0u5-RV-DZJ" customClass="SecondViewController" customModule="CoordinatorsFoundation_Example" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Rr-aE-sID">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="aMp-f2-G5e">
-                                <rect key="frame" x="146" y="426" width="122" height="44"/>
+                                <rect key="frame" x="168.5" y="426" width="77" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q51-3Y-KRh">
-                                        <rect key="frame" x="0.0" y="0.0" width="122" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="77" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="01o-Ip-QW1"/>
                                         </constraints>
-                                        <state key="normal" title="Present controller"/>
+                                        <state key="normal" title="Pop to root"/>
                                         <connections>
-                                            <action selector="detailsButtonTapped:" destination="0u5-RV-DZJ" eventType="touchUpInside" id="r0T-PG-glf"/>
+                                            <action selector="popButtonTapped:" destination="0u5-RV-DZJ" eventType="touchUpInside" id="3ez-Vr-OBV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -41,6 +41,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G3m-85-5Hv"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ck4-0o-lum" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
