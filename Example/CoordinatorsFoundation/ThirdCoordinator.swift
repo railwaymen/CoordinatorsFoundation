@@ -1,5 +1,5 @@
 //
-//  FirstCoordinator.swift
+//  ThirdCoordinator.swift
 //  CoordinatorsFoundation_Example
 //
 //  Created by Bartłomiej Świerad on 09/09/2019.
@@ -8,11 +8,11 @@
 
 import CoordinatorsFoundation
 
-protocol FirstCoordinatorType: class {
-    func viewDidRequestForSecondView()
-}
+typealias ThirdCoordinatorChild = NavigationCoordinator & TabBarChildCoordinatorType
 
-class FirstCoordinator: NavigationCoordinator {
+protocol ThirdCoordinatorType: class {}
+
+class ThirdCoordinator: NavigationCoordinator {
     private let storyboardsManager: StoryboardsManagerType
     
     // MARK: - Initialization
@@ -32,40 +32,26 @@ class FirstCoordinator: NavigationCoordinator {
     
     // MARK: - Private
     private func runMainFlow() {
-        let vc: FirstViewControllerable? = self.storyboardsManager.controller(storyboard: .first)
+        let vc: ThirdViewControllerable? = self.storyboardsManager.controller(storyboard: .third)
         guard let controller = vc else { return }
-        let viewModel = FirstViewModel(coordinator: self)
+        let viewModel = ThirdViewModel()
         controller.configure(viewModel: viewModel)
         self.navigationController = UINavigationController(rootViewController: controller)
-        self.window?.rootViewController = self.navigationController
-    }
-    
-    private func runSecondFlow() {
-        let coordinator = SecondCoordinator(
-            window: nil,
-            parentController: self.navigationController,
-            storyboardsManager: self.storyboardsManager)
-        self.addChildCoordinator(child: coordinator)
-        coordinator.start { [weak self, weak coordinator] in
-            self?.removeChildCoordinator(child: coordinator)
-        }
     }
 }
 
 // MARK: - TabBarChildCoordinatorType
-extension FirstCoordinator: TabBarChildCoordinatorType {
+extension ThirdCoordinator: TabBarChildCoordinatorType {
     var root: UIViewController {
         return self.navigationController
     }
     
     var tabBarItem: UITabBarItem {
-        return UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+        return UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
     }
 }
 
-// MARK: - FirstCoordinatorType
-extension FirstCoordinator: FirstCoordinatorType {
-    func viewDidRequestForSecondView() {
-        self.runSecondFlow()
-    }
+// MARK: - ThirdCoordinatorType
+extension ThirdCoordinator: ThirdCoordinatorType {
+   
 }

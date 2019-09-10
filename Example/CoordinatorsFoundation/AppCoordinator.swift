@@ -1,6 +1,6 @@
 //
 //  AppCoordinator.swift
-//  CoordinatorsFoundation
+//  CoordinatorsFoundation_Example
 //
 //  Created by Bartłomiej Świerad on 09/09/2019.
 //  Copyright © 2019 Railwaymen. All rights reserved.
@@ -9,15 +9,7 @@
 import Foundation
 import CoordinatorsFoundation
 
-enum DeepLinkOption: DeepLinkOptionable {
-    case mainScreen
-}
-
-enum CoordinatorType: String, CoordinatorTypable {
-    case login
-}
-
-class AppCoordinator: Coordinator<DeepLinkOption, CoordinatorType> {
+class AppCoordinator: Coordinator {
     private let storyboardsManager: StoryboardsManagerType
     
     // MARK: - Initialization
@@ -32,12 +24,12 @@ class AppCoordinator: Coordinator<DeepLinkOption, CoordinatorType> {
     // MARK: - Overridden
     override func start(finishHandler: Coordinator.FinishHandlerType?) {
         super.start(finishHandler: finishHandler)
-        self.runFirstFlow()
+        self.runMainFlow()
     }
     
     // MAKR: - Private
-    private func runFirstFlow() {
-        let coordinator = FirstCoordinator(
+    private func runMainFlow() {
+        let coordinator = HomeCoordinator(
             window: self.window,
             storyboardsManager: self.storyboardsManager)
         self.addChildCoordinator(child: coordinator)
