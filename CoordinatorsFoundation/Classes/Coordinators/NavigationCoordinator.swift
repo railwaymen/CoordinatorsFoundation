@@ -16,6 +16,9 @@ open class NavigationCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: 
     open var navigationController: UINavigationController
     
     // MARK: - Initialization
+    
+    /// - Parameters:
+    ///   - window: Window for setting coordinator's controller as rootViewController
     public override init(window: UIWindowType? = nil) {
         self.navigationController = UINavigationController()
         super.init(window: window)
@@ -23,6 +26,9 @@ open class NavigationCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: 
         navigationController.interactivePopGestureRecognizer?.delegate = nil
     }
     
+    /// - Parameters:
+    ///   - window: Window for setting coordinator's controller as rootViewController
+    ///   - navigationController: Main controller for the coordinator
     public init(window: UIWindowType?, navigationController: UINavigationController) {
         self.navigationController = navigationController
         super.init(window: window)

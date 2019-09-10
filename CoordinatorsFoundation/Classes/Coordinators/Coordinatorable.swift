@@ -22,12 +22,36 @@ public protocol Coordinatorable: class {
     var type: CoordinatorType? { get }
     var children: [Coordinator] { get }
     var window: UIWindowType? { get }
-        
+    
+    /// Runs coordinator's main flow.
+    /// - Parameters:
+    ///   - finishHandler: This closure is called after coordinator's finish call.
     func start(finishHandler: FinishHandlerType?)
+    
+    /// Call it if coordinator's main view controller ended his life (e.g. after view dismiss).
+    /// - Note:
+    /// Automatically finishes all children of the coordinator. Use it carefully.
     func finish()
+    
+    /// Adds given coordinator as child of this coordinator.
+    /// - Parameters:
+    ///   - child: Coordinator to be added to children.
     func addChildCoordinator(child: Coordinator)
+    
+    /// Removes coordinator from children. Mostly useful after child's finish call
+    /// - Parameters:
+    ///   - child: Optional coordinator to be removed from children.
     func removeChildCoordinator(child: Coordinator?)
+    
+    /// Prepares coordinator and it's children for deep link opening.
+    /// You can dismiss presented view here.
+    /// - Parameters:
+    ///   - completion: Called after all preparation is completed.
     func deepLinkWillBeExecuted(completion: @escaping () -> Void)
+    
+    /// Opens deep link depending on given option
+    /// - Parameters:
+    ///   - option: Equatable parameter for navigation to desired destination.
     func openDeepLink(option: DeepLinkOption)
 }
 
@@ -36,6 +60,7 @@ public extension Coordinatorable {
         return nil
     }
     
+    /// Runs coordinator's main flow without finishHandler.
     func start() {
         self.start(finishHandler: nil)
     }

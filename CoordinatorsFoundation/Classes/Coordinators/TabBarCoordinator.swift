@@ -21,12 +21,18 @@ open class TabBarCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: Coor
     open var tabBarController: UITabBarController
     
     // MARK: - Initialization
+    
+    /// - Parameters:
+    ///   - window: Window for setting coordinator's controller as rootViewController
     public override init(window: UIWindowType? = nil) {
         self.tabBarController = UITabBarController()
         super.init(window: window)
         window?.rootViewController = tabBarController
     }
     
+    /// - Parameters:
+    ///   - window: Window for setting coordinator's controller as rootViewController
+    ///   - tabBarController: Main controller for the coordinator
     public init(window: UIWindowType?, tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
         super.init(window: window)
@@ -34,11 +40,6 @@ open class TabBarCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: Coor
     }
     
     // MARK: - Coordinatorable
-    open func start() {
-        self.setUpChildTabBarCoordinators()
-        super.start()
-    }
-    
     override open func start(finishHandler: (() -> Void)?) {
         self.setUpChildTabBarCoordinators()
         super.start(finishHandler: finishHandler)
