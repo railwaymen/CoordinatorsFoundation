@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'CoordinatorsFoundation'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of CoordinatorsFoundation.'
+  s.summary          = 'Base for Coordinators pattern in Swift'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,8 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+CoordinatorsFoundation makes easier to build your project using the coordinator pattern.
+This is lightweight framework containing base for this pattern.
                        DESC
 
   s.homepage         = 'https://git.railwaymen.org/ios/coordinatorsfoundation'
@@ -38,4 +39,5 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  s.swift_versions = '5.0'
 end

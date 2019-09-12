@@ -16,12 +16,18 @@ open class ControllerCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: 
     open var controller: UIViewController
     
     // MARK: - Initialization
+    
+    /// - Parameters:
+    ///   - window: Window for setting coordinator's controller as rootViewController
     public override init(window: UIWindowType? = nil) {
         self.controller = UIViewController()
         super.init(window: window)
         window?.rootViewController = controller
     }
     
+    /// - Parameters:
+    ///   - window: Window for setting coordinator's controller as rootViewController
+    ///   - controller: Main controller for the coordinator
     public init(window: UIWindowType?, controller: UIViewController) {
         self.controller = controller
         super.init(window: window)
