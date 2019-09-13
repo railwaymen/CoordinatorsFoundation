@@ -24,14 +24,14 @@ This is lightweight framework containing base for this pattern.
 
   s.homepage         = 'https://git.railwaymen.org/ios/coordinatorsfoundation'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-#  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.license          = { :type => 'Custom', :file => 'LICENSE' }
   s.author           = { 'Bartłomiej Świerad' => 'bartlomiej.swierad@railwaymen.org' }
   s.source           = { :git => 'https://git.railwaymen.org/ios/coordinatorsfoundation.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '11.4'
 
   s.source_files = 'CoordinatorsFoundation/Classes/**/*'
-  
+
   # s.resource_bundles = {
   #   'CoordinatorsFoundation' => ['CoordinatorsFoundation/Assets/*.png']
   # }
