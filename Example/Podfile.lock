@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CoordinatorsFoundation: cfed95a101a8be04f614ff3b1b1f6a9d5d7cebc2
+  CoordinatorsFoundation: 6a18545881379b7146ea5c621b89df60a3723918
   SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
 
 PODFILE CHECKSUM: 265a33b4eccb399d1757c4518de3f6749510911a

@@ -12,7 +12,7 @@
 
 2. Install pods:
 
-  ```
+  ```bash
   bundle exec pod install
   ```
 
@@ -62,3 +62,19 @@
 ### Unit tests
 
 - `bundle exec fastlane test`
+
+### Release
+
+Merge changes to brach named:
+
+```
+release/[VERSION_BUMP_TYPE]
+```
+
+You should replace `[VERSION_BUMP_TYPE]` with `patch`, `minor` or `major` depending on release type.
+
+Example:
+
+```
+release/minor
+```

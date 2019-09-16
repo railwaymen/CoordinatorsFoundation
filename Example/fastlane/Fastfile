@@ -1,5 +1,6 @@
 default_platform(:ios)
 
+podspec_path = "../CoordinatorsFoundation.podspec"
 project = "CoordinatorsFoundation.xcodeproj"
 workspace = "CoordinatorsFoundation.xcworkspace"
 scheme = "CoordinatorsFoundation-Example"
@@ -40,6 +41,26 @@ platform :ios do
       output_directory: "output/tests/coverage/slather",
       binary_basename: "CoordinatorsFoundation"
     )
+  end
+
+  desc "Release new version"
+  lane :release do |options|
+    pod_lib_lint(
+      private: true,
+      podspec: podspec_path
+    )
+    version = version_bump_podspec(
+      path: podspec_path,
+      bump_type: options.fetch(:bump_type, "patch")
+    )
+    git_add(path: podspec_path)
+    git_commit(
+      path: [podspec_path],
+      message: "#{version} release"
+    )
+    add_git_tag(tag: "#{version}")
+    push_to_git_remote
+    pod_push(path: podspec_path, repo: "rwm_podspec")
   end
 
   #PRIVATE LANES
