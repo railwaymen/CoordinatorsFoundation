@@ -37,12 +37,11 @@ class FirstCoordinator: NavigationCoordinator {
         let viewModel = FirstViewModel(coordinator: self)
         controller.configure(viewModel: viewModel)
         self.navigationController = UINavigationController(rootViewController: controller)
-        self.window?.rootViewController = self.navigationController
     }
     
     private func runSecondFlow() {
         let coordinator = SecondCoordinator(
-            window: nil,
+            window: self.window,
             parentController: self.navigationController,
             storyboardsManager: self.storyboardsManager)
         self.addChildCoordinator(child: coordinator)

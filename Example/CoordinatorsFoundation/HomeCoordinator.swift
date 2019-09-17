@@ -18,13 +18,14 @@ class HomeCoordinator: TabBarCoordinator {
         storyboardsManager: StoryboardsManagerType
     ) {
         let firstChild = FirstCoordinator(
-            window: nil,
+            window: window,
             storyboardsManager: storyboardsManager)
         let secondChild = ThirdCoordinator(
-            window: nil,
+            window: window,
             storyboardsManager: storyboardsManager)
         
         super.init(window: window)
+        window?.rootViewController = self.tabBarController
         let children = [firstChild, secondChild]
         children.forEach { self.addChildCoordinator(child: $0) }
         children.forEach { $0.start() }

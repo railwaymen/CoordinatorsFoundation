@@ -22,7 +22,6 @@ open class ControllerCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: 
     public override init(window: UIWindowType? = nil) {
         self.controller = UIViewController()
         super.init(window: window)
-        window?.rootViewController = controller
     }
     
     /// - Parameters:
@@ -31,6 +30,5 @@ open class ControllerCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: 
     public init(window: UIWindowType?, controller: UIViewController) {
         self.controller = controller
         super.init(window: window)
-        window?.rootViewController = controller
     }
 }

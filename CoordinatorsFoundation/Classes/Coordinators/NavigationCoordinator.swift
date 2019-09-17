@@ -22,7 +22,6 @@ open class NavigationCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: 
     public override init(window: UIWindowType? = nil) {
         self.navigationController = UINavigationController()
         super.init(window: window)
-        window?.rootViewController = navigationController
         navigationController.interactivePopGestureRecognizer?.delegate = nil
     }
     
@@ -32,7 +31,6 @@ open class NavigationCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: 
     public init(window: UIWindowType?, navigationController: UINavigationController) {
         self.navigationController = navigationController
         super.init(window: window)
-        window?.rootViewController = navigationController
         navigationController.interactivePopGestureRecognizer?.delegate = nil
     }
 }

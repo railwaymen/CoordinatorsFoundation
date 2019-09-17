@@ -24,7 +24,8 @@ class ControllerCoordinatorTests: XCTestCase {
         let window = UIWindow()
         let coordinator = self.buildCoordinator(window: window)
         //Assert
-        XCTAssertNotNil(coordinator.window?.rootViewController)
+        XCTAssertNil(coordinator.window?.rootViewController)
+        XCTAssertTrue(coordinator.window === window)
     }
     
     func testInitWithController() {
@@ -44,8 +45,8 @@ class ControllerCoordinatorTests: XCTestCase {
         //Act
         let coordinator = self.buildCoordinator(window: window, controller: controller)
         //Assert
-        XCTAssertEqual(coordinator.window?.rootViewController, controller)
-        XCTAssertEqual(window.rootViewController, controller)
+        XCTAssertTrue(coordinator.window === window)
+        XCTAssertNil(coordinator.window?.rootViewController)
     }
     
     // MARK: - Private
