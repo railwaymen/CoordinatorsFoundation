@@ -34,8 +34,8 @@ class TabBarCoordinatorTests: XCTestCase {
         //Act
         let coordinator = self.buildCoordinator(window: window)
         //Assert
-        XCTAssertNotNil(coordinator.window?.rootViewController as? UITabBarController)
-        XCTAssertNotNil(window.rootViewController as? UITabBarController)
+        XCTAssertTrue(coordinator.window === window)
+        XCTAssertNil(coordinator.window?.rootViewController)
     }
     
     func testInitWithController_withWindowRoot() {
@@ -45,8 +45,8 @@ class TabBarCoordinatorTests: XCTestCase {
         //Act
         let coordinator = self.buildCoordinator(window: window, controller: controller)
         //Assert
-        XCTAssertEqual(coordinator.window?.rootViewController, controller)
-        XCTAssertEqual(window.rootViewController, controller)
+        XCTAssertTrue(coordinator.window === window)
+        XCTAssertNil(coordinator.window?.rootViewController)
     }
     
     func testStart() {

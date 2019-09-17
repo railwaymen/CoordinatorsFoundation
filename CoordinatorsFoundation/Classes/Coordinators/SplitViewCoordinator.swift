@@ -23,7 +23,6 @@ open class SplitViewCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: C
         self.splitViewController = UISplitViewController()
         self.splitViewController.viewControllers = [UIViewController(), UIViewController()]
         super.init(window: window)
-        self.window?.rootViewController = self.splitViewController
     }
     
     /// - Parameters:
@@ -32,7 +31,6 @@ open class SplitViewCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: C
     public init(window: UIWindowType?, splitViewController: UISplitViewController) {
         self.splitViewController = splitViewController
         super.init(window: window)
-        self.window?.rootViewController = self.splitViewController
     }
     
     // MARK: - CoordinatorType
@@ -43,7 +41,6 @@ open class SplitViewCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: C
     ///   - finishHandler: Closure called on coordinator's finish
     open func start(splitViewController: UISplitViewController, finishHandler: (() -> Void)?) {
         self.splitViewController = splitViewController
-        self.window?.rootViewController = self.splitViewController
         super.start(finishHandler: finishHandler)
     }
 }

@@ -27,7 +27,6 @@ open class TabBarCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: Coor
     public override init(window: UIWindowType? = nil) {
         self.tabBarController = UITabBarController()
         super.init(window: window)
-        window?.rootViewController = tabBarController
     }
     
     /// - Parameters:
@@ -36,7 +35,6 @@ open class TabBarCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: Coor
     public init(window: UIWindowType?, tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
         super.init(window: window)
-        window?.rootViewController = tabBarController
     }
     
     // MARK: - Coordinatorable

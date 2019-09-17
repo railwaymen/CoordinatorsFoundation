@@ -26,7 +26,8 @@ class SplitViewCoordinatorTests: XCTestCase {
         let coordinator = self.buildCoordinator(window: window)
         //Assert
         XCTAssertNotNil(coordinator.splitViewController)
-        XCTAssertNotNil(coordinator.window?.rootViewController)
+        XCTAssertTrue(coordinator.window === window)
+        XCTAssertNil(coordinator.window?.rootViewController)
     }
     
     func testInitWithSplitViewController() {
@@ -48,7 +49,6 @@ class SplitViewCoordinatorTests: XCTestCase {
         coordinator.start(splitViewController: splitViewController, finishHandler: nil)
         //Assert
         XCTAssertEqual(coordinator.splitViewController, splitViewController)
-        XCTAssertEqual(coordinator.window?.rootViewController, splitViewController)
     }
     
     // MARK: - Private

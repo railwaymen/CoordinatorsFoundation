@@ -25,9 +25,8 @@ class NavigationCoordinatorTests: XCTestCase {
         let window = UIWindow()
         let coordinator = self.buildCoordinator(window: window)
         //Assert
-        XCTAssertNotNil(coordinator.window?.rootViewController)
-        XCTAssertNotNil(coordinator.window?.rootViewController as? UINavigationController)
-        XCTAssertNotNil(window.rootViewController as? UINavigationController)
+        XCTAssertTrue(coordinator.window === window)
+        XCTAssertNil(coordinator.window?.rootViewController)
     }
     
     func testInitWithNavigationController() {
@@ -47,15 +46,15 @@ class NavigationCoordinatorTests: XCTestCase {
         //Act
         let coordinator = self.buildCoordinator(window: window, controller: navigationController)
         //Assert
-        XCTAssertEqual(coordinator.window?.rootViewController, navigationController)
-        XCTAssertEqual(window.rootViewController, navigationController)
+        XCTAssertTrue(coordinator.window === window)
+        XCTAssertNil(coordinator.window?.rootViewController)
     }
     
     // MARK: - Private
     private func buildCoordinator(
         window: UIWindowType? = nil,
         controller: UINavigationController? = nil
-        ) -> NavigationCoordinator<DeepLinkOptionMock, CoordinatorTypeMock> {
+    ) -> NavigationCoordinator<DeepLinkOptionMock, CoordinatorTypeMock> {
         if let controller = controller {
             return NavigationCoordinator<DeepLinkOptionMock, CoordinatorTypeMock>(
                 window: window,
