@@ -45,6 +45,7 @@ platform :ios do
 
   desc "Release new version"
   lane :release do |options|
+    test
     pod_lib_lint(
       private: true,
       podspec: podspec_path
@@ -59,6 +60,7 @@ platform :ios do
       message: "#{version} release"
     )
     add_git_tag(tag: "#{version}")
+    cocoapods
     push_to_git_remote
     pod_push(path: podspec_path, repo: "rwm_podspec")
   end
