@@ -4,6 +4,7 @@ podspec_path = "../CoordinatorsFoundation.podspec"
 project = "CoordinatorsFoundation.xcodeproj"
 workspace = "CoordinatorsFoundation.xcworkspace"
 scheme = "CoordinatorsFoundation-Example"
+podfile_path = "Podfile.lock"
 
 platform :ios do
 
@@ -54,15 +55,16 @@ platform :ios do
       path: podspec_path,
       bump_type: options.fetch(:bump_type, "patch")
     )
+    cocoapods
     git_add(path: podspec_path)
+    git_add(path: podfile_path)
     git_commit(
-      path: [podspec_path],
+      path: [podspec_path, podfile_path],
       message: "#{version} release"
     )
     add_git_tag(tag: "#{version}")
-    cocoapods
     push_to_git_remote
-    pod_push(path: podspec_path, repo: "rwm_podspec")
+    pod_push(path: podspec_path, repo: "railwaymen-ios-rwm_podspec")
   end
 
   #PRIVATE LANES
