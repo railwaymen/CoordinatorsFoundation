@@ -12,7 +12,7 @@ import Foundation
 class CoordinatorMock: Coordinator<DeepLinkOptionMock, CoordinatorTypeMock> {
     
     var type_expectedValue: CoordinatorType?
-    var type: CoordinatorType? {
+    override var type: CoordinatorType? {
         return self.type_expectedValue
     }
     

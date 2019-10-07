@@ -12,6 +12,10 @@ open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, 
     public typealias CoordinatorType = U
     public typealias DeepLinkOption = T
     
+    open var type: CoordinatorType? {
+        return nil
+    }
+    
     private(set) public var children: [Coordinator]
     private(set) public var window: UIWindowType?
     private var finishHandler: FinishHandlerType?
