@@ -65,10 +65,4 @@
 
 ### Release
 
-Merge changes to `master`. Being on `master` and having permission to push run:
-
-```
-bundle exec fastlane tag version:"1.0.0"
-```
-
-Then manually deploy on GitLab
+Merge changes to `master`. And tag with proper version marked previously in podspec e.g. `1.0.1` Then manually deploy on GitLab

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CoordinatorsFoundation'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Base for Coordinators pattern in Swift'
 
 # This description is used to generate tags and improve search results.
@@ -22,11 +22,11 @@ CoordinatorsFoundation makes easier to build your project using the coordinator 
 This is lightweight framework containing base for this pattern.
                        DESC
 
-  s.homepage         = 'https://git.railwaymen.org/ios/coordinatorsfoundation'
+  s.homepage         = 'https://git.railwaymen.org/open/coordinatorsfoundation'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'Custom', :file => 'LICENSE' }
   s.author           = { 'Bartłomiej Świerad' => 'bartlomiej.swierad@railwaymen.org' }
-  s.source           = { :git => 'https://git.railwaymen.org/ios/coordinatorsfoundation.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://git.railwaymen.org/open/coordinatorsfoundation.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '11.4'
 

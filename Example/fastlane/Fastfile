@@ -53,24 +53,6 @@ platform :ios do
     pod_push(path: podspec_path, repo: "railwaymen-open-rwm_podspec")
   end
 
-  desc "Pushes commit and tag to git"
-  lane :tag do |options|
-    test
-    version = version_bump_podspec(
-      path: podspec_path,
-      version: options[:version]
-    )
-    cocoapods
-    git_add(path: podspec_path)
-    git_add(path: podfile_path)
-    git_commit(
-      path: [podspec_path, podfile_path],
-      message: "#{version} release"
-    )
-    add_git_tag(tag: "#{version}")
-    push_to_git_remote
-  end
-
   #PRIVATE LANES
   private_lane :check_style do
     output_path="output/lint"
