@@ -21,11 +21,16 @@ or alternatively using `brew cask install fastlane`
 fastlane ios test
 ```
 Run unit tests
-### ios release
+### ios deploy
 ```
-fastlane ios release
+fastlane ios deploy
 ```
-Release new version
+Deploy podspec
+### ios tag
+```
+fastlane ios tag
+```
+Pushes commit and tag to git
 
 ----
 

@@ -65,16 +65,10 @@
 
 ### Release
 
-Merge changes to brach named:
+Merge changes to `master`. Being on `master` and having permission to push run:
 
 ```
-release/[VERSION_BUMP_TYPE]
+bundle exec fastlane tag version:"1.0.0"
 ```
 
-You should replace `[VERSION_BUMP_TYPE]` with `patch`, `minor` or `major` depending on release type.
-
-Example:
-
-```
-release/minor
-```
+Then manually deploy on GitLab

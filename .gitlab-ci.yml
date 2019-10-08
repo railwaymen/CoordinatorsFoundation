@@ -68,7 +68,8 @@ deploy_pod:
   dependencies:
     - test_project
   only:
-    - master
-    - /v[\d\.]*\-rc\d+/
+    - /[\d\.]*/
+  except:
+    - branches
   tags:
     - ios
