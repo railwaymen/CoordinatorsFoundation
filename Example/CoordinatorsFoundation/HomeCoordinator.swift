@@ -9,7 +9,7 @@
 import CoordinatorsFoundation
 
 class HomeCoordinator: TabBarCoordinator {
-    var type: CoordinatorType? {
+    override var type: CoordinatorType? {
         return .home
     }
     
