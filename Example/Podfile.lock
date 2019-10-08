@@ -1,0 +1,23 @@
+PODS:
+  - CoordinatorsFoundation (0.1.2)
+  - SwiftLint (0.34.0)
+
+DEPENDENCIES:
+  - CoordinatorsFoundation (from `../`)
+  - SwiftLint (~> 0.34)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwiftLint
+
+EXTERNAL SOURCES:
+  CoordinatorsFoundation:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CoordinatorsFoundation: 3b5ae24655c77bd94cad3f33fd169f24454dc6c8
+  SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
+
+PODFILE CHECKSUM: 265a33b4eccb399d1757c4518de3f6749510911a
+
+COCOAPODS: 1.7.5

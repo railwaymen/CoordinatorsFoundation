@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0u5-RV-DZJ">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Second-->
+        <scene sceneID="hmJ-VC-lRl">
+            <objects>
+                <viewController title="Second" id="0u5-RV-DZJ" customClass="SecondViewController" customModule="CoordinatorsFoundation_Example" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Rr-aE-sID">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="aMp-f2-G5e">
+                                <rect key="frame" x="168.5" y="426" width="77" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q51-3Y-KRh">
+                                        <rect key="frame" x="0.0" y="0.0" width="77" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="01o-Ip-QW1"/>
+                                        </constraints>
+                                        <state key="normal" title="Pop to root"/>
+                                        <connections>
+                                            <action selector="popButtonTapped:" destination="0u5-RV-DZJ" eventType="touchUpInside" id="3ez-Vr-OBV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aMp-f2-G5e" firstAttribute="centerX" secondItem="3Rr-aE-sID" secondAttribute="centerX" id="FbG-iN-Dy4"/>
+                            <constraint firstItem="aMp-f2-G5e" firstAttribute="centerY" secondItem="3Rr-aE-sID" secondAttribute="centerY" id="kkp-Yf-jng"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="G3m-85-5Hv"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ck4-0o-lum" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-17" y="-94"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,6 +1,7 @@
 stages:
   - prepare
   - build
+  - deploy
 
 variables:
   LC_ALL: "en_US.UTF-8"
@@ -15,6 +16,7 @@ cache:
 prepare_proj:
   stage: prepare
   script:
+    - cd Example
     - rvm use 2.6.0@CoordinatorsFoundation
     - bundle install --path=/Users/xcodeserver/gitlab-runner/builds/shared/CoordinatorsFoundation/gems
     - bundle exec pod install || bundle exec pod install --repo-update
@@ -23,9 +25,8 @@ prepare_proj:
     name: "Bundle_${CI_BUILD_NAME}_${CI_BUILD_REF_NAME}_${CI_BUILD_ID}"
     expire_in: 1 day
     paths:
-      - Pods/*
-      - Configuration/*
-      - CoordinatorsFoundation.xcworkspace
+      - Example/Pods/*
+      - Example/CoordinatorsFoundation.xcworkspace
   when: on_success
   tags:
     - ios
@@ -36,6 +37,7 @@ test_project:
     - killall "Simulator" || true
   script:
     - export
+    - cd Example
     - rvm use 2.6.0@CoordinatorsFoundation
     - bundle install --path=/Users/xcodeserver/gitlab-runner/builds/shared/CoordinatorsFoundation/gems
     - bundle exec fastlane test
@@ -49,4 +51,25 @@ test_project:
     - prepare_proj
   tags:
     - ios_simulator
-  coverage: '/CoordinatorsFoundation\.app\D*\|\D*([\d\.]*)\%/'
+  coverage: '/CoordinatorsFoundation\.framework\D*\|\D*([\d\.]*)\%/'
+
+deploy_pod:
+  stage: deploy
+  script:
+    - export
+    - cd Example
+    - rvm use 2.6.0@CoordinatorsFoundation
+    - bundle install --path=/Users/xcodeserver/gitlab-runner/builds/shared/CoordinatorsFoundation/gems
+    - bundle exec fastlane deploy
+  artifacts:
+    name: "Deploy_${CI_BUILD_NAME}_${CI_BUILD_REF_NAME}_${CI_BUILD_ID}"
+    expire_in: 1 week
+  when: manual
+  dependencies:
+    - test_project
+  only:
+    - /[\d\.]*/
+  except:
+    - branches
+  tags:
+    - ios
