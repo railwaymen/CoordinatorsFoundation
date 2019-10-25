@@ -26,11 +26,6 @@ Run unit tests
 fastlane ios deploy
 ```
 Deploy podspec
-### ios tag
-```
-fastlane ios tag
-```
-Pushes commit and tag to git
 
 ----
 
