@@ -9,14 +9,21 @@
 import Foundation
 
 protocol ThirdViewModelType: class {
-    
+    func presentButtonTapped()
 }
 
 class ThirdViewModel {
+    private weak var coordinator: ThirdCoordinatorType?
     
+    // MARK: - Initialization
+    init(coordinator: ThirdCoordinatorType?) {
+        self.coordinator = coordinator
+    }
 }
 
 // MARK: - ThirdViewModelType
 extension ThirdViewModel: ThirdViewModelType {
-    
+    func presentButtonTapped() {
+        self.coordinator?.presentNavigationCoordinator()
+    }
 }

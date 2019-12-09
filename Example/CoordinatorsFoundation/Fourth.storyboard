@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="apq-xI-FMo">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Fourth View Controller-->
+        <scene sceneID="pW6-CS-yer">
+            <objects>
+                <viewController id="apq-xI-FMo" customClass="FourthViewController" customModule="CoordinatorsFoundation_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sCT-8E-RFT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gKe-Z2-i3g">
+                                <rect key="frame" x="16" y="400" width="382" height="96"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTT-ZH-xjN">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="ZqS-yN-NCK"/>
+                                        </constraints>
+                                        <state key="normal" title="Present Controller Coordinator"/>
+                                        <connections>
+                                            <action selector="presentButtonTapped" destination="apq-xI-FMo" eventType="touchUpInside" id="Law-rE-8d2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXg-nc-GLg">
+                                        <rect key="frame" x="0.0" y="52" width="382" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="rr5-oM-hP7"/>
+                                        </constraints>
+                                        <state key="normal" title="Dismiss view"/>
+                                        <connections>
+                                            <action selector="dismissButtonTapped" destination="apq-xI-FMo" eventType="touchUpInside" id="KWZ-zw-d4n"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="aju-NK-P6m" firstAttribute="trailing" secondItem="gKe-Z2-i3g" secondAttribute="trailing" constant="16" id="Pdw-RH-9cP"/>
+                            <constraint firstItem="gKe-Z2-i3g" firstAttribute="leading" secondItem="aju-NK-P6m" secondAttribute="leading" constant="16" id="WOF-cC-rxK"/>
+                            <constraint firstItem="gKe-Z2-i3g" firstAttribute="centerX" secondItem="sCT-8E-RFT" secondAttribute="centerX" id="Wvk-OS-1ee"/>
+                            <constraint firstItem="gKe-Z2-i3g" firstAttribute="centerY" secondItem="sCT-8E-RFT" secondAttribute="centerY" id="b35-Ku-yhd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aju-NK-P6m"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HZp-hD-jDX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="36" y="131"/>
+        </scene>
+    </scenes>
+</document>
