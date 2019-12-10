@@ -9,11 +9,17 @@
 import Foundation
 @testable import CoordinatorsFoundation
 
-class DispatchGroupFactoryMock: DispatchGroupFactoryType {
-    var expectedDispatchGroup: DispatchGroupType = DispatchGroupMock()
-    private(set) var createDispatchGroup_calledCount: Int = 0
+class DispatchGroupFactoryMock {
+    
+    var createDispatchGroupReturnValue: DispatchGroupType = DispatchGroupMock()
+    private(set) var createDispatchGroupParams: [CreateDispatchGroupParams] = []
+    struct CreateDispatchGroupParams {}
+}
+
+// MARK: - DispatchGroupFactoryType
+extension DispatchGroupFactoryMock: DispatchGroupFactoryType {
     func createDispatchGroup() -> DispatchGroupType {
-        self.createDispatchGroup_calledCount += 1
-        return self.expectedDispatchGroup
+        self.createDispatchGroupParams.append(CreateDispatchGroupParams())
+        return self.createDispatchGroupReturnValue
     }
 }
