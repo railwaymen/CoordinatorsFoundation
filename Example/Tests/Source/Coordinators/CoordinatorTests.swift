@@ -17,6 +17,7 @@ class CoordinatorTests: XCTestCase {
         self.coordinator = self.buildCoordinator()
     }
     
+    // MARK: - finish()
     func testFinish() {
         //Arrange
         let child = self.buildCoordinator()
@@ -37,6 +38,7 @@ class CoordinatorTests: XCTestCase {
         XCTAssertEqual(self.coordinator.children.count, 0)
     }
     
+    // MARK: - addChildCoordinator(child:)
     func testAddChildCoordinator_one() {
         //Arrange
         let child = self.buildCoordinator()
@@ -59,6 +61,7 @@ class CoordinatorTests: XCTestCase {
         XCTAssertEqual(self.coordinator.children.count, 2)
     }
     
+    // MARK: - removeChildCoordinator(child:)
     func testRemoveChildCoordinator_withNilChildValue() {
         //Arrange
         let child = self.buildCoordinator()
@@ -96,6 +99,7 @@ class CoordinatorTests: XCTestCase {
         XCTAssertEqual(self.coordinator.children[0], secondChild)
     }
     
+    // MARK: - deepLinkWillBeExecuted(completion:)
     func testDeepLinkWillBeExecuted_withoutChildren() {
         //Arrange
         let factoryMock = DispatchGroupFactoryMock()
@@ -160,7 +164,82 @@ class CoordinatorTests: XCTestCase {
         XCTAssertEqual(groupMock.notify_queue, .main)
     }
     
-    // MARK: - Private
+    // MARK: - observeDismiss(of:dismissHandler:)
+    func testObserveDismiss_setsPresentationDelegate() {
+        //Arrange
+        let sut = self.buildCoordinator()
+        let viewController = UIViewController()
+        //Act
+        sut.observeDismiss(of: viewController)
+        //Assert
+        XCTAssert(viewController.presentationController?.delegate === sut)
+    }
+    
+    func testObserveDismiss_callsHandlerOnDismiss() throws {
+        //Arrange
+        let sut = self.buildCoordinator()
+        let viewController = UIViewController()
+        var dismissHandlerCalledCount = 0
+        //Act
+        sut.observeDismiss(
+            of: viewController,
+            dismissHandler: {
+                dismissHandlerCalledCount += 1
+        })
+        sut.presentationControllerDidDismiss(try XCTUnwrap(viewController.presentationController))
+        //Assert
+        XCTAssertEqual(dismissHandlerCalledCount, 1)
+    }
+    
+    func testObserveDismiss_callsHandlerTwiceOnDismiss() throws {
+        //Arrange
+        let sut = self.buildCoordinator()
+        let viewController = UIViewController()
+        var dismissHandlerCalledCount = 0
+        //Act
+        sut.observeDismiss(
+            of: viewController,
+            dismissHandler: {
+                dismissHandlerCalledCount += 1
+        })
+        sut.presentationControllerDidDismiss(try XCTUnwrap(viewController.presentationController))
+        sut.presentationControllerDidDismiss(try XCTUnwrap(viewController.presentationController))
+        //Assert
+        XCTAssertEqual(dismissHandlerCalledCount, 2)
+    }
+    
+    // MARK: - endObserving(_:)
+    func testEndObserving_setNilOnPresentationControllerDelegate() {
+        //Arrange
+        let sut = self.buildCoordinator()
+        let viewController = UIViewController()
+        sut.observeDismiss(of: viewController)
+        //Act
+        sut.endObserving(viewController)
+        //Assert
+        XCTAssertNil(try XCTUnwrap(viewController.presentationController).delegate)
+    }
+    
+    func testEndObserving_removesDismissHandler() throws {
+        //Arrange
+        let sut = self.buildCoordinator()
+        let viewController = UIViewController()
+        var dismissHandlerCalledCount = 0
+        sut.observeDismiss(
+            of: viewController,
+            dismissHandler: {
+                dismissHandlerCalledCount += 1
+        })
+        //Act
+        sut.endObserving(viewController)
+        sut.presentationControllerDidDismiss(try XCTUnwrap(viewController.presentationController))
+        //Assert
+        XCTAssertEqual(dismissHandlerCalledCount, 0)
+    }
+}
+
+// MARK: - Private
+extension CoordinatorTests {
     private func buildCoordinator(
         dispatchGroupFactory: DispatchGroupFactoryType? = nil
     ) -> Coordinator<DeepLinkOptionMock, CoordinatorTypeMock> {
