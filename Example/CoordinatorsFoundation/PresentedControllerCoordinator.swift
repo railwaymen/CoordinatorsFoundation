@@ -24,6 +24,7 @@ class PresentedControllerCoordinator: ControllerCoordinator {
         super.init(window: window)
     }
     
+    // MARK: - Overridden
     override func start(finishHandler: FinishHandlerType?) {
         super.start(finishHandler: finishHandler)
         self.runMainFlow()
@@ -45,7 +46,7 @@ extension PresentedControllerCoordinator: PresentedCoordinatorType {
 
 // MARK: - Private
 extension PresentedControllerCoordinator {
-    func runMainFlow() {
+    private func runMainFlow() {
         let optionalController: FourthViewController? = self.storyboardsManager.controller(storyboard: .fourth)
         guard let viewController = optionalController else { return assertionFailure() }
         let viewModel = FourthViewModel(coordinator: self)
@@ -55,7 +56,7 @@ extension PresentedControllerCoordinator {
         self.paretViewController?.present(self.controller, animated: true)
     }
     
-    func runControllerCoordinator() {
+    private func runControllerCoordinator() {
         let coordinator = PresentedControllerCoordinator(
             window: self.window,
             parentViewController: self.controller,

@@ -43,9 +43,6 @@ class StoryboardsManager: StoryboardsManagerType {
         switch controllerIdentifier {
         case .initial:
             return storyboard.instantiateInitialViewController() as? T
-        default:
-            return storyboard.instantiateViewController(
-                withIdentifier: controllerIdentifier.rawValue) as? T
         }
     }
 }

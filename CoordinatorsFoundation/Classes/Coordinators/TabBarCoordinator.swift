@@ -36,7 +36,10 @@ open class TabBarCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: Coor
     ///   - window: Window for setting coordinator's controller as rootViewController
     ///   - tabBarController: Main controller for the coordinator
     ///
-    public init(window: UIWindowType?, tabBarController: UITabBarController) {
+    public init(
+        window: UIWindowType?,
+        tabBarController: UITabBarController
+    ) {
         self.tabBarController = tabBarController
         super.init(window: window)
     }

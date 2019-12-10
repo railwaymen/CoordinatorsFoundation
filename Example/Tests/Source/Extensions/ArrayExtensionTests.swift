@@ -9,9 +9,10 @@
 import XCTest
 @testable import CoordinatorsFoundation
 
-class ArrayExtensionTests: XCTestCase {
+class ArrayExtensionTests: XCTestCase {}
 
-    // MARK: - subscript(safeIndex:)
+// MARK: - subscript(safeIndex:)
+extension ArrayExtensionTests {
     func testSubscriptSafeIndex_indexNegative() {
         //Arrange
         let sut = [1]

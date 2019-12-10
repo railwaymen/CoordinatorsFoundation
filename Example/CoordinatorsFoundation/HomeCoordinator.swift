@@ -13,6 +13,7 @@ class HomeCoordinator: TabBarCoordinator {
         return .home
     }
     
+    // MARK: - Initialization
     init(
         window: UIWindowType?,
         storyboardsManager: StoryboardsManagerType

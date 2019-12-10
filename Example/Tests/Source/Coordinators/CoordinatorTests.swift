@@ -17,7 +17,10 @@ class CoordinatorTests: XCTestCase {
         self.coordinator = self.buildCoordinator()
     }
     
-    // MARK: - finish()
+}
+
+// MARK: - finish()
+extension CoordinatorTests {
     func testFinish() {
         //Arrange
         let child = self.buildCoordinator()
@@ -37,8 +40,10 @@ class CoordinatorTests: XCTestCase {
         XCTAssertTrue(childFinished)
         XCTAssertEqual(self.coordinator.children.count, 0)
     }
-    
-    // MARK: - addChildCoordinator(child:)
+}
+
+// MARK: - addChildCoordinator(child:)
+extension CoordinatorTests {
     func testAddChildCoordinator_one() {
         //Arrange
         let child = self.buildCoordinator()
@@ -60,8 +65,10 @@ class CoordinatorTests: XCTestCase {
         //Assert
         XCTAssertEqual(self.coordinator.children.count, 2)
     }
-    
-    // MARK: - removeChildCoordinator(child:)
+}
+
+// MARK: - removeChildCoordinator(child:)
+extension CoordinatorTests {
     func testRemoveChildCoordinator_withNilChildValue() {
         //Arrange
         let child = self.buildCoordinator()
@@ -98,8 +105,10 @@ class CoordinatorTests: XCTestCase {
         XCTAssertEqual(self.coordinator.children.count, 1)
         XCTAssertEqual(self.coordinator.children[0], secondChild)
     }
-    
-    // MARK: - deepLinkWillBeExecuted(completion:)
+}
+
+// MARK: - deepLinkWillBeExecuted(completion:)
+extension CoordinatorTests {
     func testDeepLinkWillBeExecuted_withoutChildren() {
         //Arrange
         let factoryMock = DispatchGroupFactoryMock()
@@ -163,8 +172,10 @@ class CoordinatorTests: XCTestCase {
         XCTAssertEqual(groupMock.notify_calledCount, 1)
         XCTAssertEqual(groupMock.notify_queue, .main)
     }
-    
-    // MARK: - observeDismiss(of:dismissHandler:)
+}
+
+// MARK: - observeDismiss(of:dismissHandler:)
+extension CoordinatorTests {
     func testObserveDismiss_setsPresentationDelegate() {
         //Arrange
         let sut = self.buildCoordinator()
@@ -207,8 +218,10 @@ class CoordinatorTests: XCTestCase {
         //Assert
         XCTAssertEqual(dismissHandlerCalledCount, 2)
     }
-    
-    // MARK: - endObserving(_:)
+}
+
+// MARK: - endObserving(_:)
+extension CoordinatorTests {
     func testEndObserving_setNilOnPresentationControllerDelegate() {
         //Arrange
         let sut = self.buildCoordinator()

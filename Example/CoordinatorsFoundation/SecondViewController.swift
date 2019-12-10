@@ -17,6 +17,7 @@ protocol SecondViewControllerType: class {
 class SecondViewController: UIViewController {
     private var viewModel: SecondViewModelType!
     
+    // MARK: - Overridden
     override func didMove(toParent parent: UIViewController?) {
         super.didMove(toParent: parent)
         guard parent == nil else { return }

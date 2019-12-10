@@ -32,7 +32,10 @@ open class SplitViewCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: C
     ///   - window: Window for setting coordinator's controller as rootViewController
     ///   - splitViewController: Main controller for the coordinator
     ///
-    public init(window: UIWindowType?, splitViewController: UISplitViewController) {
+    public init(
+        window: UIWindowType?,
+        splitViewController: UISplitViewController
+    ) {
         self.splitViewController = splitViewController
         super.init(window: window)
     }

@@ -9,9 +9,10 @@
 import XCTest
 @testable import CoordinatorsFoundation
 
-class ControllerHandlerTests: XCTestCase {
+class ControllerHandlerTests: XCTestCase {}
     
-    // MARK: - Equatable
+// MARK: - Equatable
+extension ControllerHandlerTests {
     func testEquatable_sameValues() {
         //Arrange
         let viewController = UIViewController()
@@ -39,8 +40,10 @@ class ControllerHandlerTests: XCTestCase {
         //Assert
         XCTAssertNotEqual(sut1, sut2)
     }
-    
-    // MARK: - Hashable
+}
+
+// MARK: - Hashable
+extension ControllerHandlerTests {
     func testHashable_sameValues() {
         //Arrange
         let viewController = UIViewController()

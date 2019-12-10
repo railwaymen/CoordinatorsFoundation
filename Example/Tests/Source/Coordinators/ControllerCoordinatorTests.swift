@@ -9,8 +9,10 @@
 import XCTest
 import CoordinatorsFoundation
 
-class ControllerCoordinatorTests: XCTestCase {
-    
+class ControllerCoordinatorTests: XCTestCase {}
+
+// MARK: - init(window:)
+extension ControllerCoordinatorTests {
     func testInitWithoutController() {
         //Act
         let coordinator = self.buildCoordinator()
@@ -27,7 +29,10 @@ class ControllerCoordinatorTests: XCTestCase {
         XCTAssertNil(coordinator.window?.rootViewController)
         XCTAssertTrue(coordinator.window === window)
     }
-    
+}
+
+// MARK: - init(window:controller:)
+extension ControllerCoordinatorTests {
     func testInitWithController() {
         //Arrange
         let controller = UIViewController()
@@ -48,8 +53,10 @@ class ControllerCoordinatorTests: XCTestCase {
         XCTAssertTrue(coordinator.window === window)
         XCTAssertNil(coordinator.window?.rootViewController)
     }
-    
-    // MARK: - Private
+}
+
+// MARK: - Private
+extension ControllerCoordinatorTests {
     private func buildCoordinator(
         window: UIWindowType? = nil,
         controller: UIViewController? = nil

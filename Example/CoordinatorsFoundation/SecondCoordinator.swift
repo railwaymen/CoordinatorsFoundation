@@ -33,16 +33,6 @@ class SecondCoordinator: ControllerCoordinator {
         super.start(finishHandler: finishHandler)
         self.runMainFlow()
     }
-    
-    // MARK: - Private
-    private func runMainFlow() {
-        let vc: SecondViewControllerable? = self.storyboardsManager.controller(storyboard: .second)
-        guard let controller = vc else { return }
-        let viewModel = SecondViewModel(coordinator: self)
-        controller.configure(viewModel: viewModel)
-        self.controller = controller
-        self.parentController.show(controller, sender: nil)
-    }
 }
 
 // MARK: - SecondCoordinatorType
@@ -54,5 +44,17 @@ extension SecondCoordinator: SecondCoordinatorType {
     
     func viewDidFinish() {
         self.finish()
+    }
+}
+
+// MARK: - Private
+extension SecondCoordinator {
+    private func runMainFlow() {
+        let vc: SecondViewControllerable? = self.storyboardsManager.controller(storyboard: .second)
+        guard let controller = vc else { return }
+        let viewModel = SecondViewModel(coordinator: self)
+        controller.configure(viewModel: viewModel)
+        self.controller = controller
+        self.parentController.show(controller, sender: nil)
     }
 }
