@@ -32,6 +32,7 @@
 		8A00CD4923268EF40032C0FD /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A00CD4823268EF40032C0FD /* Third.storyboard */; };
 		8A00CD4B232690380032C0FD /* ThirdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD4A232690380032C0FD /* ThirdViewModel.swift */; };
 		8A670430239F9B970051A0B8 /* ControllerHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A67042E239F9B680051A0B8 /* ControllerHandlerTests.swift */; };
+		8A670432239FA3E30051A0B8 /* ArrayExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A670431239FA3E30051A0B8 /* ArrayExtensionTests.swift */; };
 		8A76BB8623263C680008006A /* ControllerCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A76BB8423263BA40008006A /* ControllerCoordinatorTests.swift */; };
 		8ACCE071239F74C600116F67 /* PresentedNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCE070239F74C500116F67 /* PresentedNavigationCoordinator.swift */; };
 		8ACCE073239F776D00116F67 /* Fourth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ACCE072239F776D00116F67 /* Fourth.storyboard */; };
@@ -96,6 +97,7 @@
 		8A00CD4823268EF40032C0FD /* Third.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Third.storyboard; sourceTree = "<group>"; };
 		8A00CD4A232690380032C0FD /* ThirdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewModel.swift; sourceTree = "<group>"; };
 		8A67042E239F9B680051A0B8 /* ControllerHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerHandlerTests.swift; sourceTree = "<group>"; };
+		8A670431239FA3E30051A0B8 /* ArrayExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionTests.swift; sourceTree = "<group>"; };
 		8A76BB8423263BA40008006A /* ControllerCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerCoordinatorTests.swift; sourceTree = "<group>"; };
 		8ACCE070239F74C500116F67 /* PresentedNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentedNavigationCoordinator.swift; sourceTree = "<group>"; };
 		8ACCE072239F776D00116F67 /* Fourth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Fourth.storyboard; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		8A67042C239F9B380051A0B8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8A670431239FA3E30051A0B8 /* ArrayExtensionTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				8AF14487232258E000003D0C /* DeepLinkOptionMock.swift in Sources */,
 				8AF14486232258E000003D0C /* CoordinatorMock.swift in Sources */,
 				8AF14489232258E000003D0C /* DispatchGroupMock.swift in Sources */,
+				8A670432239FA3E30051A0B8 /* ArrayExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

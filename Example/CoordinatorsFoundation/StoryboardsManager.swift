@@ -23,9 +23,6 @@ extension StoryboardsManagerType {
 }
 
 class StoryboardsManager: StoryboardsManagerType {
-    
-    static var shared: StoryboardsManagerType = StoryboardsManager()
-    
     enum StoryboardName: String {
         case first = "First"
         case second = "Second"
