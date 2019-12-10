@@ -16,6 +16,11 @@ protocol ThirdViewControllerType: class {
 
 class ThirdViewController: UIViewController {
     private var viewModel: ThirdViewModelType!
+    
+    // MARK: - Actions
+    @IBAction private func presentButtonTapped() {
+        self.viewModel.presentButtonTapped()
+    }
 }
 
 // MARK: - ThirdViewControllerType

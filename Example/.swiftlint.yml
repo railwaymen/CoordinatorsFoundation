@@ -21,7 +21,7 @@ function_parameter_count:
   warning: 6
 
 line_length:
-  warning: 105
+  warning: 120
   error: 160
 
 function_body_length:

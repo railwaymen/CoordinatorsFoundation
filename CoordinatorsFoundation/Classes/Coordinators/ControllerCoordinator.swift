@@ -17,18 +17,31 @@ open class ControllerCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: 
     
     // MARK: - Initialization
     
+    ///
+    /// Initializes coordinator observing dismiss gesture on `self.controller`
     /// - Parameters:
     ///   - window: Window for setting coordinator's controller as rootViewController
+    ///
     public override init(window: UIWindowType? = nil) {
-        self.controller = UIViewController()
+        let controller = UIViewController()
+        self.controller = controller
         super.init(window: window)
+        self.observeDismiss(of: controller)
     }
     
+    ///
     /// - Parameters:
     ///   - window: Window for setting coordinator's controller as rootViewController
     ///   - controller: Main controller for the coordinator
-    public init(window: UIWindowType?, controller: UIViewController) {
+    /// - Note:
+    ///   Initializer sets `controller` dismiss observer automatically
+    ///
+    public init(
+        window: UIWindowType?,
+        controller: UIViewController
+    ) {
         self.controller = controller
         super.init(window: window)
+        self.observeDismiss(of: controller)
     }
 }
