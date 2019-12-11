@@ -32,7 +32,7 @@ extension CoordinatorTests {
         self.coordinator.start {
             finishCalled = true
         }
-        self.coordinator.addChildCoordinator(child: child)
+        self.coordinator.add(child: child)
         //Act
         self.coordinator.finish()
         //Assert
@@ -49,7 +49,7 @@ extension CoordinatorTests {
         let child = self.buildCoordinator()
         self.coordinator.start()
         //Act
-        self.coordinator.addChildCoordinator(child: child)
+        self.coordinator.add(child: child)
         //Assert
         XCTAssertEqual(self.coordinator.children.count, 1)
     }
@@ -60,22 +60,22 @@ extension CoordinatorTests {
         let secondChild = self.buildCoordinator()
         self.coordinator.start()
         //Act
-        self.coordinator.addChildCoordinator(child: firstChild)
-        self.coordinator.addChildCoordinator(child: secondChild)
+        self.coordinator.add(child: firstChild)
+        self.coordinator.add(child: secondChild)
         //Assert
         XCTAssertEqual(self.coordinator.children.count, 2)
     }
 }
 
-// MARK: - removeChildCoordinator(child:)
+// MARK: - remove(child:)
 extension CoordinatorTests {
     func testRemoveChildCoordinator_withNilChildValue() {
         //Arrange
         let child = self.buildCoordinator()
         self.coordinator.start()
-        self.coordinator.addChildCoordinator(child: child)
+        self.coordinator.add(child: child)
         //Act
-        self.coordinator.removeChildCoordinator(child: nil)
+        self.coordinator.remove(child: nil)
         //Assert
         XCTAssertEqual(self.coordinator.children.count, 1)
     }
@@ -84,9 +84,9 @@ extension CoordinatorTests {
         //Arrange
         let child = self.buildCoordinator()
         self.coordinator.start()
-        self.coordinator.addChildCoordinator(child: child)
+        self.coordinator.add(child: child)
         //Act
-        self.coordinator.removeChildCoordinator(child: child)
+        self.coordinator.remove(child: child)
         //Assert
         XCTAssertEqual(self.coordinator.children.count, 0)
     }
@@ -96,11 +96,11 @@ extension CoordinatorTests {
         let firstChild = self.buildCoordinator()
         let secondChild = self.buildCoordinator()
         self.coordinator.start()
-        self.coordinator.addChildCoordinator(child: firstChild)
-        self.coordinator.addChildCoordinator(child: secondChild)
+        self.coordinator.add(child: firstChild)
+        self.coordinator.add(child: secondChild)
         //Act
         XCTAssertEqual(self.coordinator.children.count, 2)
-        self.coordinator.removeChildCoordinator(child: firstChild)
+        self.coordinator.remove(child: firstChild)
         //Assert
         XCTAssertEqual(self.coordinator.children.count, 1)
         XCTAssertEqual(self.coordinator.children[0], secondChild)
@@ -153,8 +153,8 @@ extension CoordinatorTests {
         
         let firstChild = CoordinatorMock()
         let secondChild = CoordinatorMock()
-        self.coordinator.addChildCoordinator(child: firstChild)
-        self.coordinator.addChildCoordinator(child: secondChild)
+        self.coordinator.add(child: firstChild)
+        self.coordinator.add(child: secondChild)
         var completionCalled = false
         //Act
         self.coordinator.deepLinkWillBeExecuted {
