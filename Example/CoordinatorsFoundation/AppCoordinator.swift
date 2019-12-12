@@ -26,8 +26,10 @@ class AppCoordinator: Coordinator {
         super.start(finishHandler: finishHandler)
         self.runMainFlow()
     }
-    
-    // MAKR: - Private
+}
+
+// MARK: - Private
+extension AppCoordinator {
     private func runMainFlow() {
         let coordinator = HomeCoordinator(
             window: self.window,

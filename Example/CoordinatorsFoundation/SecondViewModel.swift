@@ -16,9 +16,8 @@ protocol SecondViewModelType: class {
 class SecondViewModel {
     private weak var coordinator: SecondCoordinatorType?
     
-    init(
-        coordinator: SecondCoordinatorType?
-    ) {
+    // MARK: - Initialization
+    init(coordinator: SecondCoordinatorType?) {
         self.coordinator = coordinator
     }
 }

@@ -15,6 +15,7 @@ protocol FirstViewModelType: class {
 class FirstViewModel {
     private weak var coordinator: FirstCoordinatorType?
     
+    // MARK: - Initialization
     init(coordinator: FirstCoordinatorType?) {
         self.coordinator = coordinator
     }

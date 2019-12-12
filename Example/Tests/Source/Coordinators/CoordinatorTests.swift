@@ -17,7 +17,10 @@ class CoordinatorTests: XCTestCase {
         self.coordinator = self.buildCoordinator()
     }
     
-    // MARK: - finish()
+}
+
+// MARK: - finish()
+extension CoordinatorTests {
     func testFinish() {
         //Arrange
         let child = self.buildCoordinator()
@@ -37,8 +40,10 @@ class CoordinatorTests: XCTestCase {
         XCTAssertTrue(childFinished)
         XCTAssertEqual(self.coordinator.children.count, 0)
     }
-    
-    // MARK: - addChildCoordinator(child:)
+}
+
+// MARK: - addChildCoordinator(child:)
+extension CoordinatorTests {
     func testAddChildCoordinator_one() {
         //Arrange
         let child = self.buildCoordinator()
@@ -60,8 +65,10 @@ class CoordinatorTests: XCTestCase {
         //Assert
         XCTAssertEqual(self.coordinator.children.count, 2)
     }
-    
-    // MARK: - removeChildCoordinator(child:)
+}
+
+// MARK: - removeChildCoordinator(child:)
+extension CoordinatorTests {
     func testRemoveChildCoordinator_withNilChildValue() {
         //Arrange
         let child = self.buildCoordinator()
@@ -98,48 +105,50 @@ class CoordinatorTests: XCTestCase {
         XCTAssertEqual(self.coordinator.children.count, 1)
         XCTAssertEqual(self.coordinator.children[0], secondChild)
     }
-    
-    // MARK: - deepLinkWillBeExecuted(completion:)
+}
+
+// MARK: - deepLinkWillBeExecuted(completion:)
+extension CoordinatorTests {
     func testDeepLinkWillBeExecuted_withoutChildren() {
         //Arrange
         let factoryMock = DispatchGroupFactoryMock()
         let groupMock = DispatchGroupMock()
-        factoryMock.expectedDispatchGroup = groupMock
+        factoryMock.createDispatchGroupReturnValue = groupMock
         self.coordinator = self.buildCoordinator(dispatchGroupFactory: factoryMock)
         //Act
         self.coordinator.deepLinkWillBeExecuted { XCTFail() }
         //Assert
-        XCTAssertEqual(factoryMock.createDispatchGroup_calledCount, 1)
-        XCTAssertEqual(groupMock.enter_calledCount, 0)
-        XCTAssertEqual(groupMock.notify_calledCount, 1)
-        XCTAssertEqual(groupMock.notify_queue, .main)
+        XCTAssertEqual(factoryMock.createDispatchGroupParams.count, 1)
+        XCTAssertEqual(groupMock.enterParams.count, 0)
+        XCTAssertEqual(groupMock.notifyParams.count, 1)
+        XCTAssertEqual(groupMock.notifyParams.last?.queue, .main)
     }
     
     func testDeepLinkWillBeExecuted_withoutChildren_notifyCalled() {
         //Arrange
         let factoryMock = DispatchGroupFactoryMock()
         let groupMock = DispatchGroupMock()
-        factoryMock.expectedDispatchGroup = groupMock
+        factoryMock.createDispatchGroupReturnValue = groupMock
         self.coordinator = self.buildCoordinator(dispatchGroupFactory: factoryMock)
         var completionCalled = false
         //Act
         self.coordinator.deepLinkWillBeExecuted {
             completionCalled = true
         }
-        groupMock.notify_work?()
+        groupMock.notifyParams.last?.work()
         //Assert
         XCTAssertTrue(completionCalled)
-        XCTAssertEqual(factoryMock.createDispatchGroup_calledCount, 1)
-        XCTAssertEqual(groupMock.enter_calledCount, 0)
-        XCTAssertEqual(groupMock.notify_calledCount, 1)
-        XCTAssertEqual(groupMock.notify_queue, .main)
+        XCTAssertEqual(factoryMock.createDispatchGroupParams.count, 1)
+        XCTAssertEqual(groupMock.enterParams.count, 0)
+        XCTAssertEqual(groupMock.notifyParams.count, 1)
+        XCTAssertEqual(groupMock.notifyParams.last?.queue, .main)
     }
     
     func testDeepLinkWillBeExecuted_twoChildren_notifyCalled() {
         //Arrange
         let factoryMock = DispatchGroupFactoryMock()
         let groupMock = DispatchGroupMock()
-        factoryMock.expectedDispatchGroup = groupMock
+        factoryMock.createDispatchGroupReturnValue = groupMock
         self.coordinator = self.buildCoordinator(dispatchGroupFactory: factoryMock)
         
         let firstChild = CoordinatorMock()
@@ -151,20 +160,22 @@ class CoordinatorTests: XCTestCase {
         self.coordinator.deepLinkWillBeExecuted {
             completionCalled = true
         }
-        groupMock.notify_work?()
-        firstChild.deepLinkWillBeExecuted_completion?()
+        groupMock.notifyParams.last?.work()
+        firstChild.deepLinkWillBeExecutedParams.last?.completion()
         //Assert
         XCTAssertTrue(completionCalled)
-        XCTAssertEqual(factoryMock.createDispatchGroup_calledCount, 1)
-        XCTAssertEqual(firstChild.deepLinkWillBeExecuted_calledCount, 1)
-        XCTAssertEqual(secondChild.deepLinkWillBeExecuted_calledCount, 1)
-        XCTAssertEqual(groupMock.enter_calledCount, 2)
-        XCTAssertEqual(groupMock.leave_calledCount, 1)
-        XCTAssertEqual(groupMock.notify_calledCount, 1)
-        XCTAssertEqual(groupMock.notify_queue, .main)
+        XCTAssertEqual(factoryMock.createDispatchGroupParams.count, 1)
+        XCTAssertEqual(firstChild.deepLinkWillBeExecutedParams.count, 1)
+        XCTAssertEqual(secondChild.deepLinkWillBeExecutedParams.count, 1)
+        XCTAssertEqual(groupMock.enterParams.count, 2)
+        XCTAssertEqual(groupMock.leaveParams.count, 1)
+        XCTAssertEqual(groupMock.notifyParams.count, 1)
+        XCTAssertEqual(groupMock.notifyParams.last?.queue, .main)
     }
-    
-    // MARK: - observeDismiss(of:dismissHandler:)
+}
+
+// MARK: - observeDismiss(of:dismissHandler:)
+extension CoordinatorTests {
     func testObserveDismiss_setsPresentationDelegate() {
         //Arrange
         let sut = self.buildCoordinator()
@@ -207,8 +218,10 @@ class CoordinatorTests: XCTestCase {
         //Assert
         XCTAssertEqual(dismissHandlerCalledCount, 2)
     }
-    
-    // MARK: - endObserving(_:)
+}
+
+// MARK: - endObserving(_:)
+extension CoordinatorTests {
     func testEndObserving_setNilOnPresentationControllerDelegate() {
         //Arrange
         let sut = self.buildCoordinator()

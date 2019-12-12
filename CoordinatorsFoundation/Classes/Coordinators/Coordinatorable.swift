@@ -93,7 +93,9 @@ public protocol Coordinatorable: class {
     ///   Adding another time the same controller will replace given handler to the new one.
     ///   - dismissHandler: Called after controller did dismiss with dismiss gesture available since iOS 13
     ///
-    func observeDismiss(of controller: UIViewController, dismissHandler: (() -> Void)?)
+    func observeDismiss(
+        of controller: UIViewController,
+        dismissHandler: (() -> Void)?)
     
     ///
     /// Ends observing the given controller by setting its presentationController's delegate to nil if set to the object and removing dismiss

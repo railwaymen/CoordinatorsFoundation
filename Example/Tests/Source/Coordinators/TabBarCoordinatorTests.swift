@@ -9,22 +9,15 @@
 import XCTest
 @testable import CoordinatorsFoundation
 
-class TabBarCoordinatorTests: XCTestCase {
-    
+class TabBarCoordinatorTests: XCTestCase {}
+
+// MARK: - init(window:)
+extension TabBarCoordinatorTests {
     func testInitWithoutController() {
         //Act
         let coordinator = self.buildCoordinator()
         //Assert
         XCTAssertNotNil(coordinator.tabBarController)
-        XCTAssertNil(coordinator.window?.rootViewController)
-    }
-    
-    func testInitWithController() {
-        //Arrange
-        let controller = UITabBarController()
-        //Act
-        let coordinator = self.buildCoordinator(controller: controller)
-        //Assert
         XCTAssertNil(coordinator.window?.rootViewController)
     }
     
@@ -35,6 +28,18 @@ class TabBarCoordinatorTests: XCTestCase {
         let coordinator = self.buildCoordinator(window: window)
         //Assert
         XCTAssertTrue(coordinator.window === window)
+        XCTAssertNil(coordinator.window?.rootViewController)
+    }
+}
+
+// MARK: - init(window:tabBarController:)
+extension TabBarCoordinatorTests {
+    func testInitWithController() {
+        //Arrange
+        let controller = UITabBarController()
+        //Act
+        let coordinator = self.buildCoordinator(controller: controller)
+        //Assert
         XCTAssertNil(coordinator.window?.rootViewController)
     }
     
@@ -48,7 +53,10 @@ class TabBarCoordinatorTests: XCTestCase {
         XCTAssertTrue(coordinator.window === window)
         XCTAssertNil(coordinator.window?.rootViewController)
     }
-    
+}
+
+// MARK: - start()
+extension TabBarCoordinatorTests {
     func testStart() {
         //Arrange
         let window = UIWindow()
@@ -60,8 +68,11 @@ class TabBarCoordinatorTests: XCTestCase {
         //Assert
         XCTAssertEqual(coordinator.tabBarController.viewControllers?.count, 1)
     }
-    
-    func testStartWithFinishCompletion() {
+}
+
+// MARK: - start(finishHandler:)
+extension TabBarCoordinatorTests {
+    func testStartWithFinishHandler() {
         //Arrange
         let window = UIWindow()
         let coordinator = self.buildCoordinator(window: window)
@@ -72,7 +83,10 @@ class TabBarCoordinatorTests: XCTestCase {
         //Assert
         XCTAssertEqual(coordinator.tabBarController.viewControllers?.count, 1)
     }
-    
+}
+
+// MARK: - finish()
+extension TabBarCoordinatorTests {
     func testFinish() {
         //Arrange
         let window = UIWindow()
@@ -89,8 +103,10 @@ class TabBarCoordinatorTests: XCTestCase {
         XCTAssertEqual(coordinator.tabBarController.children.count, 0)
         XCTAssertEqual(coordinator.tabBarController.viewControllers?.count, 0)
     }
-    
-    // MARK: - Private
+}
+
+// MARK: - Private
+extension TabBarCoordinatorTests {
     private func buildCoordinator(
         window: UIWindowType? = nil,
         controller: UITabBarController? = nil
@@ -104,6 +120,7 @@ class TabBarCoordinatorTests: XCTestCase {
     }
 }
 
+// MARK: - Private structures
 private class TabBarChildCoordinatorMock: CoordinatorMock, TabBarChildCoordinatorType {
     var root: UIViewController
     var tabBarItem: UITabBarItem
