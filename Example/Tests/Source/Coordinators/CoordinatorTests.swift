@@ -42,9 +42,9 @@ extension CoordinatorTests {
     }
 }
 
-// MARK: - addChildCoordinator(child:)
+// MARK: - add(child:)
 extension CoordinatorTests {
-    func testAddChildCoordinator_one() {
+    func testAddChild_one() {
         //Arrange
         let child = self.buildCoordinator()
         self.coordinator.start()
@@ -54,7 +54,7 @@ extension CoordinatorTests {
         XCTAssertEqual(self.coordinator.children.count, 1)
     }
     
-    func testAddChildCoordinators_two() {
+    func testAddChild_two() {
         //Arrange
         let firstChild = self.buildCoordinator()
         let secondChild = self.buildCoordinator()
@@ -69,7 +69,7 @@ extension CoordinatorTests {
 
 // MARK: - remove(child:)
 extension CoordinatorTests {
-    func testRemoveChildCoordinator_withNilChildValue() {
+    func testRemoveChild_withNilChildValue() {
         //Arrange
         let child = self.buildCoordinator()
         self.coordinator.start()
@@ -80,7 +80,7 @@ extension CoordinatorTests {
         XCTAssertEqual(self.coordinator.children.count, 1)
     }
     
-    func testRemoveChildCoordinator_withSomeChildValue() {
+    func testRemoveChild_withSomeChildValue() {
         //Arrange
         let child = self.buildCoordinator()
         self.coordinator.start()
@@ -91,7 +91,7 @@ extension CoordinatorTests {
         XCTAssertEqual(self.coordinator.children.count, 0)
     }
     
-    func testRemoveChildCoordinator_whileIsAddedMoreThanOne() {
+    func testRemoveChild_whileIsAddedMoreThanOne() {
         //Arrange
         let firstChild = self.buildCoordinator()
         let secondChild = self.buildCoordinator()
