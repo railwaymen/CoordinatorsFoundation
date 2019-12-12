@@ -1,5 +1,5 @@
 PODS:
-  - CoordinatorsFoundation (0.2.0)
+  - CoordinatorsFoundation (0.2.1)
   - SwiftLint (0.38.0)
 
 DEPENDENCIES:
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CoordinatorsFoundation: 3b455d268af87664998843a5df63a433a212afa0
+  CoordinatorsFoundation: e37bd663073b74feb49f1343bfa41e87d7ba7320
   SwiftLint: 4105f061f9812b214568b736dab580ab2c73a582
 
 PODFILE CHECKSUM: 265a33b4eccb399d1757c4518de3f6749510911a
