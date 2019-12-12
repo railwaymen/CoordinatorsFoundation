@@ -62,7 +62,7 @@ extension TabBarCoordinatorTests {
         let window = UIWindow()
         let coordinator = self.buildCoordinator(window: window)
         let child = TabBarChildCoordinatorMock()
-        coordinator.addChildCoordinator(child: child)
+        coordinator.add(child: child)
         //Act
         coordinator.start()
         //Assert
@@ -77,7 +77,7 @@ extension TabBarCoordinatorTests {
         let window = UIWindow()
         let coordinator = self.buildCoordinator(window: window)
         let child = TabBarChildCoordinatorMock()
-        coordinator.addChildCoordinator(child: child)
+        coordinator.add(child: child)
         //Act
         coordinator.start { Void() }
         //Assert
@@ -93,8 +93,8 @@ extension TabBarCoordinatorTests {
         let coordinator = self.buildCoordinator(window: window)
         let firstChild = TabBarChildCoordinatorMock()
         let secondChild = TabBarChildCoordinatorMock()
-        coordinator.addChildCoordinator(child: firstChild)
-        coordinator.addChildCoordinator(child: secondChild)
+        coordinator.add(child: firstChild)
+        coordinator.add(child: secondChild)
         coordinator.start { Void() }
         //Act
         XCTAssertEqual(coordinator.tabBarController.viewControllers?.count, 2)

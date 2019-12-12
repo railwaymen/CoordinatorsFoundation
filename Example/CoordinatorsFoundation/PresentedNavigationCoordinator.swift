@@ -65,9 +65,9 @@ extension PresentedNavigationCoordinator {
             window: self.window,
             parentViewController: self.navigationController,
             storyboardsManager: self.storyboardsManager)
-        self.addChildCoordinator(child: coordinator)
+        self.add(child: coordinator)
         coordinator.start { [weak self, weak coordinator] in
-            self?.removeChildCoordinator(child: coordinator)
+            self?.remove(child: coordinator)
         }
     }
 }

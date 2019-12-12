@@ -62,14 +62,14 @@ public protocol Coordinatorable: class {
     /// - Parameters:
     ///   - child: Coordinator to be added to children.
     ///
-    func addChildCoordinator(child: Coordinator)
+    func add(child: Coordinator)
     
     ///
     /// Removes coordinator from children. Mostly useful after child's finish call
     /// - Parameters:
     ///   - child: Optional coordinator to be removed from children.
     ///
-    func removeChildCoordinator(child: Coordinator?)
+    func remove(child: Coordinator?)
     
     ///
     /// Prepares coordinator and it's children for deep link opening.

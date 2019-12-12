@@ -19,13 +19,13 @@ class CoordinatorMock: Coordinator<DeepLinkOptionMock, CoordinatorTypeMock> {
     private(set) var finishParams: [FinishParams] = []
     struct FinishParams {}
     
-    private(set) var addChildCoordinatorParams: [AddChildCoordinatorParams] = []
-    struct AddChildCoordinatorParams {
+    private(set) var addChildParams: [AddChildParams] = []
+    struct AddChildParams {
         let child: Coordinator
     }
     
-    private(set) var removeChildCoordinatorParams: [RemoveChildCoordinatorParams] = []
-    struct RemoveChildCoordinatorParams {
+    private(set) var removeChildParams: [RemoveChildParams] = []
+    struct RemoveChildParams {
         let child: Coordinator?
     }
     
@@ -64,12 +64,12 @@ class CoordinatorMock: Coordinator<DeepLinkOptionMock, CoordinatorTypeMock> {
         self.finishParams.append(FinishParams())
     }
     
-    override func addChildCoordinator(child: Coordinator) {
-        self.addChildCoordinatorParams.append(AddChildCoordinatorParams(child: child))
+    override func add(child: Coordinator) {
+        self.addChildParams.append(AddChildParams(child: child))
     }
     
-    override func removeChildCoordinator(child: Coordinator?) {
-        self.removeChildCoordinatorParams.append(RemoveChildCoordinatorParams(child: child))
+    override func remove(child: Coordinator?) {
+        self.removeChildParams.append(RemoveChildParams(child: child))
     }
 
     override func deepLinkWillBeExecuted(completion: @escaping () -> Void) {
