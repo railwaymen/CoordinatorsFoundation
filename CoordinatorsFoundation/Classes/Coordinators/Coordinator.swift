@@ -46,16 +46,16 @@ open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, 
     open func finish() {
         self.children.forEach {
             $0.finish()
-            self.removeChildCoordinator(child: $0)
+            self.remove(child: $0)
         }
         self.finishHandler?()
     }
     
-    open func addChildCoordinator(child: Coordinator) {
+    open func add(child: Coordinator) {
         self.children.append(child)
     }
     
-    open func removeChildCoordinator(child: Coordinator?) {
+    open func remove(child: Coordinator?) {
         guard let index = self.children.firstIndex(where: { $0 === child }) else { return }
         self.children.remove(at: index)
     }
