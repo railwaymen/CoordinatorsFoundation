@@ -6,9 +6,9 @@
 //  Copyright © 2019 Railwaymen. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, Coordinatorable {
+open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, Coordinatorable, UIAdaptivePresentationControllerDelegate {
     public typealias CoordinatorType = U
     public typealias DeepLinkOption = T
     
@@ -20,7 +20,9 @@ open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, 
     private(set) public var window: UIWindowType?
     private var finishHandler: FinishHandlerType?
     private var dispatchGroupFactory: DispatchGroupFactoryType
+    private var observedControllersHandlers: Set<ControllerHandler> = []
     
+    // MARK: - Initialization
     public init(window: UIWindowType? = nil) {
         self.children = []
         self.window = window
@@ -36,6 +38,7 @@ open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, 
         self.dispatchGroupFactory = dispatchGroupFactory
     }
     
+    // MARK: - Coordinatorable
     open func start(finishHandler: FinishHandlerType?) {
         self.finishHandler = finishHandler
     }
@@ -67,4 +70,26 @@ open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, 
     }
     
     open func openDeepLink(option: DeepLinkOption) {}
+    
+    public func observeDismiss(of controller: UIViewController, dismissHandler: (() -> Void)?) {
+        controller.presentationController?.delegate = self
+        let controllerHandler = ControllerHandler(
+            controller: controller,
+            dismissHandler: dismissHandler ?? { [weak self] in
+                self?.finish()
+            })
+        self.observedControllersHandlers.update(with: controllerHandler)
+    }
+    
+    public func endObserving(_ controller: UIViewController) {
+        if controller.presentationController?.delegate === self {
+            controller.presentationController?.delegate = nil
+        }
+        self.observedControllersHandlers = self.observedControllersHandlers.filter { $0.controller != controller }
+    }
+    
+    // MARK: - UIAdaptivePresentationControllerDelegate
+    public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        self.observedControllersHandlers.first { $0.controller == presentationController.presentedViewController }?.dismissHandler()
+    }
 }

@@ -9,8 +9,10 @@
 import XCTest
 @testable import CoordinatorsFoundation
 
-class NavigationCoordinatorTests: XCTestCase {
-    
+class NavigationCoordinatorTests: XCTestCase {}
+
+// MARK: - init(window:)
+extension NavigationCoordinatorTests {
     func testInitWithoutNavigationController_navigationControllerIsCreated() {
         //Act
         let coordinator = self.buildCoordinator()
@@ -28,7 +30,10 @@ class NavigationCoordinatorTests: XCTestCase {
         XCTAssertTrue(coordinator.window === window)
         XCTAssertNil(coordinator.window?.rootViewController)
     }
-    
+}
+
+// MARK: - init(window:navigationController:)
+extension NavigationCoordinatorTests {
     func testInitWithNavigationController() {
         //Arrange
         let navigationController = UINavigationController()
@@ -49,8 +54,10 @@ class NavigationCoordinatorTests: XCTestCase {
         XCTAssertTrue(coordinator.window === window)
         XCTAssertNil(coordinator.window?.rootViewController)
     }
-    
-    // MARK: - Private
+}
+
+// MARK: - Private
+extension NavigationCoordinatorTests {
     private func buildCoordinator(
         window: UIWindowType? = nil,
         controller: UINavigationController? = nil

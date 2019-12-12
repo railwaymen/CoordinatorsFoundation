@@ -10,7 +10,9 @@ import CoordinatorsFoundation
 
 typealias ThirdCoordinatorChild = NavigationCoordinator & TabBarChildCoordinatorType
 
-protocol ThirdCoordinatorType: class {}
+protocol ThirdCoordinatorType: class {
+    func presentNavigationCoordinator()
+}
 
 class ThirdCoordinator: NavigationCoordinator {
     private let storyboardsManager: StoryboardsManagerType
@@ -29,15 +31,6 @@ class ThirdCoordinator: NavigationCoordinator {
         super.start(finishHandler: finishHandler)
         self.runMainFlow()
     }
-    
-    // MARK: - Private
-    private func runMainFlow() {
-        let vc: ThirdViewControllerable? = self.storyboardsManager.controller(storyboard: .third)
-        guard let controller = vc else { return }
-        let viewModel = ThirdViewModel()
-        controller.configure(viewModel: viewModel)
-        self.navigationController = UINavigationController(rootViewController: controller)
-    }
 }
 
 // MARK: - TabBarChildCoordinatorType
@@ -53,5 +46,29 @@ extension ThirdCoordinator: TabBarChildCoordinatorType {
 
 // MARK: - ThirdCoordinatorType
 extension ThirdCoordinator: ThirdCoordinatorType {
-   
+    func presentNavigationCoordinator() {
+        self.runPresentedNavigationCoordinator()
+    }
+}
+
+// MARK: - Private
+extension ThirdCoordinator {
+    private func runMainFlow() {
+        let vc: ThirdViewControllerable? = self.storyboardsManager.controller(storyboard: .third)
+        guard let controller = vc else { return }
+        let viewModel = ThirdViewModel(coordinator: self)
+        controller.configure(viewModel: viewModel)
+        self.navigationController = UINavigationController(rootViewController: controller)
+    }
+    
+    private func runPresentedNavigationCoordinator() {
+        let coordinator = PresentedNavigationCoordinator(
+            window: self.window,
+            parentViewController: self.navigationController,
+            storyboardsManager: self.storyboardsManager)
+        self.addChildCoordinator(child: coordinator)
+        coordinator.start { [weak self, weak coordinator] in
+            self?.removeChildCoordinator(child: coordinator)
+        }
+    }
 }

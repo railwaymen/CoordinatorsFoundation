@@ -22,17 +22,24 @@ open class TabBarCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: Coor
     
     // MARK: - Initialization
     
+    ///
     /// - Parameters:
     ///   - window: Window for setting coordinator's controller as rootViewController
+    ///
     public override init(window: UIWindowType? = nil) {
         self.tabBarController = UITabBarController()
         super.init(window: window)
     }
     
+    ///
     /// - Parameters:
     ///   - window: Window for setting coordinator's controller as rootViewController
     ///   - tabBarController: Main controller for the coordinator
-    public init(window: UIWindowType?, tabBarController: UITabBarController) {
+    ///
+    public init(
+        window: UIWindowType?,
+        tabBarController: UITabBarController
+    ) {
         self.tabBarController = tabBarController
         super.init(window: window)
     }
@@ -47,8 +54,10 @@ open class TabBarCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: Coor
         self.tabBarController.viewControllers = []
         super.finish()
     }
-    
-    // MARK: - Private
+}
+
+// MARK: - Private
+extension TabBarCoordinator {
     private func setUpChildTabBarCoordinators() {
         self.tabBarController.viewControllers = self.children.compactMap { ($0 as? TabBarChildCoordinatorType)?.root }
     }

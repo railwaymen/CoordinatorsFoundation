@@ -9,7 +9,7 @@ podfile_path = "Podfile.lock"
 platform :ios do
 
   before_all do
-    xcversion(version: "11.1")
+    xcversion(version: "11.2.1")
     if ENV['CI_PIPELINE_ID']
       increment_build_number(build_number: "#{ENV['CI_PIPELINE_ID']}")
     end

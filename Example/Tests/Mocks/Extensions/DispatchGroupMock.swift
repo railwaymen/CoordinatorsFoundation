@@ -9,35 +9,45 @@
 import Foundation
 @testable import CoordinatorsFoundation
 
-class DispatchGroupMock: DispatchGroupType {
-    private(set) var enter_calledCount: Int = 0
+class DispatchGroupMock {
+    private(set) var enterParams: [EnterParams] = []
+    struct EnterParams {}
+    
+    private(set) var leaveParams: [LeaveParams] = []
+    struct LeaveParams {}
+    
+    private(set) var notifyParams: [NotifyParams] = []
+    struct NotifyParams {
+        let qos: DispatchQoS
+        let flags: DispatchWorkItemFlags
+        let queue: DispatchQueue
+        let work: () -> Void
+    }
+}
+
+// MARK: - DispatchGroupType
+extension DispatchGroupMock: DispatchGroupType {
     func enter() {
-        self.enter_calledCount += 1
+        self.enterParams.append(EnterParams())
     }
     
-    private(set) var leave_calledCount: Int = 0
     func leave() {
-        self.leave_calledCount += 1
-        if self.leave_calledCount == self.enter_calledCount {
-            self.notify_work?()
+        self.leaveParams.append(LeaveParams())
+        if self.leaveParams.count == self.enterParams.count {
+            self.notifyParams.forEach { $0.work() }
         }
     }
     
-    private(set) var notify_calledCount: Int = 0
-    private(set) var notify_qos: DispatchQoS?
-    private(set) var notify_flags: DispatchWorkItemFlags?
-    private(set) var notify_queue: DispatchQueue?
-    private(set) var notify_work: (() -> Void)?
     func notify(
         qos: DispatchQoS,
         flags: DispatchWorkItemFlags,
         queue: DispatchQueue,
         execute work: @escaping @convention(block) () -> Void
     ) {
-        self.notify_calledCount += 1
-        self.notify_qos = qos
-        self.notify_flags = flags
-        self.notify_queue = queue
-        self.notify_work = work
+        self.notifyParams.append(NotifyParams(
+            qos: qos,
+            flags: flags,
+            queue: queue,
+            work: work))
     }
 }

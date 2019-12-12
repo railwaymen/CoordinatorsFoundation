@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CoordinatorsFoundation'
-  s.version          = '0.1.3'
+  s.version          = '0.2.0'
   s.summary          = 'Base for Coordinators pattern in Swift'
 
 # This description is used to generate tags and improve search results.
@@ -39,5 +39,5 @@ This is lightweight framework containing base for this pattern.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
   # s.dependency 'AFNetworking', '~> 2.3'
-  s.swift_versions = '5.0'
+  s.swift_versions = '5.1'
 end

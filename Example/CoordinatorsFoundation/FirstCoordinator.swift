@@ -29,26 +29,6 @@ class FirstCoordinator: NavigationCoordinator {
         super.start(finishHandler: finishHandler)
         self.runMainFlow()
     }
-    
-    // MARK: - Private
-    private func runMainFlow() {
-        let vc: FirstViewControllerable? = self.storyboardsManager.controller(storyboard: .first)
-        guard let controller = vc else { return }
-        let viewModel = FirstViewModel(coordinator: self)
-        controller.configure(viewModel: viewModel)
-        self.navigationController = UINavigationController(rootViewController: controller)
-    }
-    
-    private func runSecondFlow() {
-        let coordinator = SecondCoordinator(
-            window: self.window,
-            parentController: self.navigationController,
-            storyboardsManager: self.storyboardsManager)
-        self.addChildCoordinator(child: coordinator)
-        coordinator.start { [weak self, weak coordinator] in
-            self?.removeChildCoordinator(child: coordinator)
-        }
-    }
 }
 
 // MARK: - TabBarChildCoordinatorType
@@ -66,5 +46,27 @@ extension FirstCoordinator: TabBarChildCoordinatorType {
 extension FirstCoordinator: FirstCoordinatorType {
     func viewDidRequestForSecondView() {
         self.runSecondFlow()
+    }
+}
+
+// MARK: - Private
+extension FirstCoordinator {
+    private func runMainFlow() {
+        let vc: FirstViewControllerable? = self.storyboardsManager.controller(storyboard: .first)
+        guard let controller = vc else { return }
+        let viewModel = FirstViewModel(coordinator: self)
+        controller.configure(viewModel: viewModel)
+        self.navigationController = UINavigationController(rootViewController: controller)
+    }
+    
+    private func runSecondFlow() {
+        let coordinator = SecondCoordinator(
+            window: self.window,
+            parentController: self.navigationController,
+            storyboardsManager: self.storyboardsManager)
+        self.addChildCoordinator(child: coordinator)
+        coordinator.start { [weak self, weak coordinator] in
+            self?.removeChildCoordinator(child: coordinator)
+        }
     }
 }

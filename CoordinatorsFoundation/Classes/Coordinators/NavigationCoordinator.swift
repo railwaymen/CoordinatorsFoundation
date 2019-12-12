@@ -17,20 +17,33 @@ open class NavigationCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: 
     
     // MARK: - Initialization
     
+    ///
+    /// Initializes coordinator observing dismiss gesture on `self.navigationController`
     /// - Parameters:
     ///   - window: Window for setting coordinator's controller as rootViewController
+    ///
     public override init(window: UIWindowType? = nil) {
-        self.navigationController = UINavigationController()
+        let navigationController = UINavigationController()
+        self.navigationController = navigationController
         super.init(window: window)
+        self.observeDismiss(of: navigationController)
         navigationController.interactivePopGestureRecognizer?.delegate = nil
     }
     
+    ///
     /// - Parameters:
     ///   - window: Window for setting coordinator's controller as rootViewController
     ///   - navigationController: Main controller for the coordinator
-    public init(window: UIWindowType?, navigationController: UINavigationController) {
+    /// - Note:
+    ///   Initializer sets `navigationController` dismiss observer automatically
+    ///
+    public init(
+        window: UIWindowType?,
+        navigationController: UINavigationController
+    ) {
         self.navigationController = navigationController
         super.init(window: window)
+        self.observeDismiss(of: navigationController)
         navigationController.interactivePopGestureRecognizer?.delegate = nil
     }
 }

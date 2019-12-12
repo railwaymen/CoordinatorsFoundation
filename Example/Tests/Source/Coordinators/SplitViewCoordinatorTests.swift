@@ -9,8 +9,10 @@
 import XCTest
 @testable import CoordinatorsFoundation
 
-class SplitViewCoordinatorTests: XCTestCase {
+class SplitViewCoordinatorTests: XCTestCase {}
     
+// MARK: - init(window:)
+extension SplitViewCoordinatorTests {
     func testInit_withNilWindow() {
         //Act
         let coordinator = self.buildCoordinator(window: nil)
@@ -29,7 +31,10 @@ class SplitViewCoordinatorTests: XCTestCase {
         XCTAssertTrue(coordinator.window === window)
         XCTAssertNil(coordinator.window?.rootViewController)
     }
-    
+}
+
+// MARK: - init(window:splitViewController:)
+extension SplitViewCoordinatorTests {
     func testInitWithSplitViewController() {
         //Arrange
         let controller = UISplitViewController()
@@ -50,8 +55,10 @@ class SplitViewCoordinatorTests: XCTestCase {
         //Assert
         XCTAssertEqual(coordinator.splitViewController, splitViewController)
     }
-    
-    // MARK: - Private
+}
+
+// MARK: - Private
+extension SplitViewCoordinatorTests {
     private func buildCoordinator(
         window: UIWindowType? = nil,
         controller: UISplitViewController? = nil

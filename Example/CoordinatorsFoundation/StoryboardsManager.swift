@@ -23,13 +23,11 @@ extension StoryboardsManagerType {
 }
 
 class StoryboardsManager: StoryboardsManagerType {
-    
-    static var shared: StoryboardsManagerType = StoryboardsManager()
-    
     enum StoryboardName: String {
         case first = "First"
         case second = "Second"
         case third = "Third"
+        case fourth = "Fourth"
     }
     
     enum ControllerIdentifier: String {
@@ -45,9 +43,6 @@ class StoryboardsManager: StoryboardsManagerType {
         switch controllerIdentifier {
         case .initial:
             return storyboard.instantiateInitialViewController() as? T
-        default:
-            return storyboard.instantiateViewController(
-                withIdentifier: controllerIdentifier.rawValue) as? T
         }
     }
 }
