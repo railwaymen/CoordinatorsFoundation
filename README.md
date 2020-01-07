@@ -1,6 +1,6 @@
 # CoordinatorsFoundation
 
-[![build status](https://git.railwaymen.org/ios/coordinatorsfoundation/badges/develop/build.svg)](https://git.railwaymen.org/ios/coordinatorsfoundation/pipelines) [![Coverage report](https://git.railwaymen.org/ios/coordinatorsfoundation/badges/develop/coverage.svg)](https://git.railwaymen.org/ios/coordinatorsfoundation/commits/develop) [![Swift](https://img.shields.io/badge/Swift-5.1-green.svg?style=flat)](https://swift.org)
+[![build status](https://git.railwaymen.org/open/coordinatorsfoundation/badges/develop/pipeline.svg)](https://git.railwaymen.org/open/coordinatorsfoundation/pipelines) [![Coverage report](https://git.railwaymen.org/open/coordinatorsfoundation/badges/develop/coverage.svg)](https://git.railwaymen.org/open/coordinatorsfoundation/commits/develop) [![Swift](https://img.shields.io/badge/Swift-5.1-green.svg?style=flat)](https://swift.org)
 
 ## Instalation
 
