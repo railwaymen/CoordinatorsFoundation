@@ -12,6 +12,7 @@ import CoordinatorsFoundation
 protocol PresentedCoordinatorType: class {
     func showControllerCoordinator()
     func requestToFinish()
+    func viewDidFinish()
 }
 
 class PresentedNavigationCoordinator: NavigationCoordinator {
@@ -47,6 +48,10 @@ extension PresentedNavigationCoordinator: PresentedCoordinatorType {
             self?.finish()
         }
     }
+    
+    func viewDidFinish() {
+        self.finish()
+    }
 }
 
 // MARK: - Private
@@ -61,9 +66,18 @@ extension PresentedNavigationCoordinator {
     }
     
     private func runControllerCoordinator() {
-        let coordinator = PresentedControllerCoordinator(
+//        let coordinator = PresentedControllerCoordinator(
+//            window: self.window,
+//            parentViewController: self.navigationController,
+//            storyboardsManager: self.storyboardsManager)
+//        self.add(child: coordinator)
+//        coordinator.start { [weak self, weak coordinator] in
+//            self?.remove(child: coordinator)
+//        }
+        
+        let coordinator = MountedNavigationCoordinator(
             window: self.window,
-            parentViewController: self.navigationController,
+            navigationController: self.navigationController,
             storyboardsManager: self.storyboardsManager)
         self.add(child: coordinator)
         coordinator.start { [weak self, weak coordinator] in

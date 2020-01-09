@@ -8,13 +8,19 @@
 
 import UIKit
 
-open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, Coordinatorable, UIAdaptivePresentationControllerDelegate {
+internal protocol ControllerDismissObserver {
+    func controllerDidDismiss(_ controller: UIViewController)
+}
+
+open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, Coordinatorable, UIAdaptivePresentationControllerDelegate, ControllerDismissObserver {
     public typealias CoordinatorType = U
     public typealias DeepLinkOption = T
     
     open var type: CoordinatorType? {
         return nil
     }
+    
+    internal var previousControllerDelegates: [UIViewController: WeakArray<Coordinator>] = [:]
     
     private(set) public var children: [Coordinator]
     private(set) public var window: UIWindowType?
@@ -38,6 +44,10 @@ open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, 
         self.dispatchGroupFactory = dispatchGroupFactory
     }
     
+    deinit {
+        self.observedControllersHandlers.forEach { self.endObserving($0.controller) }
+    }
+    
     // MARK: - Coordinatorable
     open func start(finishHandler: FinishHandlerType?) {
         self.finishHandler = finishHandler
@@ -48,6 +58,7 @@ open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, 
             $0.finish()
             self.remove(child: $0)
         }
+        self.observedControllersHandlers.forEach { self.endObserving($0.controller) }
         self.finishHandler?()
     }
     
@@ -72,6 +83,9 @@ open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, 
     open func openDeepLink(option: DeepLinkOption) {}
     
     public func observeDismiss(of controller: UIViewController, dismissHandler: (() -> Void)?) {
+        if let previousDelegate = controller.presentationController?.delegate as? Coordinator {
+            self.previousControllerDelegates[controller] = previousDelegate.previousControllerDelegates[controller] ?? [] + [previousDelegate]
+        }
         controller.presentationController?.delegate = self
         let controllerHandler = ControllerHandler(
             controller: controller,
@@ -83,13 +97,21 @@ open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, 
     
     public func endObserving(_ controller: UIViewController) {
         if controller.presentationController?.delegate === self {
-            controller.presentationController?.delegate = nil
+            controller.presentationController?.delegate = self.previousControllerDelegates[controller]?.last
         }
         self.observedControllersHandlers = self.observedControllersHandlers.filter { $0.controller != controller }
     }
     
     // MARK: - UIAdaptivePresentationControllerDelegate
     public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        self.observedControllersHandlers.first { $0.controller == presentationController.presentedViewController }?.dismissHandler()
+        self.controllerDidDismiss(presentationController.presentedViewController)
+    }
+    
+    // MARK: - ControllerDismissObserver
+    internal func controllerDidDismiss(_ controller: UIViewController) {
+        self.observedControllersHandlers.first { $0.controller == controller }?.dismissHandler()
+        self.previousControllerDelegates[controller]?.prune()
+        self.previousControllerDelegates[controller]?.last?.controllerDidDismiss(controller)
     }
 }
+ 
