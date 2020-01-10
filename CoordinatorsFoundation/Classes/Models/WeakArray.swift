@@ -24,7 +24,6 @@ struct WeakArray<Element: AnyObject> {
     
     init(_ array: [Element]) {
         self.items = array.map { WeakBox($0) }
-        self.prune()
     }
     
     // MARK: - Internal Mutating
@@ -48,6 +47,10 @@ extension WeakArray: Collection {
         return self.elements.endIndex
     }
     
+    var count: Int {
+        return self.elements.count
+    }
+    
     subscript(_ index: Int) -> Element? {
         return self.elements[safeIndex: index]
     }
@@ -68,17 +71,5 @@ extension WeakArray {
 extension WeakArray: ExpressibleByArrayLiteral {
     init(arrayLiteral elements: Element...) {
         self.items = elements.map { WeakBox($0) }
-        self.prune()
-    }
-}
-
-// MARK: - Structures
-extension WeakArray {
-    private final class WeakBox<A: AnyObject> {
-        weak var value: A?
-        
-        init(_ value: A) {
-            self.value = value
-        }
     }
 }

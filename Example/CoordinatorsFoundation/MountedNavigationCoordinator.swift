@@ -32,9 +32,9 @@ class MountedNavigationCoordinator: NavigationCoordinator {
 // MARK: - PresentedCoordinatorType
 extension MountedNavigationCoordinator: PresentedCoordinatorType {
     func showControllerCoordinator() {
-        let coordinator = MountedNavigationCoordinator(
+        let coordinator = PresentedControllerCoordinator(
             window: self.window,
-            navigationController: self.navigationController,
+            parentViewController: self.navigationController,
             storyboardsManager: self.storyboardsManager)
         self.add(child: coordinator)
         coordinator.start { [weak self, weak coordinator] in

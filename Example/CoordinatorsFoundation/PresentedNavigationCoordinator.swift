@@ -66,15 +66,6 @@ extension PresentedNavigationCoordinator {
     }
     
     private func runControllerCoordinator() {
-//        let coordinator = PresentedControllerCoordinator(
-//            window: self.window,
-//            parentViewController: self.navigationController,
-//            storyboardsManager: self.storyboardsManager)
-//        self.add(child: coordinator)
-//        coordinator.start { [weak self, weak coordinator] in
-//            self?.remove(child: coordinator)
-//        }
-        
         let coordinator = MountedNavigationCoordinator(
             window: self.window,
             navigationController: self.navigationController,
