@@ -16,6 +16,11 @@ protocol FourthViewControllerType: class {
 class FourthViewController: UIViewController {
     private var viewModel: FourthViewModelType!
     
+    override func didMove(toParent parent: UIViewController?) {
+        guard parent == nil else { return }
+        self.viewModel.viewDidFinish()
+    }
+    
     // MARK: - Actions
     @IBAction private func presentButtonTapped() {
         self.viewModel.presentButtonTapped()
