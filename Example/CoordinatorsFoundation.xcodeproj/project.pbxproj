@@ -31,9 +31,12 @@
 		8A00CD4723268EE70032C0FD /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD4623268EE70032C0FD /* ThirdViewController.swift */; };
 		8A00CD4923268EF40032C0FD /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A00CD4823268EF40032C0FD /* Third.storyboard */; };
 		8A00CD4B232690380032C0FD /* ThirdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CD4A232690380032C0FD /* ThirdViewModel.swift */; };
+		8A2DFD7223C7550000C049DA /* MountedNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2DFD7123C7550000C049DA /* MountedNavigationCoordinator.swift */; };
 		8A670430239F9B970051A0B8 /* ControllerHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A67042E239F9B680051A0B8 /* ControllerHandlerTests.swift */; };
 		8A670432239FA3E30051A0B8 /* ArrayExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A670431239FA3E30051A0B8 /* ArrayExtensionTests.swift */; };
 		8A76BB8623263C680008006A /* ControllerCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A76BB8423263BA40008006A /* ControllerCoordinatorTests.swift */; };
+		8A9EAAD623C8799B00FB0D2B /* WeakArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9EAAD423C8797A00FB0D2B /* WeakArrayTests.swift */; };
+		8A9EAADB23C886C300FB0D2B /* WeakBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9EAAD923C886BF00FB0D2B /* WeakBoxTests.swift */; };
 		8ACCE071239F74C600116F67 /* PresentedNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCE070239F74C500116F67 /* PresentedNavigationCoordinator.swift */; };
 		8ACCE073239F776D00116F67 /* Fourth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ACCE072239F776D00116F67 /* Fourth.storyboard */; };
 		8ACCE076239F784700116F67 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCE075239F784700116F67 /* FourthViewController.swift */; };
@@ -96,9 +99,12 @@
 		8A00CD4623268EE70032C0FD /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		8A00CD4823268EF40032C0FD /* Third.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Third.storyboard; sourceTree = "<group>"; };
 		8A00CD4A232690380032C0FD /* ThirdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewModel.swift; sourceTree = "<group>"; };
+		8A2DFD7123C7550000C049DA /* MountedNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountedNavigationCoordinator.swift; sourceTree = "<group>"; };
 		8A67042E239F9B680051A0B8 /* ControllerHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerHandlerTests.swift; sourceTree = "<group>"; };
 		8A670431239FA3E30051A0B8 /* ArrayExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionTests.swift; sourceTree = "<group>"; };
 		8A76BB8423263BA40008006A /* ControllerCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerCoordinatorTests.swift; sourceTree = "<group>"; };
+		8A9EAAD423C8797A00FB0D2B /* WeakArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakArrayTests.swift; sourceTree = "<group>"; };
+		8A9EAAD923C886BF00FB0D2B /* WeakBoxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBoxTests.swift; sourceTree = "<group>"; };
 		8ACCE070239F74C500116F67 /* PresentedNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentedNavigationCoordinator.swift; sourceTree = "<group>"; };
 		8ACCE072239F776D00116F67 /* Fourth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Fourth.storyboard; sourceTree = "<group>"; };
 		8ACCE075239F784700116F67 /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +222,7 @@
 				8ACCE070239F74C500116F67 /* PresentedNavigationCoordinator.swift */,
 				8A00CD2F232676140032C0FD /* SecondCoordinator.swift */,
 				8A00CD3D23268B2C0032C0FD /* ThirdCoordinator.swift */,
+				8A2DFD7123C7550000C049DA /* MountedNavigationCoordinator.swift */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -304,6 +311,8 @@
 			isa = PBXGroup;
 			children = (
 				8A67042E239F9B680051A0B8 /* ControllerHandlerTests.swift */,
+				8A9EAAD423C8797A00FB0D2B /* WeakArrayTests.swift */,
+				8A9EAAD923C886BF00FB0D2B /* WeakBoxTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -603,6 +612,7 @@
 				8A00CD3E23268B2C0032C0FD /* ThirdCoordinator.swift in Sources */,
 				8ACCE07A239F804800116F67 /* PresentedControllerCoordinator.swift in Sources */,
 				8A00CD2C2326679A0032C0FD /* FirstViewController.swift in Sources */,
+				8A2DFD7223C7550000C049DA /* MountedNavigationCoordinator.swift in Sources */,
 				8A00CD4223268D780032C0FD /* DeepLinkOption.swift in Sources */,
 				8A00CD4B232690380032C0FD /* ThirdViewModel.swift in Sources */,
 				8A00CD2D2326679C0032C0FD /* FirstViewModel.swift in Sources */,
@@ -634,6 +644,8 @@
 				8AF14487232258E000003D0C /* DeepLinkOptionMock.swift in Sources */,
 				8AF14486232258E000003D0C /* CoordinatorMock.swift in Sources */,
 				8AF14489232258E000003D0C /* DispatchGroupMock.swift in Sources */,
+				8A9EAADB23C886C300FB0D2B /* WeakBoxTests.swift in Sources */,
+				8A9EAAD623C8799B00FB0D2B /* WeakArrayTests.swift in Sources */,
 				8A670432239FA3E30051A0B8 /* ArrayExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

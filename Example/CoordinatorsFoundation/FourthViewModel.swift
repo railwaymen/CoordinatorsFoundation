@@ -11,6 +11,7 @@ import Foundation
 protocol FourthViewModelType: class {
     func presentButtonTapped()
     func dismissButtonTapped()
+    func viewDidFinish()
 }
 
 class FourthViewModel {
@@ -30,5 +31,9 @@ extension FourthViewModel: FourthViewModelType {
     
     func dismissButtonTapped() {
         self.coordinator?.requestToFinish()
+    }
+    
+    func viewDidFinish() {
+        self.coordinator?.viewDidFinish()
     }
 }

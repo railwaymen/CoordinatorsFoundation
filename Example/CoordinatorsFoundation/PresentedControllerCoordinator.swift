@@ -42,6 +42,10 @@ extension PresentedControllerCoordinator: PresentedCoordinatorType {
             self?.finish()
         }
     }
+    
+    func viewDidFinish() {
+        self.finish()
+    }
 }
 
 // MARK: - Private
