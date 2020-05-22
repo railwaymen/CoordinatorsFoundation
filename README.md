@@ -44,6 +44,7 @@ Add the repo URL to the project in tab "Swift Packages" and import the Coordinat
 
 - iOS 11.4 + Xcode 10.3 (v0.1.2)
 - iOS 13 + Xcode 11.2.1 (v0.2.0)
+- iOS 13.5 + Xcode 11.5 (v0.3.0)
 
 ## Dependencies
 
@@ -53,6 +54,10 @@ Add the repo URL to the project in tab "Swift Packages" and import the Coordinat
 - [Fastlane](https://fastlane.tools) 2.148.1 ([README](fastlane/README.md))
 - [Slather](https://github.com/SlatherOrg/slather) 2.4.8
 - [xcode-install](https://github.com/xcpretty/xcode-install) 2.6.4
+
+### CocoaPods
+
+- [SwiftLint](https://cocoapods.org/pods/SwiftLint) 0.39.2 ([Rules](.swiftlint.yml))
 
 ## Contribution
 
@@ -66,6 +71,14 @@ Add the repo URL to the project in tab "Swift Packages" and import the Coordinat
 #### Framework
 
 - Open the folder with Xcode and you're ready to go!
+
+#### Example app
+
+- Open the main project folder
+- Run `bundle install`
+- Enter `Example` directory
+- Run `bundle exec pod install --repo-update`
+- Open the `.xcworkspace` file with Xcode
 
 ### Release
 

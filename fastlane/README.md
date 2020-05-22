@@ -26,11 +26,16 @@ Sets podspec version to the current tag version.
 fastlane ios lint_package
 ```
 Lint package
-### ios test_project
+### ios test_framework
 ```
-fastlane ios test_project
+fastlane ios test_framework
 ```
 
+### ios test_example_app
+```
+fastlane ios test_example_app
+```
+Run unit tests
 
 ----
 

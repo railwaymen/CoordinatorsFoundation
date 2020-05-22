@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AGd-U4-sVT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--First-->
+        <scene sceneID="2zP-YF-9gQ">
+            <objects>
+                <viewController title="First" id="AGd-U4-sVT" customClass="FirstViewController" customModule="CoordinatorsFoundation_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ug5-ag-580">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Krc-me-4Nm">
+                                <rect key="frame" x="162.5" y="426" width="89" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hNp-l0-1Hd"/>
+                                </constraints>
+                                <state key="normal" title="Second View"/>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="AGd-U4-sVT" eventType="touchUpInside" id="urB-IJ-KFk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Krc-me-4Nm" firstAttribute="centerY" secondItem="Ug5-ag-580" secondAttribute="centerY" id="EUp-uj-wdG"/>
+                            <constraint firstItem="Krc-me-4Nm" firstAttribute="centerX" secondItem="Ug5-ag-580" secondAttribute="centerX" id="LlU-G7-USZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="A1e-oR-Uwx"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eWV-nA-0Gy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-97" y="91"/>
+        </scene>
+    </scenes>
+</document>

@@ -6,3 +6,5 @@ xcuserdata/
 /vendor
 /.bundle
 /output
+Pods
+fastlane/report.xml

@@ -11,13 +11,23 @@ cache:
   key: "bundle_dependencies"
   paths:
   - vendor
+  - output/DerivedData
+  - Example/Pods
 
 .setup: &setup
   - export
-  - rvm --create use ruby-2.6.3@CoordinatorsFoundation
+  - rvm --create use ${RUBY_VERSION}@${CI_PROJECT_NAME}
   - gem install bundler:2.1.4
   - bundle config set path 'vendor/bundle'
   - bundle install
+
+.setup_example_app: &setup_example_app
+  - export
+  - rvm --create use ${RUBY_VERSION}@${CI_PROJECT_NAME}
+  - gem install bundler:2.1.4
+  - bundle config set path 'vendor/bundle'
+  - bundle install
+  - bundle exec pod install --project-directory=Example || bundle exec pod install --repo-update --project-directory=Example
 
 prepare_project:
   stage: prepare
@@ -33,12 +43,23 @@ test_project:
   script:
     - swift package generate-xcodeproj
     - bundle exec slather setup
-    - bundle exec fastlane test_project
+    - bundle exec fastlane test_framework
   dependencies:
     - prepare_project
   tags:
     - ios_simulator
   coverage: '/Test\ Coverage:\ \D*([\d\.]*)\%/'
+
+build_example_app:
+  stage: build
+  before_script:
+    *setup_example_app
+  script:
+    - bundle exec fastlane test_example_app
+  tags:
+    - ios
+  dependencies:
+    - prepare_project
 
 lint_project:
   stage: lint
