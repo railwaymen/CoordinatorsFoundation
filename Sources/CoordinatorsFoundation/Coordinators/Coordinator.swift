@@ -85,8 +85,8 @@ NSObject, Coordinatorable, UIAdaptivePresentationControllerDelegate, ControllerD
     
     public func observeDismiss(of controller: UIViewController, dismissHandler: (() -> Void)?) {
         if let previousDelegate = controller.presentationController?.delegate as? Coordinator {
-            let newDelegates = (previousDelegate.previousControllerDelegates[controller] ?? []) + [previousDelegate]
-            self.previousControllerDelegates[controller] = newDelegates
+            let previousControllerDelegates = previousDelegate.previousControllerDelegates[controller] ?? []
+            self.previousControllerDelegates[controller] = previousControllerDelegates + [previousDelegate]
         }
         controller.presentationController?.delegate = self
         let controllerHandler = ControllerHandler(
