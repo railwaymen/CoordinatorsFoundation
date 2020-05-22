@@ -1,4 +1,4 @@
 skip_slack true
-scheme "CoordinatorsFoundation-Example"
-workspace "CoordinatorsFoundation.xcworkspace"
+scheme "CoordinatorsFoundation-Package"
+project "CoordinatorsFoundation.xcodeproj"
 output_directory "output/tests"

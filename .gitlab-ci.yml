@@ -1,72 +1,84 @@
 stages:
   - prepare
+  - lint
   - build
   - deploy
 
 variables:
   LC_ALL: "en_US.UTF-8"
-  PILOT_USERNAME: "apple.railwaymen.ci@gmail.com"
-  SIGH_USERNAME: "apple.railwaymen.ci@gmail.com"
 
 cache:
   key: "bundle_dependencies"
   paths:
   - vendor
 
-prepare_proj:
+.setup: &setup
+  - export
+  - rvm --create use ruby-2.6.3@CoordinatorsFoundation
+  - gem install bundler:2.1.4
+  - bundle config set path 'vendor/bundle'
+  - bundle install
+
+prepare_project:
   stage: prepare
   script:
-    - cd Example
-    - rvm use ruby-2.6.3@CoordinatorsFoundation
-    - bundle install --path=/Users/xcodeserver/gitlab-runner/builds/shared/CoordinatorsFoundation/gems
-    - bundle exec pod install || bundle exec pod install --repo-update
-    - export
-  artifacts:
-    name: "Bundle_${CI_BUILD_NAME}_${CI_BUILD_REF_NAME}_${CI_BUILD_ID}"
-    expire_in: 1 day
-    paths:
-      - Example/Pods/*
-      - Example/CoordinatorsFoundation.xcworkspace
-  when: on_success
+    *setup
   tags:
     - ios
 
 test_project:
   stage: build
   before_script:
-    - killall "Simulator" || true
+    *setup
   script:
-    - export
-    - cd Example
-    - rvm use ruby-2.6.3@CoordinatorsFoundation
-    - bundle install --path=/Users/xcodeserver/gitlab-runner/builds/shared/CoordinatorsFoundation/gems
-    - bundle exec fastlane test
-  after_script:
-    - killall "Simulator" || true
-  artifacts:
-    name: "Tests_${CI_BUILD_NAME}_${CI_BUILD_REF_NAME}_${CI_BUILD_ID}"
-    expire_in: 1 week
-  when: on_success
+    - swift package generate-xcodeproj
+    - bundle exec slather setup
+    - bundle exec fastlane test_project
   dependencies:
-    - prepare_proj
+    - prepare_project
   tags:
     - ios_simulator
-  coverage: '/CoordinatorsFoundation\.framework\D*\|\D*([\d\.]*)\%/'
+  coverage: '/Test\ Coverage:\ \D*([\d\.]*)\%/'
+
+lint_project:
+  stage: lint
+  before_script:
+    *setup
+  script:
+    - bundle exec fastlane lint_package
+  dependencies:
+    - prepare_project
+  artifacts:
+    name: "SwiftLint_${CI_BUILD_NAME}_${CI_BUILD_REF_NAME}_${CI_BUILD_ID}"
+    expire_in: 1 week
+    when: always
+    paths:
+      - output/swiftlint.html
+  tags:
+    - ios
+
+lint_podspec:
+  stage: lint
+  before_script:
+    *setup
+  script:
+    - bundle exec pod lib lint --no-clean --skip-tests --private
+  dependencies:
+    - prepare_project
+  tags:
+    - ios
 
 deploy_pod:
   stage: deploy
+  before_script:
+    *setup
   script:
-    - export
-    - cd Example
-    - rvm use ruby-2.6.3@CoordinatorsFoundation
-    - bundle install --path=/Users/xcodeserver/gitlab-runner/builds/shared/CoordinatorsFoundation/gems
-    - bundle exec fastlane deploy
-  artifacts:
-    name: "Deploy_${CI_BUILD_NAME}_${CI_BUILD_REF_NAME}_${CI_BUILD_ID}"
-    expire_in: 1 week
-  when: manual
+    - bundle exec fastlane set_podspec_version
+    - bundle exec pod trunk push CoordinatorsFoundation.podspec
   dependencies:
     - test_project
+    - lint_podspec
+    - lint_project
   only:
     - /[\d\.]*/
   except:

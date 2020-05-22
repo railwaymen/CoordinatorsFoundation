@@ -2,6 +2,10 @@ default_platform(:ios)
 
 platform :ios do
 
+  before_all do
+    xcversion(version: "11.4.1")
+  end
+
   # PUBLIC LANES
   desc "Sets podspec version to the current tag version."
   lane :set_podspec_version do
@@ -14,6 +18,14 @@ platform :ios do
     swiftlint(
       output_file: "output/swiftlint.html",
       strict: true,
-      reporter: "html")
+      reporter: "html"
+    )
+  end
+
+  lane :test_project do
+    run_tests(
+      code_coverage: true,
+      derived_data_path: "output/DerivedData")
+    slather(verbose: true)
   end
 end

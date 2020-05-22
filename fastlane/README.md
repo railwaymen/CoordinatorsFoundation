@@ -26,6 +26,11 @@ Sets podspec version to the current tag version.
 fastlane ios lint_package
 ```
 Lint package
+### ios test_project
+```
+fastlane ios test_project
+```
+
 
 ----
 

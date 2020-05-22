@@ -1,0 +1,8 @@
+scheme: CoordinatorsFoundation-Package
+xcodeproj: CoordinatorsFoundation.xcodeproj
+configuration: Debug
+output_directory: output/coverage
+source_directory: .
+build_directory: output/derivedData
+binary_basename: CoordinatorsFoundation
+coverage_service: terminal
