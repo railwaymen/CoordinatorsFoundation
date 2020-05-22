@@ -17,7 +17,7 @@ prepare_proj:
   stage: prepare
   script:
     - cd Example
-    - rvm use 2.6.3@CoordinatorsFoundation
+    - rvm use ruby-2.6.3@CoordinatorsFoundation
     - bundle install --path=/Users/xcodeserver/gitlab-runner/builds/shared/CoordinatorsFoundation/gems
     - bundle exec pod install || bundle exec pod install --repo-update
     - export
@@ -38,7 +38,7 @@ test_project:
   script:
     - export
     - cd Example
-    - rvm use 2.6.3@CoordinatorsFoundation
+    - rvm use ruby-2.6.3@CoordinatorsFoundation
     - bundle install --path=/Users/xcodeserver/gitlab-runner/builds/shared/CoordinatorsFoundation/gems
     - bundle exec fastlane test
   after_script:
@@ -58,7 +58,7 @@ deploy_pod:
   script:
     - export
     - cd Example
-    - rvm use 2.6.3@CoordinatorsFoundation
+    - rvm use ruby-2.6.3@CoordinatorsFoundation
     - bundle install --path=/Users/xcodeserver/gitlab-runner/builds/shared/CoordinatorsFoundation/gems
     - bundle exec fastlane deploy
   artifacts:
