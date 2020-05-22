@@ -16,16 +16,16 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
-### ios test
+### ios set_podspec_version
 ```
-fastlane ios test
+fastlane ios set_podspec_version
 ```
-Run unit tests
-### ios deploy
+Sets podspec version to the current tag version.
+### ios lint_package
 ```
-fastlane ios deploy
+fastlane ios lint_package
 ```
-Deploy podspec
+Lint package
 
 ----
 

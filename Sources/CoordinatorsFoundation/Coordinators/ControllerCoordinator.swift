@@ -22,7 +22,7 @@ open class ControllerCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: 
     /// - Parameters:
     ///   - window: Window for setting coordinator's controller as rootViewController
     ///
-    public override init(window: UIWindowType? = nil){
+    public override init(window: UIWindowType? = nil) {
         let controller = UIViewController()
         self.controller = controller
         super.init(window: window)

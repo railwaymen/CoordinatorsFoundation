@@ -1,62 +1,19 @@
 default_platform(:ios)
 
-podspec_path = "../CoordinatorsFoundation.podspec"
-project = "CoordinatorsFoundation.xcodeproj"
-workspace = "CoordinatorsFoundation.xcworkspace"
-scheme = "CoordinatorsFoundation-Example"
-podfile_path = "Podfile.lock"
-
 platform :ios do
 
-  before_all do
-    xcversion(version: "11.4.1")
+  # PUBLIC LANES
+  desc "Sets podspec version to the current tag version."
+  lane :set_podspec_version do
+    version_bump_podspec(version_number: ENV['CI_COMMIT_TAG'])
   end
 
-  after_all do |lane|
-  end
-
-  error do |lane, exception|
-  end
-
-  #PUBLIC LANES
-  desc "Run unit tests"
-  lane :test do
-    check_style
-    scan
-    xcov(
-      scheme: scheme,
-      workspace: workspace,
-      json_report: true,
-      markdown_report: true,
-      output_directory: "output/tests/coverage/xcov",
-      skip_slack: true
-    )
-    slather(
-      scheme: scheme,
-      workspace: workspace,
-      proj: project,
-      html: true,
-      output_directory: "output/tests/coverage/slather",
-      binary_basename: "CoordinatorsFoundation"
-    )
-  end
-
-  desc "Deploy podspec"
-  lane :deploy do
-    pod_lib_lint(
-      private: true,
-      podspec: podspec_path
-    )
-    pod_push(path: podspec_path, repo: "railwaymen-open-rwm_podspec")
-  end
-
-  #PRIVATE LANES
-  private_lane :check_style do
-    output_path="output/lint"
-    output_file="#{output_path}/swiftlint.txt"
-
-    sh("cd .. && mkdir -p #{output_path}")
-    ENV["PATH"] = ["Pods/SwiftLint", ENV["PATH"]].join(":")
-    swiftlint(output_file: output_file, reporter: "emoji")
+  desc "Lint package"
+  lane :lint_package do
+    sh("mkdir -p ../output")
+    swiftlint(
+      output_file: "output/swiftlint.html",
+      strict: true,
+      reporter: "html")
   end
 end

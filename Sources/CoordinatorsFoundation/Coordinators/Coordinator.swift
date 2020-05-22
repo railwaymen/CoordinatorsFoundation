@@ -12,7 +12,8 @@ internal protocol ControllerDismissObserver {
     func controllerDidDismiss(_ controller: UIViewController)
 }
 
-open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, Coordinatorable, UIAdaptivePresentationControllerDelegate, ControllerDismissObserver {
+open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>:
+NSObject, Coordinatorable, UIAdaptivePresentationControllerDelegate, ControllerDismissObserver {
     public typealias CoordinatorType = U
     public typealias DeepLinkOption = T
     
