@@ -12,12 +12,41 @@ class CoordinatorTests: XCTestCase {
 
 // MARK: - start(on:)
 extension CoordinatorTests {
-    // TODO
+    func testStart() {
+        //Arrange
+        let parent = self.buildCoordinator()
+        let child = self.buildCoordinator()
+        //Act
+        child.start(on: parent)
+        //Assert
+        XCTAssertEqual(parent.children, [child])
+        XCTAssertEqual(child.parent, parent)
+    }
 }
 
 // MARK: - handleFinish()
 extension CoordinatorTests {
-    // TODO
+    func testHandleFinish_removesSelfFromParent() {
+        //Arrange
+        let parent = self.buildCoordinator()
+        let child = self.buildCoordinator()
+        child.start(on: parent)
+        //Act
+        child.handleFinish()
+        //Assert
+        XCTAssert(parent.children.isEmpty)
+    }
+    
+    func testHandleFinish_removesChildren() {
+        //Arrange
+        let parent = self.buildCoordinator()
+        let child = self.buildCoordinator()
+        child.start(on: parent)
+        //Act
+        parent.handleFinish()
+        //Assert
+        XCTAssert(parent.children.isEmpty)
+    }
 }
 
 // MARK: - add(child:)
