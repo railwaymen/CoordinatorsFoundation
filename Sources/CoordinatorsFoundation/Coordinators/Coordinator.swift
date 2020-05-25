@@ -12,7 +12,9 @@ internal protocol ControllerDismissObserver {
     func controllerDidDismiss(_ controller: UIViewController)
 }
 
-open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, Coordinatorable, UIAdaptivePresentationControllerDelegate, ControllerDismissObserver {
+open class Coordinator<T, U>: NSObject, Coordinatorable, UIAdaptivePresentationControllerDelegate
+where T: DeepLinkOptionable, U: CoordinatorTypable {
+    
     public typealias CoordinatorType = U
     public typealias DeepLinkOption = T
     
@@ -84,7 +86,8 @@ open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, 
     
     public func observeDismiss(of controller: UIViewController, dismissHandler: (() -> Void)?) {
         if let previousDelegate = controller.presentationController?.delegate as? Coordinator {
-            self.previousControllerDelegates[controller] = previousDelegate.previousControllerDelegates[controller] ?? [] + [previousDelegate]
+            let previousControllerDelegates = previousDelegate.previousControllerDelegates[controller] ?? []
+            self.previousControllerDelegates[controller] = previousControllerDelegates + [previousDelegate]
         }
         controller.presentationController?.delegate = self
         let controllerHandler = ControllerHandler(
@@ -106,8 +109,10 @@ open class Coordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: NSObject, 
     public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         self.controllerDidDismiss(presentationController.presentedViewController)
     }
-    
-    // MARK: - ControllerDismissObserver
+}
+
+// MARK: - ControllerDismissObserver
+extension Coordinator: ControllerDismissObserver {
     internal func controllerDidDismiss(_ controller: UIViewController) {
         self.observedControllersHandlers.first { $0.controller == controller }?.dismissHandler()
         self.previousControllerDelegates[controller]?.prune()

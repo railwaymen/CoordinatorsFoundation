@@ -4,6 +4,12 @@
 
 ## Instalation
 
+### SPM (Swift Package Manager)
+
+Add the repo URL to the project in tab "Swift Packages" and import the CoordinatorsFoundation library.
+
+### CocoaPods
+
 1. Add pod to your Podfile:
 
   ```ruby
@@ -15,6 +21,8 @@
   ```bash
   bundle exec pod install
   ```
+
+## Usage
 
 3. Import framework in your project:
 
@@ -36,37 +44,41 @@
 
 - iOS 11.4 + Xcode 10.3 (v0.1.2)
 - iOS 13 + Xcode 11.2.1 (v0.2.0)
+- iOS 13.5 + Xcode 11.5 (v0.3.0)
 
 ## Dependencies
 
 ### Gems
 
-- [Cocoapods](https://cocoapods.org) 1.8.4
-- [Fastlane](https://fastlane.tools) 2.137.0 ([README](fastlane/README.md))
-- [Slather](https://github.com/SlatherOrg/slather) 2.4.7
-- [xcode-install](https://github.com/xcpretty/xcode-install) 2.6.3
-- [xcov](https://github.com/nakiostudio/xcov) 1.7.0
+- [Cocoapods](https://cocoapods.org) 1.9.1
+- [Fastlane](https://fastlane.tools) 2.148.1 ([README](fastlane/README.md))
+- [Slather](https://github.com/SlatherOrg/slather) 2.4.8
+- [xcode-install](https://github.com/xcpretty/xcode-install) 2.6.4
 
 ### CocoaPods
 
-- [SwiftLint](https://cocoapods.org/pods/SwiftLint) 0.38.0 ([Rules](.swiftlint.yml))
+- [SwiftLint](https://cocoapods.org/pods/SwiftLint) 0.39.2 ([Rules](.swiftlint.yml))
 
 ## Contribution
 
 ### Requirements
 
-- [Bundler](https://bundler.io) 1.16.5
-- [Xcode](https://developer.apple.com/xcode/) 11.2.1 (11B500)
+- [Bundler](https://bundler.io) 2.1.4
+- [Xcode](https://developer.apple.com/xcode/) 11.4.1
 
 ### Configuration
 
-- `bundle install`
-- `bundle exec pod install`
-- Open `*.xcworkspace` in xcode
+#### Framework
 
-### Unit tests
+- Open the folder with Xcode and you're ready to go!
 
-- `bundle exec fastlane test`
+#### Example app
+
+- Open the main project folder
+- Run `bundle install`
+- Enter `Example` directory
+- Run `bundle exec pod install --repo-update`
+- Open the `.xcworkspace` file with Xcode
 
 ### Release
 

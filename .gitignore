@@ -2,6 +2,7 @@
 .DS_Store
 
 # Xcode
+.build
 build/
 *.pbxuser
 !default.pbxuser
@@ -25,24 +26,26 @@ vendor
 Example/Pods/
 
 #fastlane
-Example/output/
-Example/fastlane/screenshots/
+output/
+fastlane/screenshots/
 
 # Fastlane temporary profiling data
-Example/fastlane/report.xml
+fastlane/report.xml
 # Deliver temporary error output
-Example/fastlane/Error*.png
+fastlane/Error*.png
 # Deliver temporary preview output
-Example/fastlane/Preview.html
+fastlane/Preview.html
 # Snapshot generated screenshots
-Example/fastlane/screenshots/*/*-portrait.png
-Example/fastlane/screenshots/*/*-landscape.png
-Example/fastlane/screenshots/screenshots.html
+fastlane/screenshots/*/*-portrait.png
+fastlane/screenshots/*/*-landscape.png
+fastlane/screenshots/screenshots.html
 # Frameit generated screenshots
-Example/fastlane/screenshots/*/*-portrait_framed.png
-Example/fastlane/screenshots/*/*-landscape_framed.png
+fastlane/screenshots/*/*-portrait_framed.png
+fastlane/screenshots/*/*-landscape_framed.png
 
 *.orig
 
 # Configuration temp directory
 /Configuration/*.xcconfig
+
+/*.xcodeproj

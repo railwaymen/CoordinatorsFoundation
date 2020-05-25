@@ -1,0 +1,50 @@
+default_platform(:ios)
+
+DERIVED_DATA_PATH = "output/DerivedData/Package"
+
+EXAMPLE_SCHEME = "CoordinatorsFoundation-Example";
+EXAMPLE_PROJECT = "Example/CoordinatorsFoundation.xcodeproj"
+EXAMPLE_WORKSPACE = "Example/CoordinatorsFoundation.xcworkspace"
+EXAMPLE_DERIVED_DATA_PATH = "output/DerivedData/Example"
+
+platform :ios do
+
+  before_all do
+    xcversion(version: "11.4.1")
+  end
+
+  # PUBLIC LANES
+  desc "Sets podspec version to the current tag version."
+  lane :set_podspec_version do
+    version_bump_podspec(version_number: ENV['CI_COMMIT_TAG'])
+  end
+
+  desc "Lint package"
+  lane :lint_package do
+    sh("mkdir -p ../output")
+    swiftlint(
+      output_file: "output/swiftlint.html",
+      strict: true,
+      reporter: "html"
+    )
+  end
+
+  lane :test_framework do
+    run_tests(
+      scheme: "CoordinatorsFoundation-Package",
+      project: "CoordinatorsFoundation.xcodeproj",
+      code_coverage: true,
+      derived_data_path: DERIVED_DATA_PATH)
+    slather(verbose: true)
+  end
+
+  desc "Run unit tests"
+  lane :test_example_app do
+    sh("cd ../Example")
+    run_tests(
+      scheme: EXAMPLE_SCHEME,
+      workspace: EXAMPLE_WORKSPACE,
+      derived_data_path: EXAMPLE_DERIVED_DATA_PATH
+    )
+  end
+end

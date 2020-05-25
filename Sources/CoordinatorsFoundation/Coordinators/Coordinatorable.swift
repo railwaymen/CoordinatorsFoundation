@@ -98,7 +98,8 @@ public protocol Coordinatorable: class {
         dismissHandler: (() -> Void)?)
     
     ///
-    /// Ends observing the given controller by setting its presentationController's delegate to nil if set to the object and removing dismiss
+    /// Ends observing the given controller by setting its presentationController's
+    /// delegate to nil if set to the object and removing dismiss
     /// handlers associated with the controller
     /// - Parameters:
     ///   - controller: Controller to which should not be observed anymore on dismiss gesture
