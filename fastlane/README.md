@@ -21,6 +21,11 @@ or alternatively using `brew cask install fastlane`
 fastlane ios set_podspec_version
 ```
 Sets podspec version to the current tag version.
+### ios all_checks
+```
+fastlane ios all_checks
+```
+Runs all checks needed for CI to succeed
 ### ios lint_package
 ```
 fastlane ios lint_package
@@ -30,12 +35,12 @@ Lint package
 ```
 fastlane ios test_framework
 ```
-
+Run unit tests
 ### ios test_example_app
 ```
 fastlane ios test_example_app
 ```
-Run unit tests
+Builds example app
 
 ----
 

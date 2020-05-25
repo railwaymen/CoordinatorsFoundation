@@ -80,6 +80,14 @@ Add the repo URL to the project in tab "Swift Packages" and import the Coordinat
 - Run `bundle exec pod install --repo-update`
 - Open the `.xcworkspace` file with Xcode
 
+### Before you push changes
+
+- Run all checks in your console by typing:
+
+ ```
+ bundle exec fastlane all_checks
+ ```
+
 ### Release
 
 Merge changes to `master`. And tag with proper version marked previously in podspec e.g. `1.0.1` Then manually deploy on GitLab

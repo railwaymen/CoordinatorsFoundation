@@ -41,8 +41,6 @@ test_project:
   before_script:
     *setup
   script:
-    - swift package generate-xcodeproj
-    - bundle exec slather setup
     - bundle exec fastlane test_framework
   dependencies:
     - prepare_project
@@ -57,7 +55,7 @@ build_example_app:
   script:
     - bundle exec fastlane test_example_app
   tags:
-    - ios
+    - ios_simulator
   dependencies:
     - prepare_project
 
