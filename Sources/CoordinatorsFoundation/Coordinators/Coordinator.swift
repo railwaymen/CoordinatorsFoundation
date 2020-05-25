@@ -15,6 +15,7 @@ internal protocol ControllerDismissObserver {
 open class Coordinator<T, U>: NSObject, Coordinatorable, UIAdaptivePresentationControllerDelegate
 where T: DeepLinkOptionable, U: CoordinatorTypable {
     
+    public typealias SomeCoordinator = Coordinator<T, U>
     public typealias CoordinatorType = U
     public typealias DeepLinkOption = T
     
@@ -22,11 +23,12 @@ where T: DeepLinkOptionable, U: CoordinatorTypable {
         return nil
     }
     
-    internal var previousControllerDelegates: [UIViewController: WeakArray<Coordinator>] = [:]
-    
     private(set) public var children: [Coordinator]
     private(set) public var window: UIWindowType?
-    private var finishHandler: FinishHandlerType?
+    private(set) public weak var parent: Coordinator?
+    
+    internal var previousControllerDelegates: [UIViewController: WeakArray<Coordinator>] = [:]
+    
     private var dispatchGroupFactory: DispatchGroupFactoryType
     private var observedControllersHandlers: Set<ControllerHandler> = []
     
@@ -51,17 +53,18 @@ where T: DeepLinkOptionable, U: CoordinatorTypable {
     }
     
     // MARK: - Coordinatorable
-    open func start(finishHandler: FinishHandlerType?) {
-        self.finishHandler = finishHandler
+    open func start(on parent: Coordinator?) {
+        parent?.add(child: self)
+        self.parent = parent
     }
     
-    open func finish() {
+    open func handleFinish() {
         self.children.forEach {
-            $0.finish()
+            $0.handleFinish()
             self.remove(child: $0)
         }
         self.observedControllersHandlers.forEach { self.endObserving($0.controller) }
-        self.finishHandler?()
+        self.parent?.remove(child: self)
     }
     
     open func add(child: Coordinator) {
@@ -93,7 +96,7 @@ where T: DeepLinkOptionable, U: CoordinatorTypable {
         let controllerHandler = ControllerHandler(
             controller: controller,
             dismissHandler: dismissHandler ?? { [weak self] in
-                self?.finish()
+                self?.handleFinish()
             })
         self.observedControllersHandlers.update(with: controllerHandler)
     }
@@ -119,4 +122,3 @@ extension Coordinator: ControllerDismissObserver {
         self.previousControllerDelegates[controller]?.last?.controllerDidDismiss(controller)
     }
 }
- 

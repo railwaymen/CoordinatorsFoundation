@@ -12,7 +12,11 @@ protocol FirstCoordinatorType: class {
     func viewDidRequestForSecondView()
 }
 
-class FirstCoordinator: NavigationCoordinator {
+class FirstCoordinator: NavigationCoordinator, Finishable {
+    typealias FinishHandlerType = () -> Void
+    var willFinishHandler: FinishHandlerType?
+    var didFinishHandler: FinishHandlerType?
+    
     private let storyboardsManager: StoryboardsManagerType
     
     // MARK: - Initialization
@@ -25,8 +29,8 @@ class FirstCoordinator: NavigationCoordinator {
     }
     
     // MARK: - Overridden
-    override func start(finishHandler: Coordinator.FinishHandlerType?) {
-        super.start(finishHandler: finishHandler)
+    override func start(on parent: Coordinator?) {
+        super.start(on: parent)
         self.runMainFlow()
     }
 }
@@ -64,9 +68,6 @@ extension FirstCoordinator {
             window: self.window,
             parentController: self.navigationController,
             storyboardsManager: self.storyboardsManager)
-        self.add(child: coordinator)
-        coordinator.start { [weak self, weak coordinator] in
-            self?.remove(child: coordinator)
-        }
+        coordinator.start(on: self)
     }
 }

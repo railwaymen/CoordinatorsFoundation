@@ -56,7 +56,7 @@ extension TabBarCoordinatorTests {
         let child = TabBarChildCoordinatorMock()
         coordinator.add(child: child)
         //Act
-        coordinator.start()
+        coordinator.start(on: nil)
         //Assert
         XCTAssertEqual(coordinator.tabBarController.viewControllers?.count, 1)
     }
@@ -71,13 +71,13 @@ extension TabBarCoordinatorTests {
         let child = TabBarChildCoordinatorMock()
         coordinator.add(child: child)
         //Act
-        coordinator.start { Void() }
+        coordinator.start(on: nil)
         //Assert
         XCTAssertEqual(coordinator.tabBarController.viewControllers?.count, 1)
     }
 }
 
-// MARK: - finish()
+// MARK: - handleFinish()
 extension TabBarCoordinatorTests {
     func testFinish() {
         //Arrange
@@ -87,10 +87,10 @@ extension TabBarCoordinatorTests {
         let secondChild = TabBarChildCoordinatorMock()
         coordinator.add(child: firstChild)
         coordinator.add(child: secondChild)
-        coordinator.start { Void() }
+        coordinator.start(on: nil)
         //Act
         XCTAssertEqual(coordinator.tabBarController.viewControllers?.count, 2)
-        coordinator.finish()
+        coordinator.handleFinish()
         //Assert
         XCTAssertEqual(coordinator.tabBarController.children.count, 0)
         XCTAssertEqual(coordinator.tabBarController.viewControllers?.count, 0)

@@ -13,7 +13,11 @@ protocol SecondCoordinatorType: class {
     func viewDidFinish()
 }
 
-class SecondCoordinator: ControllerCoordinator {
+class SecondCoordinator: ControllerCoordinator, Finishable {
+    typealias FinishHandlerType = () -> Void
+    var willFinishHandler: FinishHandlerType?
+    var didFinishHandler: FinishHandlerType?
+    
     private let parentController: UINavigationController
     private let storyboardsManager: StoryboardsManagerType
     
@@ -29,8 +33,8 @@ class SecondCoordinator: ControllerCoordinator {
     }
     
     // MARK: - Overridden
-    override func start(finishHandler: Coordinator.FinishHandlerType?) {
-        super.start(finishHandler: finishHandler)
+    override func start(on parent: Coordinator?) {
+        super.start(on: parent)
         self.runMainFlow()
     }
 }
@@ -38,12 +42,13 @@ class SecondCoordinator: ControllerCoordinator {
 // MARK: - SecondCoordinatorType
 extension SecondCoordinator: SecondCoordinatorType {
     func viewDidRequestToPopToRoot() {
+        self.willFinish()
         self.parentController.popToRootViewController(animated: true)
-        self.finish()
+        self.didFinish()
     }
     
     func viewDidFinish() {
-        self.finish()
+        self.finishInstantly()
     }
 }
 

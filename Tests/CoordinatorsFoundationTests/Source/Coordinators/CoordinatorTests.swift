@@ -8,30 +8,16 @@ class CoordinatorTests: XCTestCase {
         super.setUp()
         self.coordinator = self.buildCoordinator()
     }
-    
 }
 
-// MARK: - finish()
+// MARK: - start(on:)
 extension CoordinatorTests {
-    func testFinish() {
-        //Arrange
-        let child = self.buildCoordinator()
-        var childFinished = false
-        child.start {
-            childFinished = true
-        }
-        var finishCalled = false
-        self.coordinator.start {
-            finishCalled = true
-        }
-        self.coordinator.add(child: child)
-        //Act
-        self.coordinator.finish()
-        //Assert
-        XCTAssertTrue(finishCalled)
-        XCTAssertTrue(childFinished)
-        XCTAssertEqual(self.coordinator.children.count, 0)
-    }
+    // TODO
+}
+
+// MARK: - handleFinish()
+extension CoordinatorTests {
+    // TODO
 }
 
 // MARK: - add(child:)
@@ -39,7 +25,7 @@ extension CoordinatorTests {
     func testAddChild_one() {
         //Arrange
         let child = self.buildCoordinator()
-        self.coordinator.start()
+        self.coordinator.start(on: nil)
         //Act
         self.coordinator.add(child: child)
         //Assert
@@ -50,7 +36,7 @@ extension CoordinatorTests {
         //Arrange
         let firstChild = self.buildCoordinator()
         let secondChild = self.buildCoordinator()
-        self.coordinator.start()
+        self.coordinator.start(on: nil)
         //Act
         self.coordinator.add(child: firstChild)
         self.coordinator.add(child: secondChild)
@@ -64,7 +50,7 @@ extension CoordinatorTests {
     func testRemoveChild_withNilChildValue() {
         //Arrange
         let child = self.buildCoordinator()
-        self.coordinator.start()
+        self.coordinator.start(on: nil)
         self.coordinator.add(child: child)
         //Act
         self.coordinator.remove(child: nil)
@@ -75,7 +61,7 @@ extension CoordinatorTests {
     func testRemoveChild_withSomeChildValue() {
         //Arrange
         let child = self.buildCoordinator()
-        self.coordinator.start()
+        self.coordinator.start(on: nil)
         self.coordinator.add(child: child)
         //Act
         self.coordinator.remove(child: child)
@@ -87,7 +73,7 @@ extension CoordinatorTests {
         //Arrange
         let firstChild = self.buildCoordinator()
         let secondChild = self.buildCoordinator()
-        self.coordinator.start()
+        self.coordinator.start(on: nil)
         self.coordinator.add(child: firstChild)
         self.coordinator.add(child: secondChild)
         //Act

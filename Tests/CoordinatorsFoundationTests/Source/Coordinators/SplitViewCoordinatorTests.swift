@@ -43,7 +43,7 @@ extension SplitViewCoordinatorTests {
         let splitViewController = UISplitViewController()
         let coordinator = self.buildCoordinator(window: window)
         //Act
-        coordinator.start(splitViewController: splitViewController, finishHandler: nil)
+        coordinator.start(splitViewController: splitViewController, on: nil)
         //Assert
         XCTAssertEqual(coordinator.splitViewController, splitViewController)
     }
