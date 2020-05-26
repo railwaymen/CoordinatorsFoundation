@@ -85,7 +85,7 @@ deploy_pod:
     *setup
   script:
     - bundle exec fastlane set_podspec_version
-    - bundle exec pod trunk push CoordinatorsFoundation.podspec
+    - bundle exec fastlane deploy_pod
   dependencies:
     - test_project
     - lint_podspec

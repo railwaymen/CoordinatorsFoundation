@@ -69,4 +69,9 @@ platform :ios do
       configuration: "Debug"
     )
   end
+
+  desc "Deploys podspec with CocoaPods"
+  lane :deploy_pod do
+    pod_push(repo: "railwaymen-open-rwm_podspec")
+  end
 end
