@@ -39,6 +39,16 @@ class PresentedNavigationCoordinator: NavigationCoordinator, Finishable {
         super.start(on: parent)
         self.runMainFlow()
     }
+    
+    override func willFinish() {
+        super.willFinish()
+        self.willFinishHandler?()
+    }
+    
+    override func didFinish() {
+        super.didFinish()
+        self.didFinishHandler?()
+    }
 }
 
 // MARK: - PresentedCoordinatorType

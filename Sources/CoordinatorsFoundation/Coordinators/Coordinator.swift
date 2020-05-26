@@ -9,6 +9,7 @@
 import UIKit
 
 internal protocol ControllerDismissObserver {
+    func controllerWillDismiss(_ controller: UIViewController)
     func controllerDidDismiss(_ controller: UIViewController)
 }
 
@@ -58,6 +59,12 @@ where T: DeepLinkOptionable, U: CoordinatorTypable {
         self.parent = parent
     }
     
+    open func willFinish() {}
+    
+    open func didFinish() {
+        self.handleFinish()
+    }
+    
     open func handleFinish() {
         self.children.forEach {
             $0.handleFinish()
@@ -87,7 +94,7 @@ where T: DeepLinkOptionable, U: CoordinatorTypable {
     
     open func openDeepLink(option: DeepLinkOption) {}
     
-    public func observeDismiss(of controller: UIViewController, dismissHandler: (() -> Void)?) {
+    public func observeDismiss(of controller: UIViewController, didDismissHandler: (() -> Void)?) {
         if let previousDelegate = controller.presentationController?.delegate as? Coordinator {
             let previousControllerDelegates = previousDelegate.previousControllerDelegates[controller] ?? []
             self.previousControllerDelegates[controller] = previousControllerDelegates + [previousDelegate]
@@ -95,8 +102,12 @@ where T: DeepLinkOptionable, U: CoordinatorTypable {
         controller.presentationController?.delegate = self
         let controllerHandler = ControllerHandler(
             controller: controller,
-            dismissHandler: dismissHandler ?? { [weak self] in
-                self?.handleFinish()
+            willDismissHandler: { [weak self] in
+                self?.willFinish()
+            },
+            didDismissHandler: { [weak self] in
+                didDismissHandler?()
+                self?.didFinish()
             })
         self.observedControllersHandlers.update(with: controllerHandler)
     }
@@ -109,6 +120,10 @@ where T: DeepLinkOptionable, U: CoordinatorTypable {
     }
     
     // MARK: - UIAdaptivePresentationControllerDelegate
+    public func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        self.controllerWillDismiss(presentationController.presentedViewController)
+    }
+    
     public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         self.controllerDidDismiss(presentationController.presentedViewController)
     }
@@ -116,8 +131,14 @@ where T: DeepLinkOptionable, U: CoordinatorTypable {
 
 // MARK: - ControllerDismissObserver
 extension Coordinator: ControllerDismissObserver {
+    internal func controllerWillDismiss(_ controller: UIViewController) {
+        self.observedControllersHandlers.first { $0.controller === controller }?.willDismissHandler()
+        self.previousControllerDelegates[controller]?.prune()
+        self.previousControllerDelegates[controller]?.last?.controllerWillDismiss(controller)
+    }
+    
     internal func controllerDidDismiss(_ controller: UIViewController) {
-        self.observedControllersHandlers.first { $0.controller == controller }?.dismissHandler()
+        self.observedControllersHandlers.first { $0.controller === controller }?.didDismissHandler()
         self.previousControllerDelegates[controller]?.prune()
         self.previousControllerDelegates[controller]?.last?.controllerDidDismiss(controller)
     }

@@ -9,15 +9,13 @@
 
 import Foundation
 
-public protocol Finishable {
+public protocol Finishable: class {
     associatedtype FinishHandlerType
     var willFinishHandler: FinishHandlerType? { get set }
     var didFinishHandler: FinishHandlerType? { get set }
     
-    /// Should be called just before the related view would begin to dismiss
     func willFinish()
     
-    /// Should be called just after the related view would dismiss
     func didFinish()
 }
 
@@ -39,13 +37,6 @@ public extension Finishable where FinishHandlerType == (() -> Void) {
     }
     
     func didFinish() {
-        self.didFinishHandler?()
-    }
-}
-
-public extension Finishable where Self: Coordinatorable, FinishHandlerType == (() -> Void) {
-    func didFinish() {
-        self.handleFinish()
         self.didFinishHandler?()
     }
 }

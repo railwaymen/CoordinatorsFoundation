@@ -201,7 +201,7 @@ extension CoordinatorTests {
         //Act
         sut.observeDismiss(
             of: viewController,
-            dismissHandler: {
+            didDismissHandler: {
                 dismissHandlerCalledCount += 1
         })
         sut.presentationControllerDidDismiss(try XCTUnwrap(viewController.presentationController))
@@ -209,7 +209,7 @@ extension CoordinatorTests {
         XCTAssertEqual(dismissHandlerCalledCount, 1)
     }
     
-    func testObserveDismiss_callsHandlerTwiceOnDismiss() throws {
+    func testObserveDismiss_callsHandlerOnlyOnceOnDismiss() throws {
         //Arrange
         let sut = self.buildCoordinator()
         let viewController = UIViewController()
@@ -217,13 +217,13 @@ extension CoordinatorTests {
         //Act
         sut.observeDismiss(
             of: viewController,
-            dismissHandler: {
+            didDismissHandler: {
                 dismissHandlerCalledCount += 1
         })
         sut.presentationControllerDidDismiss(try XCTUnwrap(viewController.presentationController))
         sut.presentationControllerDidDismiss(try XCTUnwrap(viewController.presentationController))
         //Assert
-        XCTAssertEqual(dismissHandlerCalledCount, 2)
+        XCTAssertEqual(dismissHandlerCalledCount, 1)
     }
 }
 
@@ -247,7 +247,7 @@ extension CoordinatorTests {
         var dismissHandlerCalledCount = 0
         sut.observeDismiss(
             of: viewController,
-            dismissHandler: {
+            didDismissHandler: {
                 dismissHandlerCalledCount += 1
         })
         //Act

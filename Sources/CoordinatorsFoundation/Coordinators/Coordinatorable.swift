@@ -47,6 +47,12 @@ public protocol Coordinatorable: class {
     ///
     func start(on parent: SomeCoordinator?)
     
+    /// Should be called just before the related view would begin to dismiss
+    func willFinish()
+    
+    /// Should be called just after the related view would dismiss
+    func didFinish()
+    
     ///
     /// Call it if coordinator's main view controller ended his life (e.g. after view dismiss).
     /// - Note:
@@ -88,11 +94,11 @@ public protocol Coordinatorable: class {
     /// - Parameters:
     ///   - controller: Observed controller. It sets its presentationController's delegate to observe the dismiss event.
     ///   Adding another time the same controller will replace given handler to the new one.
-    ///   - dismissHandler: Called after controller did dismiss with dismiss gesture available since iOS 13
+    ///   - didDismissHandler: Called after controller did dismiss with dismiss gesture available since iOS 13
     ///
     func observeDismiss(
         of controller: UIViewController,
-        dismissHandler: (() -> Void)?)
+        didDismissHandler: (() -> Void)?)
     
     ///
     /// Ends observing the given controller by setting its presentationController's
@@ -109,7 +115,7 @@ public extension Coordinatorable {
     var type: CoordinatorType? {
         return nil
     }
-    
+
     ///
     /// Observes dismiss gesture of applied on the given controller finishing coordinator on dismiss.
     /// - Parameters:
@@ -117,6 +123,6 @@ public extension Coordinatorable {
     ///   Adding another time the same controller will replace given handler to the new one.
     ///
     func observeDismiss(of controller: UIViewController) {
-        self.observeDismiss(of: controller, dismissHandler: nil)
+        self.observeDismiss(of: controller, didDismissHandler: nil)
     }
 }
