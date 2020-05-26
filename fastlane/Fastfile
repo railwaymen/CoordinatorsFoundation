@@ -3,8 +3,8 @@ default_platform(:ios)
 DERIVED_DATA_PATH = "output/DerivedData/Package"
 
 EXAMPLE_SCHEME = "CoordinatorsFoundation-Example";
-EXAMPLE_PROJECT = "Example/CoordinatorsFoundation.xcodeproj"
-EXAMPLE_WORKSPACE = "Example/CoordinatorsFoundation.xcworkspace"
+EXAMPLE_PROJECT = "Example/CoordinatorsFoundation-Example.xcodeproj"
+EXAMPLE_WORKSPACE = "Example/CoordinatorsFoundation-Example.xcworkspace"
 EXAMPLE_DERIVED_DATA_PATH = "output/DerivedData/Example"
 
 platform :ios do

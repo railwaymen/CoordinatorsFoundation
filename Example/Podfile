@@ -2,8 +2,6 @@ platform :ios, '11.4'
 use_frameworks!
 
 def universal_pods
-  pod 'CoordinatorsFoundation', :path => '../'
-
   pod 'SwiftLint', '~> 0.39'
 end
 
