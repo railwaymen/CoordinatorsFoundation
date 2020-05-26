@@ -1,23 +1,16 @@
 PODS:
-  - CoordinatorsFoundation (0.2.2)
-  - SwiftLint (0.38.0)
+  - SwiftLint (0.39.2)
 
 DEPENDENCIES:
-  - CoordinatorsFoundation (from `../`)
-  - SwiftLint (~> 0.34)
+  - SwiftLint (~> 0.39)
 
 SPEC REPOS:
   trunk:
     - SwiftLint
 
-EXTERNAL SOURCES:
-  CoordinatorsFoundation:
-    :path: "../"
-
 SPEC CHECKSUMS:
-  CoordinatorsFoundation: 0fb7e03ad83f6c4da2babc61fbc478ba406894cb
-  SwiftLint: 4105f061f9812b214568b736dab580ab2c73a582
+  SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
 
-PODFILE CHECKSUM: 265a33b4eccb399d1757c4518de3f6749510911a
+PODFILE CHECKSUM: 8041f2bba3a04b72c8261c244046cc57d3acad55
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

@@ -2,15 +2,9 @@ platform :ios, '11.4'
 use_frameworks!
 
 def universal_pods
-  pod 'CoordinatorsFoundation', :path => '../'
-
-  pod 'SwiftLint', '~> 0.34'
+  pod 'SwiftLint', '~> 0.39'
 end
 
 target 'CoordinatorsFoundation_Example' do
-  universal_pods
-end
-
-target 'CoordinatorsFoundation_Tests' do
   universal_pods
 end
