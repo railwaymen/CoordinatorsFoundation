@@ -26,6 +26,11 @@ Sets podspec version to the current tag version.
 fastlane ios all_checks
 ```
 Runs all checks needed for CI to succeed
+### ios lint_podspec
+```
+fastlane ios lint_podspec
+```
+Lints .podspec file
 ### ios lint_package
 ```
 fastlane ios lint_package

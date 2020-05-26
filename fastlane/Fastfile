@@ -21,15 +21,15 @@ platform :ios do
 
   desc "Runs all checks needed for CI to succeed"
   lane :all_checks do
-    pod_lib_lint(private: true)
+    lint_podspec
     lint_package
     test_framework
-    cocoapods(
-      clean_install: true,
-      podfile: "./Example/Podfile",
-      try_repo_update_on_error: true
-    )
     test_example_app
+  end
+
+  desc "Lints .podspec file"
+  lane :lint_podspec do
+    pod_lib_lint(private: true)
   end
 
   desc "Lint package"
@@ -57,6 +57,11 @@ platform :ios do
 
   desc "Builds example app"
   lane :test_example_app do
+    cocoapods(
+      clean_install: true,
+      podfile: "./Example/Podfile",
+      try_repo_update_on_error: true
+    )
     xcodebuild(
       scheme: EXAMPLE_SCHEME,
       workspace: EXAMPLE_WORKSPACE,

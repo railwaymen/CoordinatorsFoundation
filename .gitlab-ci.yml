@@ -21,14 +21,6 @@ cache:
   - bundle config set path 'vendor/bundle'
   - bundle install
 
-.setup_example_app: &setup_example_app
-  - export
-  - rvm --create use ${RUBY_VERSION}@${CI_PROJECT_NAME}
-  - gem install bundler:2.1.4
-  - bundle config set path 'vendor/bundle'
-  - bundle install
-  - bundle exec pod install --project-directory=Example || bundle exec pod install --repo-update --project-directory=Example
-
 prepare_project:
   stage: prepare
   script:
@@ -51,7 +43,7 @@ test_project:
 build_example_app:
   stage: build
   before_script:
-    *setup_example_app
+    *setup
   script:
     - bundle exec fastlane test_example_app
   tags:
@@ -81,7 +73,7 @@ lint_podspec:
   before_script:
     *setup
   script:
-    - bundle exec pod lib lint --no-clean --skip-tests --private
+    - bundle exec fastlane lint_podspec
   dependencies:
     - prepare_project
   tags:
