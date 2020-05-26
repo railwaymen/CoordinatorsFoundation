@@ -9,7 +9,11 @@
 import UIKit
 import CoordinatorsFoundation
 
-class MountedNavigationCoordinator: NavigationCoordinator {
+class MountedNavigationCoordinator: NavigationCoordinator, Finishable {
+    typealias FinishHandlerType = () -> Void
+    var willFinishHandler: FinishHandlerType?
+    var didFinishHandler: FinishHandlerType?
+    
     private let storyboardsManager: StoryboardsManagerType
     
     // MARK: - Initialization
@@ -23,8 +27,8 @@ class MountedNavigationCoordinator: NavigationCoordinator {
     }
     
     // MARK: - Overridden
-    override func start(finishHandler: FinishHandlerType?) {
-        super.start(finishHandler: finishHandler)
+    override func start(on parent: Coordinator?) {
+        super.start(on: parent)
         self.runMainFlow()
     }
 }
@@ -36,19 +40,17 @@ extension MountedNavigationCoordinator: PresentedCoordinatorType {
             window: self.window,
             parentViewController: self.navigationController,
             storyboardsManager: self.storyboardsManager)
-        self.add(child: coordinator)
-        coordinator.start { [weak self, weak coordinator] in
-            self?.remove(child: coordinator)
-        }
+        coordinator.start(on: self)
     }
     
     func requestToFinish() {
+        self.willFinish()
         self.navigationController.popViewController(animated: true)
-        self.finish()
+        self.didFinish()
     }
     
     func viewDidFinish() {
-        self.finish()
+        self.finishInstantly()
     }
 }
 

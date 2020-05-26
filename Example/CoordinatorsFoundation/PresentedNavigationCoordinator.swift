@@ -15,7 +15,11 @@ protocol PresentedCoordinatorType: class {
     func viewDidFinish()
 }
 
-class PresentedNavigationCoordinator: NavigationCoordinator {
+class PresentedNavigationCoordinator: NavigationCoordinator, Finishable {
+    typealias FinishHandlerType = () -> Void
+    var willFinishHandler: FinishHandlerType?
+    var didFinishHandler: FinishHandlerType?
+    
     private weak var parentViewController: UIViewController?
     private let storyboardsManager: StoryboardsManagerType
     
@@ -31,9 +35,19 @@ class PresentedNavigationCoordinator: NavigationCoordinator {
     }
     
     // MARK: - Overridden
-    override func start(finishHandler: FinishHandlerType?) {
-        super.start(finishHandler: finishHandler)
+    override func start(on parent: Coordinator?) {
+        super.start(on: parent)
         self.runMainFlow()
+    }
+    
+    override func willFinish() {
+        super.willFinish()
+        self.willFinishHandler?()
+    }
+    
+    override func didFinish() {
+        super.didFinish()
+        self.didFinishHandler?()
     }
 }
 
@@ -44,13 +58,14 @@ extension PresentedNavigationCoordinator: PresentedCoordinatorType {
     }
 
     func requestToFinish() {
+        self.willFinish()
         self.navigationController.dismiss(animated: true) { [weak self] in
-            self?.finish()
+            self?.didFinish()
         }
     }
     
     func viewDidFinish() {
-        self.finish()
+        self.finishInstantly()
     }
 }
 
@@ -70,9 +85,6 @@ extension PresentedNavigationCoordinator {
             window: self.window,
             navigationController: self.navigationController,
             storyboardsManager: self.storyboardsManager)
-        self.add(child: coordinator)
-        coordinator.start { [weak self, weak coordinator] in
-            self?.remove(child: coordinator)
-        }
+        coordinator.start(on: self)
     }
 }

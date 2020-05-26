@@ -22,8 +22,8 @@ class AppCoordinator: Coordinator {
     }
     
     // MARK: - Overridden
-    override func start(finishHandler: Coordinator.FinishHandlerType?) {
-        super.start(finishHandler: finishHandler)
+    override func start(on parent: Coordinator?) {
+        super.start(on: parent)
         self.runMainFlow()
     }
 }
@@ -34,9 +34,6 @@ extension AppCoordinator {
         let coordinator = HomeCoordinator(
             window: self.window,
             storyboardsManager: self.storyboardsManager)
-        self.add(child: coordinator)
-        coordinator.start { [weak self, weak coordinator] in
-            self?.remove(child: coordinator)
-        }
+        coordinator.start(on: self)
     }
 }

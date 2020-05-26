@@ -10,7 +10,3 @@ end
 target 'CoordinatorsFoundation_Example' do
   universal_pods
 end
-
-target 'CoordinatorsFoundation_Tests' do
-  universal_pods
-end

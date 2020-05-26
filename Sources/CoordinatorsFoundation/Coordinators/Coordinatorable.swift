@@ -33,43 +33,46 @@ public protocol NavigationControllerObserverType: class {
 }
 
 public protocol Coordinatorable: class {
-    typealias FinishHandlerType = () -> Void
-
-    associatedtype Coordinator: Coordinatorable
+    associatedtype SomeCoordinator: Coordinatorable
     associatedtype CoordinatorType: CoordinatorTypable
     associatedtype DeepLinkOption: DeepLinkOptionable
     
     var type: CoordinatorType? { get }
-    var children: [Coordinator] { get }
+    var children: [SomeCoordinator] { get }
     var window: UIWindowType? { get }
+    var parent: SomeCoordinator? { get }
     
     ///
     /// Runs coordinator's main flow.
-    /// - Parameters:
-    ///   - finishHandler: This closure is called after coordinator's finish call.
     ///
-    func start(finishHandler: FinishHandlerType?)
+    func start(on parent: SomeCoordinator?)
+    
+    /// Should be called just before the related view would begin to dismiss
+    func willFinish()
+    
+    /// Should be called just after the related view would dismiss
+    func didFinish()
     
     ///
     /// Call it if coordinator's main view controller ended his life (e.g. after view dismiss).
     /// - Note:
     /// Automatically finishes all children of the coordinator. Use it carefully.
     ///
-    func finish()
+    func handleFinish()
     
     ///
     /// Adds given coordinator as child of this coordinator.
     /// - Parameters:
     ///   - child: Coordinator to be added to children.
     ///
-    func add(child: Coordinator)
+    func add(child: SomeCoordinator)
     
     ///
     /// Removes coordinator from children. Mostly useful after child's finish call
     /// - Parameters:
     ///   - child: Optional coordinator to be removed from children.
     ///
-    func remove(child: Coordinator?)
+    func remove(child: SomeCoordinator?)
     
     ///
     /// Prepares coordinator and it's children for deep link opening.
@@ -91,11 +94,11 @@ public protocol Coordinatorable: class {
     /// - Parameters:
     ///   - controller: Observed controller. It sets its presentationController's delegate to observe the dismiss event.
     ///   Adding another time the same controller will replace given handler to the new one.
-    ///   - dismissHandler: Called after controller did dismiss with dismiss gesture available since iOS 13
+    ///   - didDismissHandler: Called after controller did dismiss with dismiss gesture available since iOS 13
     ///
     func observeDismiss(
         of controller: UIViewController,
-        dismissHandler: (() -> Void)?)
+        didDismissHandler: (() -> Void)?)
     
     ///
     /// Ends observing the given controller by setting its presentationController's
@@ -112,14 +115,7 @@ public extension Coordinatorable {
     var type: CoordinatorType? {
         return nil
     }
-    
-    ///
-    /// Runs coordinator's main flow without finishHandler.
-    ///
-    func start() {
-        self.start(finishHandler: nil)
-    }
-    
+
     ///
     /// Observes dismiss gesture of applied on the given controller finishing coordinator on dismiss.
     /// - Parameters:
@@ -127,6 +123,6 @@ public extension Coordinatorable {
     ///   Adding another time the same controller will replace given handler to the new one.
     ///
     func observeDismiss(of controller: UIViewController) {
-        self.observeDismiss(of: controller, dismissHandler: nil)
+        self.observeDismiss(of: controller, didDismissHandler: nil)
     }
 }

@@ -45,14 +45,14 @@ open class TabBarCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: Coor
     }
     
     // MARK: - Coordinatorable
-    override open func start(finishHandler: (() -> Void)?) {
+    override open func start(on parent: SomeCoordinator?) {
         self.setUpChildTabBarCoordinators()
-        super.start(finishHandler: finishHandler)
+        super.start(on: parent)
     }
     
-    override open func finish() {
+    override open func handleFinish() {
         self.tabBarController.viewControllers = []
-        super.finish()
+        super.handleFinish()
     }
 }
 

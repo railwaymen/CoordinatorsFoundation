@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.appCoordinator = AppCoordinator(
             window: window,
             storyboardsManager: StoryboardsManager())
-        self.appCoordinator?.start()
+        self.appCoordinator?.start(on: nil)
         self.window = window
         window.makeKeyAndVisible()
         return true

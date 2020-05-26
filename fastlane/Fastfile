@@ -10,13 +10,26 @@ EXAMPLE_DERIVED_DATA_PATH = "output/DerivedData/Example"
 platform :ios do
 
   before_all do
-    xcversion(version: "11.4.1")
+    xcversion(version: "11.5")
   end
 
   # PUBLIC LANES
   desc "Sets podspec version to the current tag version."
   lane :set_podspec_version do
     version_bump_podspec(version_number: ENV['CI_COMMIT_TAG'])
+  end
+
+  desc "Runs all checks needed for CI to succeed"
+  lane :all_checks do
+    pod_lib_lint(private: true)
+    lint_package
+    test_framework
+    cocoapods(
+      clean_install: true,
+      podfile: "./Example/Podfile",
+      try_repo_update_on_error: true
+    )
+    test_example_app
   end
 
   desc "Lint package"
@@ -29,22 +42,26 @@ platform :ios do
     )
   end
 
+  desc "Run unit tests"
   lane :test_framework do
+    spm(command: "generate-xcodeproj")
     run_tests(
       scheme: "CoordinatorsFoundation-Package",
       project: "CoordinatorsFoundation.xcodeproj",
       code_coverage: true,
-      derived_data_path: DERIVED_DATA_PATH)
+      derived_data_path: DERIVED_DATA_PATH,
+      clean: true
+    )
     slather(verbose: true)
   end
 
-  desc "Run unit tests"
+  desc "Builds example app"
   lane :test_example_app do
-    sh("cd ../Example")
-    run_tests(
+    xcodebuild(
       scheme: EXAMPLE_SCHEME,
       workspace: EXAMPLE_WORKSPACE,
-      derived_data_path: EXAMPLE_DERIVED_DATA_PATH
+      derived_data_path: EXAMPLE_DERIVED_DATA_PATH,
+      configuration: "Debug"
     )
   end
 end

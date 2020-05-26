@@ -50,9 +50,9 @@ open class SplitViewCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: C
     ///
     open func start(
         splitViewController: UISplitViewController,
-        finishHandler: (() -> Void)?
+        on parent: SomeCoordinator?
     ) {
         self.splitViewController = splitViewController
-        super.start(finishHandler: finishHandler)
+        super.start(on: parent)
     }
 }

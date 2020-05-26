@@ -9,8 +9,14 @@ extension ControllerHandlerTests {
         //Arrange
         let viewController = UIViewController()
         let dismissHandler: () -> Void = {}
-        let sut1 = ControllerHandler(controller: viewController, dismissHandler: dismissHandler)
-        let sut2 = ControllerHandler(controller: viewController, dismissHandler: dismissHandler)
+        let sut1 = ControllerHandler(
+            controller: viewController,
+            willDismissHandler: dismissHandler,
+            didDismissHandler: dismissHandler)
+        let sut2 = ControllerHandler(
+            controller: viewController,
+            willDismissHandler: dismissHandler,
+            didDismissHandler: dismissHandler)
         //Assert
         XCTAssertEqual(sut1, sut2)
     }
@@ -18,8 +24,8 @@ extension ControllerHandlerTests {
     func testEquatable_differentHandlers() {
         //Arrange
         let viewController = UIViewController()
-        let sut1 = ControllerHandler(controller: viewController, dismissHandler: {})
-        let sut2 = ControllerHandler(controller: viewController, dismissHandler: {})
+        let sut1 = ControllerHandler(controller: viewController, willDismissHandler: {}, didDismissHandler: {})
+        let sut2 = ControllerHandler(controller: viewController, willDismissHandler: {}, didDismissHandler: {})
         //Assert
         XCTAssertEqual(sut1, sut2)
     }
@@ -27,8 +33,14 @@ extension ControllerHandlerTests {
     func testEquatable_differentControllers() {
         //Arrange
         let dismissHandler: () -> Void = {}
-        let sut1 = ControllerHandler(controller: UIViewController(), dismissHandler: dismissHandler)
-        let sut2 = ControllerHandler(controller: UIViewController(), dismissHandler: dismissHandler)
+        let sut1 = ControllerHandler(
+            controller: UIViewController(),
+            willDismissHandler: dismissHandler,
+            didDismissHandler: dismissHandler)
+        let sut2 = ControllerHandler(
+            controller: UIViewController(),
+            willDismissHandler: dismissHandler,
+            didDismissHandler: dismissHandler)
         //Assert
         XCTAssertNotEqual(sut1, sut2)
     }
@@ -40,32 +52,44 @@ extension ControllerHandlerTests {
         //Arrange
         let viewController = UIViewController()
         let dismissHandler: () -> Void = {}
-        let sut1 = ControllerHandler(controller: viewController, dismissHandler: dismissHandler)
-        let sut2 = ControllerHandler(controller: viewController, dismissHandler: dismissHandler)
+        let sut1 = ControllerHandler(
+            controller: viewController,
+            willDismissHandler: dismissHandler,
+            didDismissHandler: dismissHandler)
+        let sut2 = ControllerHandler(
+            controller: viewController,
+            willDismissHandler: dismissHandler,
+            didDismissHandler: dismissHandler)
         let array = [sut1, sut2]
         //Act
         let set = Set(array)
         //Assert
         XCTAssertEqual(set.count, 1)
     }
-    
+
     func testHashable_differentHandlers() {
         //Arrange
         let viewController = UIViewController()
-        let sut1 = ControllerHandler(controller: viewController, dismissHandler: {})
-        let sut2 = ControllerHandler(controller: viewController, dismissHandler: {})
+        let sut1 = ControllerHandler(controller: viewController, willDismissHandler: {}, didDismissHandler: {})
+        let sut2 = ControllerHandler(controller: viewController, willDismissHandler: {}, didDismissHandler: {})
         let array = [sut1, sut2]
         //Act
         let set = Set(array)
         //Assert
         XCTAssertEqual(set.count, 1)
     }
-    
+
     func testHashable_differentControllers() {
         //Arrange
         let dismissHandler: () -> Void = {}
-        let sut1 = ControllerHandler(controller: UIViewController(), dismissHandler: dismissHandler)
-        let sut2 = ControllerHandler(controller: UIViewController(), dismissHandler: dismissHandler)
+        let sut1 = ControllerHandler(
+            controller: UIViewController(),
+            willDismissHandler: dismissHandler,
+            didDismissHandler: dismissHandler)
+        let sut2 = ControllerHandler(
+            controller: UIViewController(),
+            willDismissHandler: dismissHandler,
+            didDismissHandler: dismissHandler)
         let array = [sut1, sut2]
         //Act
         let set = Set(array)

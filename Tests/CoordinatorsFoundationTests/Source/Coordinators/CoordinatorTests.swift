@@ -8,29 +8,44 @@ class CoordinatorTests: XCTestCase {
         super.setUp()
         self.coordinator = self.buildCoordinator()
     }
-    
 }
 
-// MARK: - finish()
+// MARK: - start(on:)
 extension CoordinatorTests {
-    func testFinish() {
+    func testStart() {
         //Arrange
+        let parent = self.buildCoordinator()
         let child = self.buildCoordinator()
-        var childFinished = false
-        child.start {
-            childFinished = true
-        }
-        var finishCalled = false
-        self.coordinator.start {
-            finishCalled = true
-        }
-        self.coordinator.add(child: child)
         //Act
-        self.coordinator.finish()
+        child.start(on: parent)
         //Assert
-        XCTAssertTrue(finishCalled)
-        XCTAssertTrue(childFinished)
-        XCTAssertEqual(self.coordinator.children.count, 0)
+        XCTAssertEqual(parent.children, [child])
+        XCTAssertEqual(child.parent, parent)
+    }
+}
+
+// MARK: - handleFinish()
+extension CoordinatorTests {
+    func testHandleFinish_removesSelfFromParent() {
+        //Arrange
+        let parent = self.buildCoordinator()
+        let child = self.buildCoordinator()
+        child.start(on: parent)
+        //Act
+        child.handleFinish()
+        //Assert
+        XCTAssert(parent.children.isEmpty)
+    }
+    
+    func testHandleFinish_removesChildren() {
+        //Arrange
+        let parent = self.buildCoordinator()
+        let child = self.buildCoordinator()
+        child.start(on: parent)
+        //Act
+        parent.handleFinish()
+        //Assert
+        XCTAssert(parent.children.isEmpty)
     }
 }
 
@@ -39,7 +54,7 @@ extension CoordinatorTests {
     func testAddChild_one() {
         //Arrange
         let child = self.buildCoordinator()
-        self.coordinator.start()
+        self.coordinator.start(on: nil)
         //Act
         self.coordinator.add(child: child)
         //Assert
@@ -50,7 +65,7 @@ extension CoordinatorTests {
         //Arrange
         let firstChild = self.buildCoordinator()
         let secondChild = self.buildCoordinator()
-        self.coordinator.start()
+        self.coordinator.start(on: nil)
         //Act
         self.coordinator.add(child: firstChild)
         self.coordinator.add(child: secondChild)
@@ -64,7 +79,7 @@ extension CoordinatorTests {
     func testRemoveChild_withNilChildValue() {
         //Arrange
         let child = self.buildCoordinator()
-        self.coordinator.start()
+        self.coordinator.start(on: nil)
         self.coordinator.add(child: child)
         //Act
         self.coordinator.remove(child: nil)
@@ -75,7 +90,7 @@ extension CoordinatorTests {
     func testRemoveChild_withSomeChildValue() {
         //Arrange
         let child = self.buildCoordinator()
-        self.coordinator.start()
+        self.coordinator.start(on: nil)
         self.coordinator.add(child: child)
         //Act
         self.coordinator.remove(child: child)
@@ -87,7 +102,7 @@ extension CoordinatorTests {
         //Arrange
         let firstChild = self.buildCoordinator()
         let secondChild = self.buildCoordinator()
-        self.coordinator.start()
+        self.coordinator.start(on: nil)
         self.coordinator.add(child: firstChild)
         self.coordinator.add(child: secondChild)
         //Act
@@ -186,7 +201,7 @@ extension CoordinatorTests {
         //Act
         sut.observeDismiss(
             of: viewController,
-            dismissHandler: {
+            didDismissHandler: {
                 dismissHandlerCalledCount += 1
         })
         sut.presentationControllerDidDismiss(try XCTUnwrap(viewController.presentationController))
@@ -194,7 +209,7 @@ extension CoordinatorTests {
         XCTAssertEqual(dismissHandlerCalledCount, 1)
     }
     
-    func testObserveDismiss_callsHandlerTwiceOnDismiss() throws {
+    func testObserveDismiss_callsHandlerOnlyOnceOnDismiss() throws {
         //Arrange
         let sut = self.buildCoordinator()
         let viewController = UIViewController()
@@ -202,13 +217,13 @@ extension CoordinatorTests {
         //Act
         sut.observeDismiss(
             of: viewController,
-            dismissHandler: {
+            didDismissHandler: {
                 dismissHandlerCalledCount += 1
         })
         sut.presentationControllerDidDismiss(try XCTUnwrap(viewController.presentationController))
         sut.presentationControllerDidDismiss(try XCTUnwrap(viewController.presentationController))
         //Assert
-        XCTAssertEqual(dismissHandlerCalledCount, 2)
+        XCTAssertEqual(dismissHandlerCalledCount, 1)
     }
 }
 
@@ -232,7 +247,7 @@ extension CoordinatorTests {
         var dismissHandlerCalledCount = 0
         sut.observeDismiss(
             of: viewController,
-            dismissHandler: {
+            didDismissHandler: {
                 dismissHandlerCalledCount += 1
         })
         //Act

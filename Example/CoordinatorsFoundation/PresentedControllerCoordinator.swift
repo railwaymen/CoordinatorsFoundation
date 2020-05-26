@@ -9,7 +9,11 @@
 import UIKit
 import CoordinatorsFoundation
 
-class PresentedControllerCoordinator: ControllerCoordinator {
+class PresentedControllerCoordinator: ControllerCoordinator, Finishable {
+    typealias FinishHandlerType = () -> Void
+    var willFinishHandler: FinishHandlerType?
+    var didFinishHandler: FinishHandlerType?
+    
     private weak var paretViewController: UIViewController?
     private let storyboardsManager: StoryboardsManagerType
     
@@ -25,8 +29,8 @@ class PresentedControllerCoordinator: ControllerCoordinator {
     }
     
     // MARK: - Overridden
-    override func start(finishHandler: FinishHandlerType?) {
-        super.start(finishHandler: finishHandler)
+    override func start(on parent: Coordinator?) {
+        super.start(on: parent)
         self.runMainFlow()
     }
 }
@@ -38,13 +42,14 @@ extension PresentedControllerCoordinator: PresentedCoordinatorType {
     }
     
     func requestToFinish() {
+        self.willFinish()
         self.controller.dismiss(animated: true) { [weak self] in
-            self?.finish()
+            self?.didFinish()
         }
     }
     
     func viewDidFinish() {
-        self.finish()
+        self.finishInstantly()
     }
 }
 
@@ -65,9 +70,6 @@ extension PresentedControllerCoordinator {
             window: self.window,
             parentViewController: self.controller,
             storyboardsManager: self.storyboardsManager)
-        self.add(child: coordinator)
-        coordinator.start { [weak self, weak coordinator] in
-            self?.remove(child: coordinator)
-        }
+        coordinator.start(on: self)
     }
 }

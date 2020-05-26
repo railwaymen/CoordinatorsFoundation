@@ -8,7 +8,11 @@
 
 import CoordinatorsFoundation
 
-class HomeCoordinator: TabBarCoordinator {
+class HomeCoordinator: TabBarCoordinator, Finishable {
+    typealias FinishHandlerType = () -> Void
+    var willFinishHandler: FinishHandlerType?
+    var didFinishHandler: FinishHandlerType?
+    
     override var type: CoordinatorType? {
         return .home
     }
@@ -28,7 +32,6 @@ class HomeCoordinator: TabBarCoordinator {
         super.init(window: window)
         window?.rootViewController = self.tabBarController
         let children = [firstChild, secondChild]
-        children.forEach { self.add(child: $0) }
-        children.forEach { $0.start() }
+        children.forEach { $0.start(on: self) }
     }
 }

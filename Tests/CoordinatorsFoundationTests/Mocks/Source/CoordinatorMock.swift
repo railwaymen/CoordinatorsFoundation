@@ -4,21 +4,19 @@ import Foundation
 class CoordinatorMock: Coordinator<DeepLinkOptionMock, CoordinatorTypeMock> {
     
     private(set) var startParams: [StartParams] = []
-    struct StartParams {
-        let finishHanlder: FinishHandlerType?
-    }
+    struct StartParams {}
     
-    private(set) var finishParams: [FinishParams] = []
-    struct FinishParams {}
+    private(set) var handleFinishParams: [HandleFinishParams] = []
+    struct HandleFinishParams {}
     
     private(set) var addChildParams: [AddChildParams] = []
     struct AddChildParams {
-        let child: Coordinator
+        let child: SomeCoordinator
     }
     
     private(set) var removeChildParams: [RemoveChildParams] = []
     struct RemoveChildParams {
-        let child: Coordinator?
+        let child: SomeCoordinator?
     }
     
     private(set) var deepLinkWillBeExecutedParams: [DeepLinkWillBeExecutedParams] = []
@@ -32,7 +30,7 @@ class CoordinatorMock: Coordinator<DeepLinkOptionMock, CoordinatorTypeMock> {
     }
     
     var typeReturnValue: CoordinatorType?
-    var childrenReturnValue: [Coordinator] = []
+    var childrenReturnValue: [SomeCoordinator] = []
     var windowReturnValue: UIWindowType?
     
     // MARK: - Overridden
@@ -40,7 +38,7 @@ class CoordinatorMock: Coordinator<DeepLinkOptionMock, CoordinatorTypeMock> {
         return self.typeReturnValue
     }
     
-    override var children: [Coordinator] {
+    override var children: [SomeCoordinator] {
         return self.childrenReturnValue
     }
     
@@ -48,19 +46,19 @@ class CoordinatorMock: Coordinator<DeepLinkOptionMock, CoordinatorTypeMock> {
         return self.windowReturnValue
     }
     
-    override func start(finishHandler: FinishHandlerType?) {
-        self.startParams.append(StartParams(finishHanlder: finishHandler))
+    override func start(on parent: SomeCoordinator?) {
+        self.startParams.append(StartParams())
     }
     
-    override func finish() {
-        self.finishParams.append(FinishParams())
+    override func handleFinish() {
+        self.handleFinishParams.append(HandleFinishParams())
     }
     
-    override func add(child: Coordinator) {
+    override func add(child: SomeCoordinator) {
         self.addChildParams.append(AddChildParams(child: child))
     }
     
-    override func remove(child: Coordinator?) {
+    override func remove(child: SomeCoordinator?) {
         self.removeChildParams.append(RemoveChildParams(child: child))
     }
 

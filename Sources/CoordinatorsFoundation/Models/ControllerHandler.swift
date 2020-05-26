@@ -9,7 +9,8 @@ import UIKit
 
 struct ControllerHandler {
     let controller: UIViewController
-    let dismissHandler: (() -> Void)
+    let willDismissHandler: (() -> Void)
+    let didDismissHandler: (() -> Void)
 }
 
 // MARK: - Hashable
