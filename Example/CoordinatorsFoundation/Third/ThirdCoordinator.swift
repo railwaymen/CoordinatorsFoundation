@@ -6,6 +6,7 @@
 //  Copyright © 2019 Railwaymen. All rights reserved.
 //
 
+import UIKit
 import CoordinatorsFoundation
 
 typealias ThirdCoordinatorChild = NavigationCoordinator & TabBarChildCoordinatorType

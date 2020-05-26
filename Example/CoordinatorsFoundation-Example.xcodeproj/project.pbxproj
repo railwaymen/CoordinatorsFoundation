@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,6 +34,7 @@
 		8AE1F2F7247D119700886592 /* PresentedNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE1F2DB247D119700886592 /* PresentedNavigationCoordinator.swift */; };
 		8AE1F2F9247D119700886592 /* ThirdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE1F2DD247D119700886592 /* ThirdViewModel.swift */; };
 		8AE1F2FA247D119700886592 /* CoordinatorFoundationTypealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE1F2DE247D119700886592 /* CoordinatorFoundationTypealiases.swift */; };
+		8AF475C1247D228F0073AACE /* CoordinatorsFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF475C0247D228F0073AACE /* CoordinatorsFoundation */; };
 		AE57DB40E63CDAFF561D066B /* Pods_CoordinatorsFoundation_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE19862398298DD3B1B2865 /* Pods_CoordinatorsFoundation_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AF475C1247D228F0073AACE /* CoordinatorsFoundation in Frameworks */,
 				AE57DB40E63CDAFF561D066B /* Pods_CoordinatorsFoundation_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,7 +233,6 @@
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				A14D9153B8083242B78CDCA7 /* [CP] Embed Pods Frameworks */,
 				8AF1448B23225A7800003D0C /* Run Swiftlint */,
 			);
 			buildRules = (
@@ -239,6 +240,9 @@
 			dependencies = (
 			);
 			name = CoordinatorsFoundation_Example;
+			packageProductDependencies = (
+				8AF475C0247D228F0073AACE /* CoordinatorsFoundation */,
+			);
 			productName = CoordinatorsFoundation;
 			productReference = 607FACD01AFB9204008FA782 /* CoordinatorsFoundation_Example.app */;
 			productType = "com.apple.product-type.application";
@@ -259,7 +263,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "CoordinatorsFoundation" */;
+			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "CoordinatorsFoundation-Example" */;
 			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -333,23 +337,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nswiftlint\n";
-		};
-		A14D9153B8083242B78CDCA7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CoordinatorsFoundation_Example/Pods-CoordinatorsFoundation_Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CoordinatorsFoundation_Example/Pods-CoordinatorsFoundation_Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoordinatorsFoundation_Example/Pods-CoordinatorsFoundation_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -549,7 +536,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "CoordinatorsFoundation" */ = {
+		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "CoordinatorsFoundation-Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				607FACED1AFB9204008FA782 /* Debug */,
@@ -568,6 +555,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8AF475C0247D228F0073AACE /* CoordinatorsFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoordinatorsFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
 }
