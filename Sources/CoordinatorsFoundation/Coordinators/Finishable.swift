@@ -14,8 +14,10 @@ public protocol Finishable: class {
     var willFinishHandler: FinishHandlerType? { get set }
     var didFinishHandler: FinishHandlerType? { get set }
     
+    /// Should be called just before the related view would begin to dismiss
     func willFinish()
     
+    /// Should be called just after the related view would dismiss
     func didFinish()
 }
 
