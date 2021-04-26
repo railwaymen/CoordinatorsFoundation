@@ -46,4 +46,37 @@ open class NavigationCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: 
         self.observeDismiss(of: navigationController)
         navigationController.interactivePopGestureRecognizer?.delegate = nil
     }
+    
+    // MARK: - Open
+    open override func start(on parent: Coordinator<T, U>?) {
+        super.start(on: parent)
+    }
+    
+    open override func willFinish() {
+        super.willFinish()
+    }
+    
+    open override func didFinish() {
+        super.didFinish()
+    }
+    
+    open override func handleFinish() {
+        super.handleFinish()
+    }
+    
+    open override func add(child: Coordinator<T, U>) {
+        super.add(child: child)
+    }
+    
+    open override func remove(child: Coordinator<T, U>?) {
+        super.remove(child: child)
+    }
+    
+    open override func deepLinkWillBeExecuted(completion: @escaping () -> Void) {
+        super.deepLinkWillBeExecuted(completion: completion)
+    }
+    
+    open override func openDeepLink(option: T) {
+        super.openDeepLink(option: option)
+    }
 }
