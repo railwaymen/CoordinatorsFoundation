@@ -90,4 +90,7 @@ Add the repo URL to the project in tab "Swift Packages" and import the Coordinat
 
 ### Release
 
-Merge changes to `master`. And tag with proper version marked previously in podspec e.g. `1.0.1` Then manually deploy on GitLab
+- Merge changes to `master`.
+- Checkout the `master` branch.
+- Run `bundle exec fastlane deploy_pod`
+- Enter version number e.g. `1.0.0`
