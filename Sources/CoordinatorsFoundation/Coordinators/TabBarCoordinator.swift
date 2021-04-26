@@ -44,15 +44,39 @@ open class TabBarCoordinator<T: DeepLinkOptionable, U: CoordinatorTypable>: Coor
         super.init(window: window)
     }
     
-    // MARK: - Coordinatorable
-    override open func start(on parent: SomeCoordinator?) {
+    // MARK: - Open
+    open override func start(on parent: SomeCoordinator?) {
         self.setUpChildTabBarCoordinators()
         super.start(on: parent)
     }
     
-    override open func handleFinish() {
+    open override func willFinish() {
+        super.willFinish()
+    }
+    
+    open override func didFinish() {
+        super.didFinish()
+    }
+    
+    open override func handleFinish() {
         self.tabBarController.viewControllers = []
         super.handleFinish()
+    }
+    
+    open override func add(child: Coordinator<T, U>) {
+        super.add(child: child)
+    }
+    
+    open override func remove(child: Coordinator<T, U>?) {
+        super.remove(child: child)
+    }
+    
+    open override func deepLinkWillBeExecuted(completion: @escaping () -> Void) {
+        super.deepLinkWillBeExecuted(completion: completion)
+    }
+    
+    open override func openDeepLink(option: T) {
+        super.openDeepLink(option: option)
     }
 }
 

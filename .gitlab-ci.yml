@@ -16,10 +16,13 @@ cache:
 
 .setup: &setup
   - export
-  - rvm --create use ${RUBY_VERSION}@${CI_PROJECT_NAME}
+  - rvm --create use $(cat .ruby-version)@${CI_PROJECT_NAME}
   - gem install bundler:2.1.4
-  - bundle config set path 'vendor/bundle'
+  - bundle config
   - bundle install
+
+.rvmuse: &rvmuse
+  - rvm use $(cat .ruby-version)@${CI_PROJECT_NAME}
 
 prepare_project:
   stage: prepare
@@ -28,39 +31,16 @@ prepare_project:
   tags:
     - ios
 
-test_project:
-  stage: build
-  before_script:
-    *setup
-  script:
-    - bundle exec fastlane test_framework
-  dependencies:
-    - prepare_project
-  tags:
-    - ios_simulator
-  coverage: '/Test\ Coverage:\ \D*([\d\.]*)\%/'
-
-build_example_app:
-  stage: build
-  before_script:
-    *setup
-  script:
-    - bundle exec fastlane test_example_app
-  tags:
-    - ios_simulator
-  dependencies:
-    - prepare_project
-
 lint_project:
   stage: lint
   before_script:
-    *setup
+    *rvmuse
   script:
     - bundle exec fastlane lint_package
   dependencies:
     - prepare_project
   artifacts:
-    name: "SwiftLint_${CI_BUILD_NAME}_${CI_BUILD_REF_NAME}_${CI_BUILD_ID}"
+    name: "SwiftLint_Project_${CI_BUILD_NAME}_${CI_BUILD_REF_NAME}_${CI_BUILD_ID}"
     expire_in: 1 week
     when: always
     paths:
@@ -71,9 +51,38 @@ lint_project:
 lint_podspec:
   stage: lint
   before_script:
-    *setup
+    *rvmuse
   script:
     - bundle exec fastlane lint_podspec
+  dependencies:
+    - prepare_project
+  tags:
+    - ios
+
+test_project:
+  stage: build
+  before_script:
+    *rvmuse
+  script:
+    - bundle exec fastlane test_framework
+  dependencies:
+    - prepare_project
+  artifacts:
+    name: "Tests_${CI_BUILD_NAME}_${CI_BUILD_REF_NAME}_${CI_BUILD_ID}"
+    expire_in: 1 week
+    paths:
+    - output/tests/*
+    when: on_success
+  tags:
+    - ios_simulator
+  coverage: '/Test\ Coverage:\ \D*([\d\.]*)\%/'
+
+build_example_app:
+  stage: build
+  before_script:
+    *rvmuse
+  script:
+    - bundle exec fastlane test_example_app
   dependencies:
     - prepare_project
   tags:
@@ -82,11 +91,12 @@ lint_podspec:
 deploy_pod:
   stage: deploy
   before_script:
-    *setup
+    *rvmuse
   script:
     - bundle exec fastlane set_podspec_version
     - bundle exec fastlane deploy_pod
   dependencies:
+    - prepare_project
     - test_project
     - lint_podspec
     - lint_project
