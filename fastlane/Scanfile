@@ -1,2 +1,3 @@
 skip_slack true
 output_directory "output/tests"
+device "iPhone 12 mini"

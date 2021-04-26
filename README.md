@@ -50,21 +50,21 @@ Add the repo URL to the project in tab "Swift Packages" and import the Coordinat
 
 ### Gems
 
-- [Cocoapods](https://cocoapods.org) 1.9.1
-- [Fastlane](https://fastlane.tools) 2.148.1 ([README](fastlane/README.md))
-- [Slather](https://github.com/SlatherOrg/slather) 2.4.8
-- [xcode-install](https://github.com/xcpretty/xcode-install) 2.6.4
+- [Cocoapods](https://cocoapods.org) 1.10.1
+- [Fastlane](https://fastlane.tools) 2.181.0 ([README](fastlane/README.md))
+- [Slather](https://github.com/SlatherOrg/slather) 2.7.0
+- [xcode-install](https://github.com/xcpretty/xcode-install) 2.6.8
 
 ### CocoaPods
 
-- [SwiftLint](https://cocoapods.org/pods/SwiftLint) 0.39.2 ([Rules](.swiftlint.yml))
+- [SwiftLint](https://cocoapods.org/pods/SwiftLint) 0.43.1 ([Rules](.swiftlint.yml))
 
 ## Contribution
 
 ### Requirements
 
-- [Bundler](https://bundler.io) 2.1.4
-- [Xcode](https://developer.apple.com/xcode/) 11.4.1
+- [Bundler](https://bundler.io) 2.2.16
+- [Xcode](https://developer.apple.com/xcode/) 12.4
 
 ### Configuration
 
