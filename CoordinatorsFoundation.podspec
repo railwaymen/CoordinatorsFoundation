@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'CoordinatorsFoundation'
-  s.version          = '0.3.0'
+  s.version          = '0.3.1'
   s.summary          = 'Base for Coordinators pattern in Swift'
 
   s.description      = <<-DESC

@@ -10,7 +10,7 @@ EXAMPLE_DERIVED_DATA_PATH = "output/DerivedData/Example"
 platform :ios do
 
   before_all do
-    xcversion(version: "11.5")
+    xcversion(version: "12.4")
   end
 
   # PUBLIC LANES
